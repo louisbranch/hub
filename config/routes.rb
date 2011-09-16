@@ -1,4 +1,12 @@
 Hub::Application.routes.draw do
+  resources :skill_types
+
+  resources :skills
+
+  resources :char_classes
+
+  root :to => 'char_classes#index'
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

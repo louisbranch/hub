@@ -1,0 +1,2 @@
+class SkillTypesController < ApplicationController
+end

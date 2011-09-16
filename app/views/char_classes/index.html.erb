@@ -1,0 +1,15 @@
+<h1>Classes</h1>
+<table>
+  <% @chars.each do |char| %>
+  <tr>
+    <td><%= link_to char.name, char_class_url(char) %></td>
+    <td><%= char.description.truncate(100) if !char.description.nil? %></td>
+    <td><%= char.resource %></td>
+    <td><%= link_to "Edit", edit_char_class_url(char) %></td>
+    <!--<td><%= link_to "Delete", char_class_url(char), :method => :delete %></td>-->
+  </tr>
+  <% end %>
+</table>
+
+<hr>
+<%= link_to "New Class", new_char_class_url %>
