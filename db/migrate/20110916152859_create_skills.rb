@@ -5,11 +5,10 @@ class CreateSkills < ActiveRecord::Migration
       t.string :name
       t.text :description
       t.string :img_url
-      t.integer  :skill_type_id
       t.string :cost
       t.string :generate
       t.string :cooldown
-      t.integer  :char_class_id
+      t.integer  :skill_type_id
       t.timestamps
     end
   end

@@ -1,4 +1,3 @@
 class Skill < ActiveRecord::Base
-  belongs_to :char_classes
-  has_one :skill_types
+  belongs_to :skill_type, :foreign_key => "skill_type_id"
 end

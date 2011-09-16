@@ -1,0 +1,7 @@
+<% flash.each do |name, msg| %>
+  <%= content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String) %>
+<% end %>
+<h1> <%= @skill.name %></h1>
+<h2> <%= @skill.description %></h2>
+<hr>
+<%= link_to "All Classes", skills_path %>

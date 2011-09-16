@@ -1,0 +1,8 @@
+<%= form_for @skill_type do |form| %>
+  <%= label_tag(:main, "Main type:") %>
+  <%= form.text_field :main %>
+  <%= label_tag(:sub, "Subtype:") %>
+  <%= form.text_field :sub %>
+  <%= form.submit @form_action %>
+<% end %>
+

@@ -22,8 +22,9 @@ ActiveRecord::Schema.define(:version => 20110916171159) do
   end
 
   create_table "skill_types", :force => true do |t|
-    t.string   "type"
-    t.string   "subtype"
+    t.string   "main"
+    t.string   "sub"
+    t.integer  "char_class_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -33,11 +34,10 @@ ActiveRecord::Schema.define(:version => 20110916171159) do
     t.string   "name"
     t.text     "description"
     t.string   "img_url"
-    t.integer  "skill_type_id"
     t.string   "cost"
     t.string   "generate"
     t.string   "cooldown"
-    t.integer  "char_class_id"
+    t.integer  "skill_type_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
