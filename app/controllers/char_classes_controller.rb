@@ -24,6 +24,7 @@ class CharClassesController < ApplicationController
   
   def show
     @char = CharClass.find(params[:id])
+    @skills = @char.skills
   end
   
   def edit

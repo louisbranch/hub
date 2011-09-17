@@ -12,10 +12,10 @@ class SkillTypesController < ApplicationController
   end
   
   def create
-    @skill_type = Skill.new(params[:skill_type])
+    @skill_type = SkillType.new(params[:skill_type])
     if @skill_type.save
       flash[:notice] = "Yay!"
-      respond_with(@skill_type, :location => skill_path(@skill_type))
+      respond_with(@skill_type, :location => skill_type_path(@skill_type))
     else
       flash[:error] = "Bummer!"
       redirect_to skill_type_path

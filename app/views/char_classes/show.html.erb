@@ -2,6 +2,16 @@
   <%= content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String) %>
 <% end %>
 <h1> <%= @char.name %></h1>
-<h2> <%= @char.description %></h2>
+<p> <%= @char.description %></p>
+<h2>Skills:</h2>
+<table>
+  <% @skills.each do |skill| %>
+  <tr>
+    <td><%= link_to skill.name, skill_url(skill) %></td>
+    <td><%= skill.skill_type.main %></td>
+    <td><%= skill.skill_type.sub %></td>
+  </tr>
+  <% end %>
+</table>
 <hr>
 <%= link_to "All Classes", char_classes_path %>

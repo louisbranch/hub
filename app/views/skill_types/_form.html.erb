@@ -3,6 +3,7 @@
   <%= form.text_field :main %>
   <%= label_tag(:sub, "Subtype:") %>
   <%= form.text_field :sub %>
+  <%= label_tag(:char_class_id, "Class:") %>
+  <%= form.select(:char_class_id, options_for_select(array_chars))%>
   <%= form.submit @form_action %>
 <% end %>
-

@@ -3,6 +3,8 @@
   <%= form.text_field :name %>
   <%= label_tag(:level, "Level:") %>
   <%= form.text_field :level %>
+  <%= label_tag(:skill_type_id, "Type:") %>
+  <%= form.select(:skill_type_id, options_for_select(array_skill_type_by_char))%>
   <%= label_tag(:description, "Description:") %>
   <%= form.text_area :description %>
   <%= label_tag(:img_url, "Image URL:") %>
