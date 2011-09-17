@@ -2,6 +2,7 @@
 <table>
   <% @skill_types.each do |skill_type| %>
   <tr>
+    <td><%= skill_type.char_class.name %></td>
     <td><%= link_to skill_type.main, skill_type_url(skill_type) %></td>
     <td><%= skill_type.sub %></td>
     <td><%= link_to "Edit", edit_skill_type_url(skill_type) %></td>

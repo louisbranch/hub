@@ -1,4 +1,8 @@
 Hub::Application.routes.draw do
+  resources :rune_effects
+
+  resources :runes
+
   resources :skill_types
 
   resources :skills

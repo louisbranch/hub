@@ -3,5 +3,15 @@
 <% end %>
 <h1> <%= @skill.name %></h1>
 <h2> <%= @skill.description %></h2>
+<h2>Rune Effects:</h2>
+<table>
+  <% @rune_effects.each do |rune_effect| %>
+  <tr>
+    <td><%= link_to rune_effect.name, rune_effect_url(rune_effect) %></td>
+    <td><%= rune_effect.description %></td>
+    <td><%= rune_effect.rune.name %></td>
+  </tr>
+  <% end %>
+</table>
 <hr>
-<%= link_to "All Classes", skills_path %>
+<%= link_to "All Skills", skills_path %>

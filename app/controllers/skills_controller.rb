@@ -24,6 +24,7 @@ class SkillsController < ApplicationController
   
   def show
     @skill = Skill.find(params[:id])
+    @rune_effects = @skill.rune_effects
   end
   
   def edit

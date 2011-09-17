@@ -11,12 +11,27 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110916171159) do
+ActiveRecord::Schema.define(:version => 20110917032051) do
 
   create_table "char_classes", :force => true do |t|
     t.string   "name"
     t.text     "description"
     t.string   "resource"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "rune_effects", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.integer  "skill_id"
+    t.integer  "rune_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "runes", :force => true do |t|
+    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
