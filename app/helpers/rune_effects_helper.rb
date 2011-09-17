@@ -1,0 +1,2 @@
+module RuneEffectsHelper
+end

@@ -1,0 +1,14 @@
+<h1>Runes</h1>
+<table>
+  <% @runes.each do |rune| %>
+  <tr>
+    <td><%= link_to rune.name, rune_url(rune) %></td>
+    <td><%= link_to "Edit", edit_rune_url(rune) %></td>
+    <!--<td><%= link_to "Delete", rune_url(rune), :method => :delete %></td>-->
+  </tr>
+  <% end %>
+</table>
+
+<hr>
+<%= link_to "Home", root_path %> | 
+<%= link_to "New Rune", new_rune_url %>

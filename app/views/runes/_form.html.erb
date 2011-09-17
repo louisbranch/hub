@@ -1,0 +1,6 @@
+<%= form_for @rune do |form| %>
+  <%= label_tag(:name, "Name:") %>
+  <%= form.text_field :name %>
+  <%= form.submit @form_action %>
+<% end %>
+

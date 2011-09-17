@@ -1,0 +1,7 @@
+<h1>New Rune Effect</h1>
+<% flash.each do |name, msg| %>
+  <%= content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String) %>
+<% end %>
+<%= render :partial => "form" %>
+<%= link_to "Back", rune_effects_url %>
+
