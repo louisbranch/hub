@@ -5,11 +5,11 @@ module ApplicationHelper
   end
   
   def array_skills
-    skill_array = Skill.all.map { |skill| ["#{skill.skill_type.char_class.name} - #{skill.name}", skill.id] }
+    skill_array = Skill.all.map { |skill| ["#{skill.char_class.name} - #{skill.name}", skill.id] }
   end
   
-  def array_skill_type_by_char
-    skill_type_array = SkillType.all.map { |skill_type| ["#{skill_type.char_class.name} - #{skill_type.main} - #{skill_type.sub}", skill_type.id] }
+  def array_skill_types
+    skill_type_array = SkillType.all.map { |skill_type| [skill_type.name, skill_type.id] }
   end
   
   def array_runes

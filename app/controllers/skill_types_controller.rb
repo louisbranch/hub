@@ -33,7 +33,7 @@ class SkillTypesController < ApplicationController
   
   def update
     @skill_type = SkillType.find(params[:id])
-    if @skill_type.update_attributes(params[:skill])
+    if @skill_type.update_attributes(params[:skill_type])
       flash[:notice] = "Yay!"
       respond_with(@skill_type, :location => skill_type_path(@skill_type))
     else

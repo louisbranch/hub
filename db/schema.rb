@@ -11,12 +11,30 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110917032051) do
+ActiveRecord::Schema.define(:version => 20110917220703) do
+
+  create_table "build_skills", :force => true do |t|
+    t.integer  "build_id"
+    t.integer  "skill_id"
+    t.integer  "rune_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "builds", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.integer  "user_id"
+    t.integer  "char_class_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "char_classes", :force => true do |t|
     t.string   "name"
     t.text     "description"
     t.string   "resource"
+    t.string   "slug"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -26,20 +44,23 @@ ActiveRecord::Schema.define(:version => 20110917032051) do
     t.text     "description"
     t.integer  "skill_id"
     t.integer  "rune_id"
+    t.string   "slug"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "runes", :force => true do |t|
     t.string   "name"
+    t.string   "img_url"
+    t.string   "slug"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "skill_types", :force => true do |t|
-    t.string   "main"
-    t.string   "sub"
+    t.string   "name"
     t.integer  "char_class_id"
+    t.string   "slug"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -52,7 +73,9 @@ ActiveRecord::Schema.define(:version => 20110917032051) do
     t.string   "cost"
     t.string   "generate"
     t.string   "cooldown"
+    t.integer  "char_class_id"
     t.integer  "skill_type_id"
+    t.string   "slug"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

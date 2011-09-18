@@ -1,0 +1,17 @@
+<% flash.each do |name, msg| %>
+  <%= content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String) %>
+<% end %>
+<h1> <%= @build.name %></h1>
+<h2> <%= @build.description %></h2>
+<h2>Skills:</h2>
+<table>
+  <% @skills.each do |skills| %>
+  <tr>
+    <td><%= skills.skill.name %></td>
+    <td><%= skills.rune.name %></td>
+    <td><%= skills.rune.name %></td>
+  </tr>
+  <% end %>
+</table>
+<hr>
+<%= link_to "All Builds", builds_path %>

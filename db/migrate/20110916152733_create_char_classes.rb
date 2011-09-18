@@ -4,6 +4,7 @@ class CreateCharClasses < ActiveRecord::Migration
       t.string :name
       t.text :description
       t.string :resource
+      t.string :slug, :unique => true
       t.timestamps
     end
   end

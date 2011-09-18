@@ -1,13 +1,16 @@
 Hub::Application.routes.draw do
+  resources :builds
+
   resources :rune_effects
 
   resources :runes
 
   resources :skill_types
 
-  resources :skills
 
-  resources :char_classes
+  resources :char_classes, :path => "/classes" do
+    resources :skills
+  end
 
   root :to => 'pages#index'
   

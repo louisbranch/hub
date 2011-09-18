@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  build_id: 1
+  skill_id: 1
+  rune_id: 1
+
+two:
+  build_id: 1
+  skill_id: 1
+  rune_id: 1

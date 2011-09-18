@@ -1,17 +1,13 @@
-<h1>Skills</h1>
+<h1><%= "#{@char.name} Skills" %></h1>
+
 <table>
-  <% @skills.each do |skill| %>
+  <% @char.skills.each do |skill| %>
   <tr>
-    <td><%= link_to skill.name, skill_url(skill) %></td>
-    <td><%= skill.description.truncate(100) unless skill.description.nil? %></td>
-    <td><%= skill.skill_type.main %></td>
-    <td><%= skill.skill_type.sub %></td>
-    <td><%= link_to "Edit", edit_skill_url(skill) %></td>
-    <!--<td><%= link_to "Delete", skill_url(skill), :method => :delete %></td>-->
+    <td><%= link_to skill.name, char_class_skill_path(@char,skill) %></td>
+    <td><%= skill.skill_type %></td>
   </tr>
   <% end %>
 </table>
-
 <hr>
-<%= link_to "Home", root_path %> | 
-<%= link_to "New Skill", new_skill_url %>
+<%= link_to "All Classes", char_classes_path %> | 
+<%= link_to "New Skill", new_char_class_skill_path %>

@@ -1,0 +1,13 @@
+<%= form_for @build do |form| %>
+  <%= label_tag(:name, "Title:") %>
+  <%= form.text_field :name %>
+  <%= label_tag(:char_class_id, "Class:") %>
+  <%= form.select(:char_class_id, options_for_select(array_chars))%>
+  <%= label_tag(:description, "Description:") %>
+  <%= form.text_area :description %>
+  <%= form.fields_for :build_skills do |builder| %>
+    <%= render "build_skills", :form => builder %>
+  <% end %>
+  <%= form.submit @form_action %>
+<% end %>
+

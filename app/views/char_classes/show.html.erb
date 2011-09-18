@@ -7,9 +7,9 @@
 <table>
   <% @skills.each do |skill| %>
   <tr>
-    <td><%= link_to skill.name, skill_url(skill) %></td>
-    <td><%= skill.skill_type.main %></td>
-    <td><%= skill.skill_type.sub %></td>
+    <td><%= skill.level %></td>
+    <td><%= skill.name %></td>
+    <td><%= skill.description %></td>
   </tr>
   <% end %>
 </table>

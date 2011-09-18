@@ -1,24 +1,26 @@
 class SkillsController < ApplicationController
-
   respond_to :html, :xml, :json
   
   def index
-    respond_with(@skills = Skill.all)
+    @char = CharClass.find(params[:char_class_id])
+    respond_with(@skills = @char.skills)
   end
   
   def new
-    @skill = Skill.new
+    @char = CharClass.find(params[:char_class_id])
+    @skill = @char.skills.build
     @form_action = "Create"
   end
   
   def create
-    @skill = Skill.new(params[:skill])
+    @char = CharClass.find(params[:char_class_id])
+    @skill = @char.skills.build(params[:skill])
     if @skill.save
       flash[:notice] = "Yay!"
-      respond_with(@skill, :location => skill_path(@skill))
+      respond_with(@skill, :location => char_class_skill_path(@char,@skill))
     else
       flash[:error] = "Bummer!"
-      redirect_to skill_path
+      redirect_to char_class_skills_url
     end
   end
   
@@ -28,18 +30,20 @@ class SkillsController < ApplicationController
   end
   
   def edit
-    @skill = Skill.find(params[:id])
+    @char = CharClass.find(params[:char_class_id])
+    @skill = @char.skills.find(params[:id])
     @form_action = "Update"
   end
   
   def update
-    @skill = Skill.find(params[:id])
+    @char = CharClass.find(params[:char_class_id])
+    @skill = @char.skills.find(params[:id])
     if @skill.update_attributes(params[:skill])
       flash[:notice] = "Yay!"
-      respond_with(@skill, :location => skill_path(@skill))
+      respond_with(@skill, :location => char_class_skill_path(@char,@skill))
     else
       flash[:error] = "Bummer!"
-      redirect_to edit_skill_path(@skill)
+      redirect_to edit_char_class_skill_path(@char,@skill)
     end
   end
   
@@ -47,10 +51,10 @@ class SkillsController < ApplicationController
     @skill = Skill.find(params[:id])
     if @skill.destroy
       flash[:notice] = "Yay!"
-      redirect_to skills_url
+      redirect_to char_class_skills_url
     else
       flash[:error] = "Bummer!"
-      redirect_to skills_url
+      redirect_to char_class_skills_url
     end
   end
 

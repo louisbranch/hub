@@ -1,4 +1,5 @@
 class CharClassesController < ApplicationController
+  
 
   respond_to :html, :xml, :json
   

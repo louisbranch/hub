@@ -5,7 +5,7 @@ class CreateRuneEffects < ActiveRecord::Migration
       t.text :description
       t.integer :skill_id
       t.integer :rune_id
-
+      t.string :slug, :unique => true
       t.timestamps
     end
   end

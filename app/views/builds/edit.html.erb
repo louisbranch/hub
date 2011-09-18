@@ -1,8 +1,7 @@
-<h1>New Skill</h1>
+<h1>Edit Build</h1>
 <% flash.each do |name, msg| %>
   <%= content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String) %>
 <% end %>
 <%= render :partial => "form" %>
 <hr>
-<%= link_to "Back", char_class_skills_url %>
-
+<%= link_to "Back", builds_url %>
