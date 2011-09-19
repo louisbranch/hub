@@ -19,9 +19,11 @@ end
 gem 'jquery-rails'
 
 #Luiz
+gem 'bitly'
+gem "cancan"
+gem 'devise'
 gem 'execjs'
 gem 'therubyracer'
-gem 'bitly'
 gem 'friendly_id', "~> 4.0.0.beta8"
 
 # Use unicorn as the web server

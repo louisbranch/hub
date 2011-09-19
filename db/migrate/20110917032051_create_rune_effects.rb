@@ -3,6 +3,7 @@ class CreateRuneEffects < ActiveRecord::Migration
     create_table :rune_effects do |t|
       t.string :name
       t.text :description
+      t.integer :level
       t.integer :skill_id
       t.integer :rune_id
       t.string :slug, :unique => true

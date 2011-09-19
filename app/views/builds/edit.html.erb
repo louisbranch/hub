@@ -2,6 +2,6 @@
 <% flash.each do |name, msg| %>
   <%= content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String) %>
 <% end %>
-<%= render :partial => "form" %>
+<%= render :partial => "shared/form_build" %>
 <hr>
-<%= link_to "Back", builds_url %>
+<%= link_to "Back", user_builds_url(@user) %>

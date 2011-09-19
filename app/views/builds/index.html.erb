@@ -1,15 +1,15 @@
 <h1>Builds</h1>
 <table>
-  <% @builds.each do |build| %>
+  <% @user.builds.each do |build| %>
   <tr>
-    <td><%= link_to build.name, build_url(build) %></td>
+    <td><%= link_to build.name, user_build_url(@user, build) %></td>
     <td><%= build.description.truncate(100) unless build.description.nil? %></td>
-    <td><%= link_to "Edit", edit_build_url(build) %></td>
-    <!--<td><%= link_to "Delete", build_url(build), :method => :delete %></td>-->
+    <td><%= link_to "Edit", edit_user_build_url(@user, build) %></td>
+    <!--<td><%= link_to "Delete", user_build_url(@user, build), :method => :delete %></td>-->
   </tr>
   <% end %>
 </table>
 
 <hr>
 <%= link_to "Home", root_path %> | 
-<%= link_to "New Build", new_build_url %>
+<%= link_to "New Build", new_user_build_url %>

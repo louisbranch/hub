@@ -1,4 +1,7 @@
 class SkillsController < ApplicationController
+  load_and_authorize_resource :char_class
+  load_and_authorize_resource :skill, :through => :char_class
+
   respond_to :html, :xml, :json
   
   def index

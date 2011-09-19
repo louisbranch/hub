@@ -1,13 +1,16 @@
 class BuildsController < ApplicationController
-
+  before_filter :authenticate_user!, :except => [:index, :show]
+  load_and_authorize_resource
   respond_to :html, :xml, :json
   
   def index
-    respond_with(@builds = Build.all)
+    @user = User.find(params[:user_id])
+    respond_with(@builds = @user.builds)
   end
   
   def new
-    @build = Build.new
+    @user = User.find(current_user.id)
+    @build = @user.builds.build
     6.times do
       build_skills = @build.build_skills.build
     end
@@ -15,13 +18,14 @@ class BuildsController < ApplicationController
   end
   
   def create
-    @build = Build.new(params[:build])
+    @user = User.find(params[:user_id])
+    @build = @user.builds.build(params[:build])
     if @build.save
       flash[:notice] = "Yay!"
-      respond_with(@build, :location => build_path(@build))
+      respond_with(@build, :location => user_build_path(@user,@build))
     else
       flash[:error] = "Bummer!"
-      redirect_to build_path
+      redirect_to user_builds_url(@user)
     end
   end
   
@@ -31,7 +35,11 @@ class BuildsController < ApplicationController
   end
   
   def edit
-    @build = Build.find(params[:id])
+    @user = User.find(params[:user_id])
+    @build = @user.builds.find(params[:id])
+    6.times do
+      build_skills = @build.build_skills.build
+    end
     @form_action = "Update"
   end
   
@@ -56,5 +64,4 @@ class BuildsController < ApplicationController
       redirect_to builds_url
     end
   end
-
 end

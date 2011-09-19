@@ -1,12 +1,17 @@
 Hub::Application.routes.draw do
-  resources :builds
+  devise_for :users
 
+  resources :users do
+    resources :builds
+  end
+  
+  resources :fork_builds
+  
   resources :rune_effects
 
   resources :runes
 
   resources :skill_types
-
 
   resources :char_classes, :path => "/classes" do
     resources :skills

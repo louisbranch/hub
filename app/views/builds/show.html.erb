@@ -3,15 +3,16 @@
 <% end %>
 <h1> <%= @build.name %></h1>
 <h2> <%= @build.description %></h2>
+<%= link_to "Edit", edit_user_build_url %>
+<%= link_to "Fork", new_fork_build_url(:id => @build.id) %>
 <h2>Skills:</h2>
 <table>
   <% @skills.each do |skills| %>
   <tr>
     <td><%= skills.skill.name %></td>
-    <td><%= skills.rune.name %></td>
-    <td><%= skills.rune.name %></td>
+    <td><%= skills.rune.name unless skills.rune.blank? %></td>
   </tr>
   <% end %>
 </table>
 <hr>
-<%= link_to "All Builds", builds_path %>
+<%= link_to "All Builds", user_builds_url(@user) %>
