@@ -1,6 +1,12 @@
 <%= form_for @rune do |form| %>
   <%= label_tag(:name, "Name:") %>
   <%= form.text_field :name %>
+  <%= label_tag(:name, "Level:") %>
+  <%= form.text_field :level %>
+  <%= label_tag(:name, "Img Url:") %>
+  <%= form.text_field :img_url %>
+  <%= label_tag(:name, "Description:") %>
+  <%= form.text_area :description %>
   <%= form.submit @form_action %>
 <% end %>
 

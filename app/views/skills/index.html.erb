@@ -3,8 +3,10 @@
 <table>
   <% @char.skills.each do |skill| %>
   <tr>
+    <td><%= skill.level %></td>
     <td><%= link_to skill.name, char_class_skill_path(@char,skill) %></td>
-    <td><%= skill.skill_type %></td>
+    <td><%= skill.skill_type.name %></td>
+    <td><%= skill.description.truncate(150) %></td>
   </tr>
   <% end %>
 </table>

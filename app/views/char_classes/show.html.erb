@@ -3,13 +3,5 @@
 <% end %>
 <h1> <%= @char.name %></h1>
 <p> <%= @char.description %></p>
-<h2>Skills:</h2>
-<table>
-  <% @skills.each do |skill| %>
-  <tr>
-    <td><%= skill.level %></td>
-    <td><%= skill.name %></td>
-    <td><%= skill.description %></td>
-  </tr>
-  <% end %>
+<h2><%= link_to "Skills", char_class_skills_path(@char) %></h2>
 </table>
