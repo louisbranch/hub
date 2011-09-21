@@ -3,3 +3,4 @@
 <% end %>
 <h1> <%= @rune_effect.name %></h1>
 <h2> <%= @rune_effect.description %></h2>
+<%= link_to "New Effect", new_char_class_skill_rune_effect_path(@char,@skill) %>

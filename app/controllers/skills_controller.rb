@@ -28,6 +28,7 @@ class SkillsController < ApplicationController
   end
   
   def show
+    @char = CharClass.find(params[:char_class_id])
     @skill = Skill.find(params[:id])
     @rune_effects = @skill.rune_effects
   end

@@ -1,11 +1,9 @@
 <h1>Rune Effects</h1>
 <table>
-  <% @rune_effects.each do |rune_effect| %>
+  <% @skill.rune_effects.each do |rune_effect| %>
   <tr>
-    <td><%= link_to rune_effect.name, rune_effect_url(rune_effect) %></td>
+    <td><%= link_to rune_effect.name, char_class_skill_rune_effect_url(@char,@skill,rune_effect) %></td>
     <td><%= rune_effect.description.truncate(100) unless rune_effect.description.nil? %></td>
-    <td><%= link_to "Edit", edit_rune_effect_url(rune_effect) %></td>
-    <!--<td><%= link_to "Delete", rune_effect_url(rune_effect), :method => :delete %></td>-->
   </tr>
   <% end %>
 </table>

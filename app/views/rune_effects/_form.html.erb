@@ -1,10 +1,8 @@
-<%= form_for @rune_effect do |form| %>
+<%= form_for([@char,@skill,@rune_effect]) do |form| %>
   <%= label_tag(:name, "Name:") %>
   <%= form.text_field :name %>
-  <%= label_tag(:skill_id, "Skill:") %>
-  <%= form.select(:skill_id, options_for_select(array_skills))%>
   <%= label_tag(:rune_id, "Rune:") %>
-  <%= form.select(:rune_id, options_for_select(array_runes))%>
+  <%= form.select(:rune_id, options_for_select(array_runes,@rune_effect.rune_id))%>
   <%= label_tag(:description, "Description:") %>
   <%= form.text_area :description %>
   <%= form.submit @form_action %>

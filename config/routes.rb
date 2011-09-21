@@ -7,18 +7,20 @@ Hub::Application.routes.draw do
   end
   
   resources :fork_builds
-  
-  resources :rune_effects
 
   resources :runes
 
   resources :skill_types
 
   resources :char_classes, :path => "/classes" do
-    resources :skills
+    resources :skills do
+      resources :rune_effects
+    end
   end
+  
+  match "/builds" => "pages#builds"
 
-  root :to => 'pages#index'
+  root :to => "pages#index"
   
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -6,11 +6,11 @@
 <h2>Rune Effects:</h2>
 <table>
   <% @rune_effects.each do |rune_effect| %>
-  <tr>
-    <td><%= link_to rune_effect.name, rune_effect_url(rune_effect) %></td>
-    <td><%= rune_effect.description %></td>
+  <tr> 
     <td><%= rune_effect.rune.name %></td>
+    <td><%= rune_effect.name %></td>
+    <td><%= rune_effect.description %></td>
   </tr>
   <% end %>
 </table>
-<%= link_to "New", new_char_class_skill_path %>
+<%= link_to "New Effect", new_char_class_skill_rune_effect_path(@char,@skill) %>

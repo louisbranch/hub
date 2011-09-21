@@ -1,8 +1,69 @@
-<h1>Welcome Outlander</h1>
-<ul>
-  <li><%=  link_to "Classes", char_classes_url %></li>
-  <li><%=  link_to "Skill Types", skill_types_url %></li>
-  <li><%=  link_to "Runes", runes_url %></li>
-  <li><%=  link_to "Rune Effects", rune_effects_url %></li>
-  <li><%=  link_to "Users", users_path %></li>
-</ul>
+<div id="showcase">
+  <div id="img_barbarian" class="img_active"></div>
+  <div id="img_demon_hunter"></div>
+  <div id="img_monk"></div>
+  <div id="img_witch_doctor"></div>
+  <div id="img_wizard"></div>
+  <div id="quotes">
+    <div id="quote_barbarian">
+      <h3>Barbarian</h3>
+      <blockquote>"I swear to you, we put a dozen arrows into him and he just stood back up."</blockquote>
+    </div>
+    <div id="quote_demon_hunter" class="quote_inactive">
+      <h3>Demon Hunter</h3>
+      <blockquote>"The first three were dead before they hit the ground. The others weren't so lucky."</blockquote>
+    </div>
+    <div id="quote_monk" class="quote_inactive">
+      <h3>Monk</h3>
+      <blockquote>"No weapon can overcome the weakness of an undisciplined mind."</blockquote>
+    </div>
+    <div id="quote_witch_doctor" class="quote_inactive">
+      <h3>Witch Doctor</h3>
+      <blockquote>"The spirits take their toll. Best to be ready to pay." </blockquote>
+    </div>
+    <div id="quote_wizard" class="quote_inactive">
+      <h3>Wizard</h3>
+      <blockquote>"How will I survive? I don't intend to get hit in the first place."</blockquote>
+    </div>
+    
+  </div>
+  <div id="invitation">
+    <a href"#" class="but">Create your build for free</a>
+    <span>or <a href"#">explore all</a></span>
+  </div>
+</div>
+<div id="block_builds">
+  <div id="top_builds">
+    <h3>Top Builds</h3>
+    <ul>
+      <% @chars.each do |char| %>
+      <li>
+        <span><%= link_to char.name, char_class_url(char) %></span>
+        <span class="build_count"><%= char.skills.count %></span>
+      </li>
+      <% end %>
+    </ul>
+  </div>
+  <div id="class_builds">
+    <h3>Builds by Class</h3>
+    <ul>
+      <% @chars.each do |char| %>
+      <li>
+        <span><%= link_to char.name, char_class_url(char) %></span>
+        <span class="build_count"><%= char.skills.count %></span>
+      </li>
+      <% end %>
+    </ul>
+  </div>
+  <div id="trending_builds">
+    <h3>Trending Builds</h3>
+    <ul>
+      <% @chars.each do |char| %>
+      <li>
+        <span><%= link_to char.name, char_class_url(char) %></span>
+        <span class="build_count"><%= char.skills.count %></span>
+      </li>
+      <% end %>
+    </ul>
+  </div>
+</div>

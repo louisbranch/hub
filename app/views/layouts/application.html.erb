@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <title>Hub</title>
   <%= stylesheet_link_tag    "application" %>
@@ -7,11 +7,10 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<ul class="hmenu">
-  <%= render 'users/menu/registration_items' %>
-  <%= render 'users/menu/login_items' %>
-</ul>
-<%= yield %>
-
+  <div id="wrapper">
+  <%= render "shared/header" %>
+  <%= yield %>
+  <%= render "shared/footer" %>
+  </div>
 </body>
 </html>
