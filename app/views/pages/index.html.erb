@@ -1,9 +1,11 @@
 <div id="showcase">
-  <div id="img_barbarian" class="img_active"></div>
-  <div id="img_demon_hunter"></div>
-  <div id="img_monk"></div>
-  <div id="img_witch_doctor"></div>
-  <div id="img_wizard"></div>
+  <div id="img_classes">
+    <%= link_to "", char_class_url("barbarian"), :id => "img_barbarian", :class => "img_active" %>
+    <%= link_to "", char_class_url("demon-hunter"), :id => "img_demon_hunter" %>
+    <%= link_to "", char_class_url("monk"), :id => "img_monk" %>
+    <%= link_to "", char_class_url("witch-doctor"), :id => "img_witch_doctor" %>
+    <%= link_to "", char_class_url("wizard"), :id => "img_wizard" %>
+  </div>
   <div id="quotes">
     <div id="quote_barbarian">
       <h3>Barbarian</h3>
@@ -25,11 +27,10 @@
       <h3>Wizard</h3>
       <blockquote>"How will I survive? I don't intend to get hit in the first place."</blockquote>
     </div>
-    
   </div>
   <div id="invitation">
     <a href"#" class="but">Create your build for free</a>
-    <span>or <a href"#">explore all</a></span>
+    <span>or <%= link_to "explore all", builds_path %></span>
   </div>
 </div>
 <div id="block_builds">
@@ -38,19 +39,10 @@
     <ul>
       <% @chars.each do |char| %>
       <li>
-        <span><%= link_to char.name, char_class_url(char) %></span>
+        <%= link_to(char_class_url(char), :class=>"button small-button green-button") do %>
+        <%= char.name %>
         <span class="build_count"><%= char.skills.count %></span>
-      </li>
-      <% end %>
-    </ul>
-  </div>
-  <div id="class_builds">
-    <h3>Builds by Class</h3>
-    <ul>
-      <% @chars.each do |char| %>
-      <li>
-        <span><%= link_to char.name, char_class_url(char) %></span>
-        <span class="build_count"><%= char.skills.count %></span>
+        <% end %>
       </li>
       <% end %>
     </ul>
@@ -60,8 +52,23 @@
     <ul>
       <% @chars.each do |char| %>
       <li>
-        <span><%= link_to char.name, char_class_url(char) %></span>
+        <%= link_to(char_class_url(char), :class=>"button small-button green-button") do %>
+        <%= char.name %>
         <span class="build_count"><%= char.skills.count %></span>
+        <% end %>
+      </li>
+      <% end %>
+    </ul>
+  </div>
+    <div id="class_builds">
+    <h3>Builds by Class</h3>
+    <ul>
+      <% @chars.each do |char| %>
+      <li>
+        <%= link_to(char_class_url(char), :class=>"button small-button green-button") do %>
+        <%= char.name %>
+        <span class="build_count"><%= char.skills.count %></span>
+        <% end %>
       </li>
       <% end %>
     </ul>

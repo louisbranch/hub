@@ -18,44 +18,49 @@ div#showcase{
   height: 300px;
   background:url(asset_path("bg_showcase.jpg", image)) no-repeat center right;
   
-  & #img_barbarian{
-    @include class_showcase;
-    background-position: 134px 300px;
-    
-    &:hover, &.img_active{
-      background-position: 0 300px;
+  & div#img_classes{
+    float: left;
+  
+  
+    & #img_barbarian{
+      @include class_showcase;
+      background-position: 134px 300px;
+      
+      &:hover, &.img_active{
+        background-position: 0 300px;
+      }
     }
-  }
-  & #img_demon_hunter{
-    @include class_showcase;
-    background-position: 134px 600px;
-    
-    &:hover, &.img_active{
-      background-position: 0 600px;
+    & #img_demon_hunter{
+      @include class_showcase;
+      background-position: 134px 600px;
+      
+      &:hover, &.img_active{
+        background-position: 0 600px;
+      }
     }
-  }
-  & #img_monk{
-    @include class_showcase;
-    background-position: 134px 900px;
-    
-    &:hover, &.img_active{
-      background-position: 0 900px;
+    & #img_monk{
+      @include class_showcase;
+      background-position: 134px 900px;
+      
+      &:hover, &.img_active{
+        background-position: 0 900px;
+      }
     }
-  }
-  & #img_witch_doctor{
-    @include class_showcase;
-    background-position: 134px 1200px;
-    
-    &:hover, &.img_active{
-      background-position: 0 1200px;
+    & #img_witch_doctor{
+      @include class_showcase;
+      background-position: 134px 1200px;
+      
+      &:hover, &.img_active{
+        background-position: 0 1200px;
+      }
     }
-  }
-  & #img_wizard{
-    @include class_showcase;
-    background-position: 134px 0;
-    
-    &:hover, &.img_active{
-      background-position: 0 0;
+    & #img_wizard{
+      @include class_showcase;
+      background-position: 134px 0;
+      
+      &:hover, &.img_active{
+        background-position: 0 0;
+      }
     }
   }
 
@@ -88,8 +93,9 @@ div#showcase{
     text-align: center;
     
     & span{
-    display: block;
-    margin: 5px 0;
+      display: block;
+      margin: 5px 0;
+      font-weight: bold;
     }
   }
 }
@@ -115,17 +121,32 @@ div#block_builds{
     & li{
       padding: 5px 10px;
       
+      &:hover{
+        background-color: $bg_box_li_hover;
+      }
+      
       &:nth-child(odd){
         background-color: $bg_box_li_odd;
+        
+        &:hover{
+        background-color: $bg_box_li_hover;
+        }
+      }
+      
+      & a{
+        display: block;
       }
     }
     
     &#top_builds{
     }
     
+    &#trending_builds{
+      margin: 0 5px;
+    }
+    
     &#class_builds {
       
-      margin: 0 5px;
       
       & li {
 
@@ -134,9 +155,5 @@ div#block_builds{
         }
       }
     }
-    
-    &#trending_builds{
-    }
-    
   }
 }
