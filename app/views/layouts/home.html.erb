@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title><%= title %></title>
+  <%= stylesheet_link_tag    "application" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+                          <%# This and application layout need to be the same! %>
+<body id="home">
+  <div id="wrapper">
+    <header class="main">
+      <nav id="login">
+        <%= render 'users/menu/registration_items' %>
+        <%= render 'users/menu/login_items' %>
+      </nav>
+      <!--<input type="search" placeholder="search" id="search">-->
+      <hgroup>
+        <h1><%= link_to "Diablohub", root_path %></h1>
+        <h2><%= link_to "Create, share and discover builds", root_path %></h2>
+      </hgroup>
+    </header>
+  <%= yield %>
+  <%= render "shared/footer" %>
+  </div>
+</body>
+</html>

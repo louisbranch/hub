@@ -3,6 +3,7 @@ class SkillsController < ApplicationController
   load_and_authorize_resource :skill, :through => :char_class
 
   respond_to :html, :xml, :json
+  set_tab :classes
   
   def index
     @char = CharClass.find(params[:char_class_id])

@@ -2,6 +2,7 @@ class CharClassesController < ApplicationController
   load_and_authorize_resource
 
   respond_to :html, :xml, :json
+  set_tab :classes
   
   def index
     respond_with(@chars = CharClass.all)

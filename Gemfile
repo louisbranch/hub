@@ -23,6 +23,7 @@ gem 'bitly'
 gem "cancan"
 gem 'devise'
 gem 'execjs'
+gem 'tabs_on_rails'
 gem 'therubyracer'
 gem 'friendly_id', "~> 4.0.0.beta8"
 

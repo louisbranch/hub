@@ -2,6 +2,7 @@ class BuildsController < ApplicationController
   before_filter :authenticate_user!, :except => [:index, :show]
   load_and_authorize_resource
   respond_to :html, :xml, :json
+  set_tab :mybuilds
   
   def index
     @user = User.find(params[:user_id])
