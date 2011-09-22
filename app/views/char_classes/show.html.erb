@@ -1,7 +1,36 @@
 <% flash.each do |name, msg| %>
   <%= content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String) %>
 <% end %>
-<h1> <%= @char.name %></h1>
-<p> <%= @char.description %></p>
-<h2><%= link_to "Skills", char_class_skills_path(@char) %></h2>
-</table>
+<%= render :partial => "class_menu" %>
+<p id="class_intro"> <%= @char.description %></p>
+<section id="class_skills">
+  <h2>Skills</h2>
+  <% @char.skills.each do |skill| %>
+    <article class='<%= "skill_block #{skill.skill_type.slug}" %>'>
+      <header>
+        <img src='<%= skill.img_url %>' class="skill_img">
+        <span class="skill_level">lvl <%= skill.level %></span>
+        <h3 class="skill_name"><%= skill.name %></h3>
+        <h4 class="skill_type"><%= skill.skill_type.name %></h4>
+      </header>
+      <div>
+        <span></span>
+        <ul class="skill_details">
+          <% if skill.cost? %>
+            <li><strong>Cost:</strong> <%= skill.cost %></li>
+          <% end %>
+          <% if skill.generate? %>
+            <li><strong>Generate:</strong> <%= skill.generate %></li>
+          <% end %>
+          <% if skill.cooldown? %>
+            <li><strong>Cooldown:</strong> <%= skill.cooldown %></li>
+          <% end %>
+        </ul>
+        <span><%= skill.description %></span>
+      </div>
+    </article>
+  <% end %>
+</section>
+
+        
+

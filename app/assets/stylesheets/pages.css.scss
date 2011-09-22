@@ -10,7 +10,6 @@
   height: 300px;
   background:url(asset_path("classes_showcase.jpg", image));
   cursor: pointer;
-
 }
 
 body#home{
@@ -83,10 +82,6 @@ div#showcase{
     float: right;
     width: 290px;
     padding: 40px 20px 20px;
-    
-    & div.quote_inactive{
-      display: none;
-    }
     
     & h3{
       font-size: 24px;

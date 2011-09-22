@@ -1,32 +1,14 @@
 <div id="showcase">
   <div id="img_classes">
-    <%= link_to "", char_class_url("barbarian"), :id => "img_barbarian", :class => "img_active" %>
-    <%= link_to "", char_class_url("demon-hunter"), :id => "img_demon_hunter" %>
-    <%= link_to "", char_class_url("monk"), :id => "img_monk" %>
-    <%= link_to "", char_class_url("witch-doctor"), :id => "img_witch_doctor" %>
-    <%= link_to "", char_class_url("wizard"), :id => "img_wizard" %>
+    <%= link_to "", char_class_url("barbarian"), :id => "img_barbarian", :class => "img_active", "data-title" => "Barbarian", "data-quote" => '"I swear to you, we put a dozen arrows into him and he just stood back up."' %>
+    <%= link_to "", char_class_url("demon-hunter"), :id => "img_demon_hunter", "data-title" => "Demon Hunter", "data-quote" => '"The first three were dead before they hit the ground. The others weren\'t so lucky."' %>
+    <%= link_to "", char_class_url("monk"), :id => "img_monk", "data-title" => "Monk", "data-quote" => '"No weapon can overcome the weakness of an undisciplined mind."' %>
+    <%= link_to "", char_class_url("witch-doctor"), :id => "img_witch_doctor", "data-title" => "Witch Doctor", "data-quote" => '"The spirits take their toll. Best to be ready to pay."' %>
+    <%= link_to "", char_class_url("wizard"), :id => "img_wizard", "data-title" => "Wizard", "data-quote" => '"How will I survive? I don\'t intend to get hit in the first place."' %>
   </div>
   <div id="quotes">
-    <div id="quote_barbarian">
-      <h3>Barbarian</h3>
-      <blockquote>"I swear to you, we put a dozen arrows into him and he just stood back up."</blockquote>
-    </div>
-    <div id="quote_demon_hunter" class="quote_inactive">
-      <h3>Demon Hunter</h3>
-      <blockquote>"The first three were dead before they hit the ground. The others weren't so lucky."</blockquote>
-    </div>
-    <div id="quote_monk" class="quote_inactive">
-      <h3>Monk</h3>
-      <blockquote>"No weapon can overcome the weakness of an undisciplined mind."</blockquote>
-    </div>
-    <div id="quote_witch_doctor" class="quote_inactive">
-      <h3>Witch Doctor</h3>
-      <blockquote>"The spirits take their toll. Best to be ready to pay." </blockquote>
-    </div>
-    <div id="quote_wizard" class="quote_inactive">
-      <h3>Wizard</h3>
-      <blockquote>"How will I survive? I don't intend to get hit in the first place."</blockquote>
-    </div>
+    <h3>Barbarian</h3>
+    <blockquote>"I swear to you, we put a dozen arrows into him and he just stood back up."</blockquote>
   </div>
   <div id="invitation">
     <a href"#" class="but">Create your build for free</a>

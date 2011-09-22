@@ -1,5 +1,10 @@
 Hub::Application.routes.draw do
 
+  #root :to => 'builds#index', :constraints => lambda {|r| r.env["warden"].authenticate? }
+  #get "/" => 'builds#index', :as => "user_root"
+
+  match "/classes" => redirect("/classes/barbarian")
+
   devise_for :users
 
   resources :users do
@@ -10,8 +15,8 @@ Hub::Application.routes.draw do
 
   resources :runes
 
-  resources :skill_types
-
+  resources :skill_types  
+  
   resources :char_classes, :path => "/classes" do
     resources :skills do
       resources :rune_effects

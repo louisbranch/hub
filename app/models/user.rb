@@ -3,7 +3,8 @@ class User < ActiveRecord::Base
   friendly_id :name, :use => :slugged
   
   validates :name,  :presence => true,
-                    :length => { :minimum => 6, :maximum => 20 }
+                    :uniqueness => true,
+                    :length => 6..20
   
   
   # Include default devise modules. Others available are:

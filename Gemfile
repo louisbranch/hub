@@ -21,6 +21,7 @@ gem 'jquery-rails'
 #Luiz
 gem 'bitly'
 gem "cancan"
+gem 'client_side_validations'
 gem 'devise'
 gem 'execjs'
 gem 'tabs_on_rails'

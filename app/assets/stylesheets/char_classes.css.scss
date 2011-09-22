@@ -1,3 +1,102 @@
 // Place all the styles related to the CharClasses controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+nav#menu_classes{
+  & h1{
+    float: left;
+    margin-bottom: 0.2em;
+  }
+
+  & ul {
+  float: right;
+  margin-top: 10px;
+   & li{
+    float: left;
+    margin: 0 5px;
+    &:hover{border-color: #3F3B31;}
+    & a{
+      margin: 5px;
+      display: block;
+      padding: 100px 68px 0 0;
+      overflow: hidden;
+      background:url(asset_path("classes_portraits.png", image)) no-repeat -68px 0;
+      
+        &#barbarian:hover{ background-position: 0 0}
+        &#demon-hunter{background-position: -68px -100px; &:hover{background-position: 0 -100px;}}
+        &#monk{background-position: -68px -200px; &:hover{background-position: 0 -200px;}}
+        &#witch-doctor{background-position: -68px -300px; &:hover{background-position: 0 -300px;}}
+        &#wizard{background-position: -68px -400px; &:hover{background-position: 0 -400px;}}
+      }
+    }
+  }
+}
+
+p#class_intro{
+  float: left;
+  width: 450px;
+}
+
+div.portrait_main{
+  float: left;
+  margin: 10px 15px 0 0;
+  display: block;
+  padding: 100px 68px 0 0;
+  overflow: hidden;
+  background:url(asset_path("classes_portraits.png", image)) no-repeat 0 0;
+    &#demon-hunter{background-position: 0 -100px;}
+    &#monk{background-position: 0 -200px;}
+    &#witch-doctor{background-position: 0 -300px;}
+    &#wizard{background-position: 0 -400px;}
+}
+
+section#class_skills{ 
+
+  clear: both;
+  padding-top: 40px;
+
+  & article.skill_block{
+    width: 305px;
+    float: left;
+    height: 300px;
+    background-color: rgba(0,0,0,0.2);
+    border: 2px solid #3F3B31;
+    margin: 10px;
+      box-shadow: 1px 1px 0 rgba(255,255,255,0.20);
+    
+    & header{
+      background-color: #3F3B31;
+      color: #F8F1E1;
+      padding: 5px;
+      font-weight: bold;
+      
+      & img.skill_img{
+        float: left;
+        margin: 0 5px 5px 0;
+      }
+      
+      & span.skill_level{
+        float: right;
+        font-size: 13px;
+      }
+      
+      & h4.skill_type{
+        font-size: 13px;
+        margin-top: 4px;
+        font-weight: normal;
+      }
+      & h3.skill_name{
+        font-size: 18px;
+      }
+    }
+    
+    & div{
+      padding: 10px;
+      clear: both;
+      
+      & li {
+        margin: 5px 0;
+      }
+    }
+  }
+}

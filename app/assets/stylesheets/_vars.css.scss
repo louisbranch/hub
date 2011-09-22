@@ -1,3 +1,4 @@
+$font_size_default: 16px;
 $main-color: #2D230A;
 $link_main_color: #6B4B0F;
 $link_sec_color: #A28240;
@@ -7,3 +8,9 @@ $bg_box_lighter: #F8F1E1;
 $bg_box_li_hover: #E1DCD0;
 $bg_box_li_odd: #EFE7D5;
 $shadow: #ccc;
+
+@mixin heading_style{
+  font-weight: bold;
+  text-shadow: 1px 1px 0 rgba(255,255,255,0.20);
+  margin-bottom: 0.5em;
+}
