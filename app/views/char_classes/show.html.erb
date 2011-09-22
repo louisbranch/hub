@@ -5,8 +5,16 @@
 <p id="class_intro"> <%= @char.description %></p>
 <section id="class_skills">
   <h2>Skills</h2>
+  
+  <ul id="skill_filters">
+    <li><%= link_to "All (#{@char.skills.count})", skill_types_path, "data-filter" => "all", :class => "filter_active" %></li>
+    <% @char.skill_types.each do |skill_type| %>
+      <li><%= link_to "#{skill_type.name} (#{skill_type.skills.count})", skill_type_path(skill_type), "data-filter" => skill_type.slug %></li>
+    <% end %>
+  </ul>
+  
   <% @char.skills.each do |skill| %>
-    <article class='<%= "skill_block #{skill.skill_type.slug}" %>'>
+    <article class='<%= skill.skill_type.slug %>'>
       <header>
         <img src='<%= skill.img_url %>' class="skill_img">
         <span class="skill_level">lvl <%= skill.level %></span>
