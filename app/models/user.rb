@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   
   validates :name,  :presence => true,
                     :uniqueness => true,
-                    :length => 6..20
+                    :length => 3..20
   
   
   # Include default devise modules. Others available are:

@@ -1,4 +1,15 @@
-<h1>Builds</h1>
+<% flash.each do |name, msg| %>
+  <%= content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String) %>
+<% end %>
+
+<% if @user == current_user %>
+  <h1>My Builds</h1>
+<% else %>
+  <h1><%= "#{@user.name}'s Builds" %></h1>
+<% end %>
+
+<%= link_to "New Build", new_user_build_path(@user) %>
+
 <table>
   <% @user.builds.each do |build| %>
   <tr>

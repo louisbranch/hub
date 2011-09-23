@@ -4,7 +4,7 @@
   <%= label_tag(:level, "Level:") %>
   <%= form.text_field :level %>
   <%= label_tag(:skill_type_id, "Type:") %>
-  <%= form.select(:skill_type_id, options_for_select(@char.skill_types.map{|skill_type| [skill_type.name, skill_type.id]}, @skill_type))%>
+  <%= form.select(:skill_type_id, options_for_select(@char.skill_types.map{|skill_type| [skill_type.name, skill_type.id]}, @skill.skill_type.id))%>
   <%= label_tag(:description, "Description:") %>
   <%= form.text_area :description %>
   <%= label_tag(:img_url, "Image URL:") %>

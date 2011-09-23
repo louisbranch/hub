@@ -4,8 +4,10 @@ Hub::Application.routes.draw do
   #get "/" => 'builds#index', :as => "user_root"
 
   match "/classes" => redirect("/classes/barbarian")
+  
+  match "/users/:id(.:format)" => redirect("/users/%{id}/builds")
 
-  devise_for :users
+  devise_for :users, :path_prefix => 'd'
 
   resources :users do
     resources :builds

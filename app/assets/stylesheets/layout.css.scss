@@ -19,13 +19,11 @@ input {
   padding: 8px 10px;
   margin: 5px 0 15px;
   font-size: $font_size_default;
-  display: block;
 }
 
 label{
   font-weight: bold;
   font-size: 18px;
-  display: block;
 }
 
 input[type="search"] {
@@ -48,8 +46,9 @@ html{
 
 body{
   color: $main-color;
-  font-size: 16px;
+  font-size: 15px;
   background: url(asset_path("bg_top.png", image)) repeat-x 0 -47px;
+  font-family: 'Arvo', serif;
 }
 
 h1{
@@ -88,8 +87,7 @@ a.but, input[type="submit"]{
 
 
 #wrapper{
-  width: 1000px;
-  margin: 0 auto;
+  margin: 0 20px;
 }
 
 header.main{
@@ -105,7 +103,7 @@ header.main{
       margin: 0;
       & a{
         display: block;
-        padding: 20px;
+        padding-top: 40px;
         text-indent:-9999px;
         width: 259px;
         height: 55px;
@@ -137,32 +135,38 @@ header.main{
     & a{
       padding: 0 5px;
       color: $link_sec_color;
-      font-size: 14px;
+      font-size: 13px;
       font-weight: bold;
     }
   }
   
   & nav#menu_top{
     float: left;
-    margin: 35px 0 0 10px;
+    margin: 35px 0 0 30px;
     
     & li{
     display: inline;
-
-      & a, &.current{
+      & a{
         padding: 0 15px;
         color: $link_sec_color;
         font-size: 24px;
         font-weight: bold;
-      }
-        & a:hover, &.current{
+        &:hover{
           background-color: $menu_top_active;
           padding: 5px 15px;
           border-radius: 5px;
           box-shadow: 1px 1px 0 rgba(255,255,255,0.20);
         }
+      }
     }
   }
+}
+
+header.main nav#menu_top li.active a{
+          background-color: $menu_top_active;
+          padding: 5px 15px;
+          border-radius: 5px;
+          box-shadow: 1px 1px 0 rgba(255,255,255,0.20);
 }
 
 footer.main {

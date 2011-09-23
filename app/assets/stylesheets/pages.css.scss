@@ -15,6 +15,11 @@
 body#home{
     background: url(asset_path("bg_top.png", image)) repeat-x 0 0;
     
+    & div#wrapper{
+      width: 1000px;
+      margin: 0 auto;
+    }
+    
     & header.main {
         height: 140px;
     
@@ -23,6 +28,7 @@ body#home{
         width: 363px;
         height: 77px;
         background:url(asset_path("logo.png", image)) no-repeat center left;
+      
       }
     }
 }

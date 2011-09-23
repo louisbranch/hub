@@ -2,7 +2,11 @@
   <%= content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String) %>
 <% end %>
 <%= render :partial => "class_menu" %>
-<p id="class_intro"> <%= @char.description %></p>
+<div id="class_info">
+  <h1><%= @char.name %></h1>
+  <p><strong>Resource:</strong> <%= @char.resource %></p>
+  <p> <%= @char.description %></p>
+</div>
 <section id="class_skills">
   <h2>Skills</h2>
   
@@ -36,6 +40,16 @@
         </ul>
         <span><%= skill.description %></span>
       </div>
+      <% if !skill.rune_effects.empty? %>
+      <footer>
+        <ul>
+          <li><strong>Runes:</strong></li>
+        <% skill.rune_effects.each do |rune_effect| %>
+          <li><%= image_tag(rune_effect.rune.img_url, :title => rune_effect.rune.name) %></li>
+        <% end %>
+        </ul>
+      </footer>
+      <% end %>
     </article>
   <% end %>
 </section>

@@ -25,4 +25,14 @@ module ApplicationHelper
     rune_array = Rune.all.map { |rune| [rune.name, rune.id] }
   end
   
+  class MenuTabBuilder < TabsOnRails::Tabs::Builder
+    def tab_for(tab, name, options)
+      content = @context.link_to(name, options)
+      if current_tab?(tab)
+        @context.content_tag(:li, content, :class => 'active')
+      else
+        @context.content_tag(:li, content)
+      end
+    end
+  end
 end
