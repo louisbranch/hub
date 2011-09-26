@@ -6,4 +6,9 @@ class Skill < ActiveRecord::Base
   has_many :rune_effects
   has_many :runes, :through => :rune_effects
   has_many :builds, :through => :buil_skills
+  
+  def passive?
+    skill_type.name == "Passive"
+  end
+  
 end

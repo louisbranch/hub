@@ -1,4 +1,2 @@
-<%= label_tag(:skill_id, "Skill:") %>
-<%= form.select(:skill_id, options_for_select(array_skills))%>
-<%= label_tag(:rune_id, "Rune:") %>
-<%= form.select(:rune_id, options_for_select(array_runes))%>
+<%= form.hidden_field :skill_id %>
+<%= form.hidden_field :rune_id %>

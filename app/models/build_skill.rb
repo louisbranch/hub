@@ -4,6 +4,6 @@ class BuildSkill < ActiveRecord::Base
   belongs_to :rune
   has_many :rune_effects, :through => :runes
   
-  validates :build_id,  :presence => true
-  validates :skill_id,  :presence => true
+  #validates :build_id,  :presence => true
+  #validates :skill_id,  :presence => true
 end

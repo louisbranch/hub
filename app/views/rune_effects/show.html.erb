@@ -1,6 +1,8 @@
-<% flash.each do |name, msg| %>
-  <%= content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String) %>
-<% end %>
-<h1> <%= @rune_effect.name %></h1>
-<h2> <%= @rune_effect.description %></h2>
-<%= link_to "New Effect", new_char_class_skill_rune_effect_path(@char,@skill) %>
+<div class="rune_tooltip">
+  <%= image_tag(@rune_effect.rune.img_url) %>
+  <div>
+    <h3> <%= @rune_effect.name %></h3>
+    <p> <%= @rune_effect.description %></p>
+  </div>
+</div>
+

@@ -18,7 +18,7 @@ nav#menu_classes{
       padding: 100px 68px 0 0;
       overflow: hidden;
       background:url(asset_path("classes_portraits.png", image)) no-repeat -68px 0;
-      
+
         &#barbarian:hover{ background-position: 0 0}
         &#demon-hunter{background-position: -68px -100px; &:hover{background-position: 0 -100px;}}
         &#monk{background-position: -68px -200px; &:hover{background-position: 0 -200px;}}
@@ -66,11 +66,11 @@ ul#skill_filters{
   }
 }
 
-section#class_skills{ 
+section#class_skills{
 
   clear: both;
   padding-top: 40px;
-  
+
   & h2{
     font-size: 30px;
   }
@@ -84,23 +84,23 @@ section#class_skills{
     margin: 10px;
     box-shadow: 1px 1px 0 rgba(255,255,255,0.20);
     position: relative;
-    
+
     & header{
       background-color: $bg_box_darker;
       color: $bg_box_lighter;
       padding: 5px;
       font-weight: bold;
-      
+
       & img.skill_img{
         float: left;
         margin: 0 5px 5px 0;
       }
-      
+
       & span.skill_level{
         float: right;
         font-size: 13px;
       }
-      
+
       & h4.skill_type{
         font-size: 13px;
         margin-top: 4px;
@@ -110,16 +110,16 @@ section#class_skills{
         font-size: 18px;
       }
     }
-    
+
     & div{
       padding: 10px;
       clear: both;
-      
+
       & li {
         margin: 5px 0;
       }
     }
-    
+
     & footer{
       position: absolute;
       bottom: 0;
@@ -129,9 +129,23 @@ section#class_skills{
         margin: 0 2px;
         & img{
           width: 20px;
+          cursor: pointer;
         }
       }
-    
+
     }
   }
 }
+
+div.rune_tooltip{
+	float: left;
+	& img {float: left;}
+		& div{
+		float: left;
+		margin-left: 5px;
+		width: 300px;
+		& h3 { font-size: 18px;
+		margin-bottom: 5px; }
+	}
+}
+

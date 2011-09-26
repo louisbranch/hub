@@ -4,7 +4,7 @@ Hub::Application.routes.draw do
   #get "/" => 'builds#index', :as => "user_root"
 
   match "/classes" => redirect("/classes/barbarian")
-  
+
   match "/users/:id(.:format)" => redirect("/users/%{id}/builds")
 
   devise_for :users, :path_prefix => 'd'
@@ -12,23 +12,27 @@ Hub::Application.routes.draw do
   resources :users do
     resources :builds
   end
-  
+
   resources :fork_builds
 
   resources :runes
 
-  resources :skill_types  
-  
+  resources :skill_types
+
   resources :char_classes, :path => "/classes" do
-    resources :skills do
+    resources :skills  do
+      collection do
+        get 'actives'
+        get 'passives'
+      end
       resources :rune_effects
     end
   end
-  
+
   match "/builds" => "pages#builds"
 
   root :to => "pages#index"
-  
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -86,3 +90,4 @@ Hub::Application.routes.draw do
   # Note: This route will make all actions in every controller accessible via GET requests.
   # match ':controller(/:action(/:id(.:format)))'
 end
+

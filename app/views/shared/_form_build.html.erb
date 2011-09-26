@@ -1,13 +1,34 @@
-<%= form_for([@user,@build], :validate => true) do |form| %>
-  <%= label_tag(:name, "Title:") %>
-  <%= form.text_field :name %>
-  <!--<%= label_tag(:char_class_id, "Class:") %>-->
-  <!--<%= form.select(:char_class_id, options_for_select(array_chars))%>-->
-  <%= label_tag(:description, "Description:") %>
-  <%= form.text_area :description %>
-  <%= form.fields_for :build_skills do |builder| %>
-    <%= render "shared/form_build_skills", :form => builder %>
-  <% end %>
-  <%= form.submit @form_action %>
+<%= form_for([@user,@build]) do |form| %>
+  <header id="build_header">
+    <h1 id="build_heading">New Build</h1>
+    <div id="error_explanation" style="display:none;"></div>
+    <%= label_tag(:char_class_id) do %>Class: <span id="class_display"></span><% end %>
+    <%= form.submit @form_action, :id => "build_submit", :style => "display:none" %>
+  </header>
+  <div id="build_info">
+    <div id="class_selection">
+    <% CharClass.all.each do |char| %>
+      <%= label_tag(:char_class_id, "", :for => char.slug, :id => "label_#{char.slug}", "data-name" => char.name, "data-url" => passives_char_class_skills_path(char)) %>
+      <%= form.radio_button(:char_class_id, char.id, :id => char.slug, :checked => false) %>
+    <% end %>
+    </div>
+    <%= label_tag(:name, "Title:") %>
+    <%= form.text_field :name %>
+    <%= label_tag(:description) do %>Description: <span class="field_optional">(optional)</span><% end %>
+    <%= form.text_area :description, :rows => "5" %>
+    <%= link_to 'Next', char_class_skills_path(1), :remote => true,  :id => "build_next", :class => "but"  %>
+  </div>
+  <div id="build_skills" style="display:none;">
+    <div id="skills_controller">
+      <ul id="skills_tabs">
+        <li id="tab_active" class="tab_on">Active Skills</li>
+        <li id="tab_passive">Passive Skills</li>
+      </ul>
+    <div id="skills_container"></div>
+    </div>
+    <%= form.fields_for :build_skills, :remote => true do |builder| %>
+      <%= render "shared/form_build_skills", :form => builder %>
+    <% end %>
+  </div>
 <% end %>
 

@@ -24,7 +24,7 @@
     <% end %>
   <% end %>
 </ul>
-<ul id="passive_block">
+<ul id="passive_block" style="display:none">
   <% @skills.each do |skill|%>
     <% if skill.passive? %>
       <li class='<%= skill.skill_type.slug %>'  data-url='<%= char_class_skill_path(@char,skill) %>'>

@@ -9,18 +9,18 @@
 </div>
 <section id="class_skills">
   <h2>Skills</h2>
-  
+
   <ul id="skill_filters">
     <li><%= link_to "All (#{@char.skills.count})", skill_types_path, "data-filter" => "all", :class => "filter_active" %></li>
     <% @char.skill_types.each do |skill_type| %>
       <li><%= link_to "#{skill_type.name} (#{skill_type.skills.count})", skill_type_path(skill_type), "data-filter" => skill_type.slug %></li>
     <% end %>
   </ul>
-  
+
   <% @char.skills.each do |skill| %>
     <article class='<%= skill.skill_type.slug %>'>
       <header>
-        <img src='<%= skill.img_url %>' class="skill_img">
+        <%= image_tag(skill.img_url, :class => "skill_img") %>
         <span class="skill_level">lvl <%= skill.level %></span>
         <h3 class="skill_name"><%= skill.name %></h3>
         <h4 class="skill_type"><%= skill.skill_type.name %></h4>
@@ -45,7 +45,7 @@
         <ul>
           <li><strong>Runes:</strong></li>
         <% skill.rune_effects.each do |rune_effect| %>
-          <li><%= image_tag(rune_effect.rune.img_url, :title => rune_effect.rune.name) %></li>
+          <li><%= image_tag(rune_effect.rune.img_url, "data-url" => char_class_skill_rune_effect_path(@char,skill,rune_effect)) %></li>
         <% end %>
         </ul>
       </footer>
@@ -53,6 +53,4 @@
     </article>
   <% end %>
 </section>
-
-        
 

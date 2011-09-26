@@ -4,18 +4,19 @@ class SkillsController < ApplicationController
 
   respond_to :html, :xml, :json
   set_tab :classes
-  
+
   def index
     @char = CharClass.find(params[:char_class_id])
-    respond_with(@skills = @char.skills)
+    @skills = @char.skills
+    render :layout => nil
   end
-  
+
   def new
     @char = CharClass.find(params[:char_class_id])
     @skill = @char.skills.build
     @form_action = "Create"
   end
-  
+
   def create
     @char = CharClass.find(params[:char_class_id])
     @skill = @char.skills.build(params[:skill])
@@ -27,19 +28,20 @@ class SkillsController < ApplicationController
       redirect_to char_class_skills_url
     end
   end
-  
+
   def show
     @char = CharClass.find(params[:char_class_id])
     @skill = Skill.find(params[:id])
     @rune_effects = @skill.rune_effects
+    render :layout => nil
   end
-  
+
   def edit
     @char = CharClass.find(params[:char_class_id])
     @skill = @char.skills.find(params[:id])
     @form_action = "Update"
   end
-  
+
   def update
     @char = CharClass.find(params[:char_class_id])
     @skill = @char.skills.find(params[:id])
@@ -51,7 +53,7 @@ class SkillsController < ApplicationController
       redirect_to edit_char_class_skill_path(@char,@skill)
     end
   end
-  
+
   def destroy
     @skill = Skill.find(params[:id])
     if @skill.destroy
@@ -61,6 +63,18 @@ class SkillsController < ApplicationController
       flash[:error] = "Bummer!"
       redirect_to char_class_skills_url
     end
+  end
+
+  def actives
+    @char = CharClass.find(params[:char_class_id])
+    @skills = @char.skills
+    render :layout => nil
+  end
+
+  def passives
+    @char = CharClass.find(params[:char_class_id])
+    @skills = @char.skills
+    render :layout => nil
   end
 
 end

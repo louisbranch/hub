@@ -1,3 +1,131 @@
 // Place all the styles related to the Builds controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+@import "vars";
+
+h1.new_title{
+    margin: 0;
+  }
+
+form#new_build{
+
+  input, label{display:block;}
+
+  span#class_display{
+        font-weight: normal;
+      }
+
+  #class_selection{
+
+    margin: 20px 0;
+
+    & input{
+     display: none;
+    }
+
+    & label{
+      cursor: pointer;
+      display: inline-block;
+      margin: 0 5px;
+      &:hover{border-color: #3F3B31;}
+      height: 100px;
+      width:  68px;
+      overflow: hidden;
+      background:url(asset_path("classes_portraits.png", image)) no-repeat -68px 0;
+
+          &#label_barbarian:hover,&.active{ background-position: 0 0}
+          &#label_demon-hunter{background-position: -68px -100px; &:hover,&.active{background-position: 0 -100px;}}
+          &#label_monk{background-position: -68px -200px; &:hover,&.active{background-position: 0 -200px;}}
+          &#label_witch-doctor{background-position: -68px -300px; &:hover,&.active{background-position: 0 -300px;}}
+          &#label_wizard{background-position: -68px -400px; &:hover,&.active{background-position: 0 -400px;}}
+    }
+  }
+
+  & input#build_name, textarea#build_description{
+    width: 400px;
+  }
+
+  & label span.field_optional {
+    font-weight: normal;
+    font-style: italic;
+    font-size: 13px;
+  }
+
+  a#build_next{
+    display:block;
+    width:45px;
+  }
+
+  & div#build_skills{
+    margin-top: 20px;
+    width: 280px;
+
+    & ul#skills_tabs{
+    	margin-top: 35px;
+    	padding-bottom: 15px;
+    	border-bottom: 1px solid rgba(0,0,0,0.2);
+			box-shadow: 0 1px 0 rgba(255,255,255,0.2);
+
+    	& li{
+    	font-size: 16px;
+    	display: inline;
+    	margin-right: 10px;
+    	padding: 5px 8px;
+    	font-weight:bold;
+    	color: $link_main_color;
+    	&.tab_on,&:hover{
+    		background:rgba(255,255,255,0.2);
+    		cursor:pointer;
+    		border-radius: 5px;
+    		box-shadow: -1px -1px 0 rgba(0,0,0,0.1);
+  		}
+    	&#tab_header{ padding-left:0; font-size: 24px; font-weight:bold; &:hover{background:none; cursor:auto;}}
+    	}
+    }
+
+    & div#skills_container{
+		  & ul{
+
+    	//height: 600px;
+    	//overflow-y: auto;
+
+				& li{
+					width: 250px;
+					float: left;
+					padding: 10px 5px;
+					cursor: pointer;
+					border-bottom: 1px solid rgba(0,0,0,0.2);
+					box-shadow: 0 1px 0 rgba(255,255,255,0.2);
+
+					&:hover{ background-color: rgba(0,0,0,0.1) }
+					& img{ float: left; width: 35px;}
+					& div{ float: left; margin-left: 5px;
+			 			& span{ font-size: 12px;}
+				 }
+			 }
+		  }
+	  }
+  }
+}
+
+
+div.skill_tooltip{
+	& img {float: left;}
+	& div{
+		float: left;
+		margin-left: 5px;
+		width: 300px;
+		& p{
+			font-size: 12px;
+
+			&.description{
+				font-size: 15px;
+			}
+		}
+		& h3 { font-size: 18px }
+		& p, & li{
+			margin-bottom: 5px;
+		}
+	}
+}
+
