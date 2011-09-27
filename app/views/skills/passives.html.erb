@@ -1,12 +1,8 @@
-<ul id="passive_block">
+<ul>
   <% @skills.each do |skill|%>
     <% if skill.passive? %>
-      <li class='<%= skill.skill_type.slug %>'  data-url='<%= char_class_skill_path(@char,skill) %>'>
-        <%= image_tag(skill.img_url, :class => "skill_img") %>
-        <div>
-          <h4 class="skill_name"><%= skill.name %></h4>
-          <span class="skill_level">lvl <%= skill.level %></span>
-        </div>
+      <li id='<%= skill.slug %>' data-url='<%= char_class_skill_path(@char,skill) %>'>
+        <%= image_tag(skill.img_url) %>
       </li>
     <% end %>
   <% end %>

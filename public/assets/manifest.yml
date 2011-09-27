@@ -49,6 +49,7 @@ skills/wizard_passive_virtuoso.png: skills/wizard_passive_virtuoso-bad090476c2bf
 skills/demonhunter_passive_thrillofthehunt.png: skills/demonhunter_passive_thrillofthehunt-fcb9f2e7459ec5873764e19784413fac.png
 skills/monk_passive_seizetheinitiative.png: skills/monk_passive_seizetheinitiative-d34ef755c18a99dfe3a2e837cf309442.png
 skills/wizard_magicweapon.png: skills/wizard_magicweapon-351b33f7143e90e3a6164e3d3043bb33.png
+skills/clear_skill.png: skills/clear_skill-972d0e207005ec827690e33a07cac4de.png
 skills/barbarian_passive_relentless.png: skills/barbarian_passive_relentless-e26653a7c9e32d0867384e2ea1c347ea.png
 skills/demonhunter_grenades.png: skills/demonhunter_grenades-f4ded6e6c314960f8aa17244d8e2a967.png
 skills/demonhunter_fanofknives.png: skills/demonhunter_fanofknives-2117dbf4a08193bc0dc9d8677c0314a4.png
@@ -121,6 +122,7 @@ skills/demonhunter_caltrops.png: skills/demonhunter_caltrops-0197b7033ac21dee682
 skills/barbarian_weaponthrow.png: skills/barbarian_weaponthrow-0375ef5e5106184a080c455469fe267b.png
 skills/monk_passive_onewitheverything.png: skills/monk_passive_onewitheverything-ee5e027be8ad4277d30fa01d2b51fa5f.png
 skills/monk_mantraofconviction.png: skills/monk_mantraofconviction-3eda0a351115d9d01f5dd761125910de.png
+skills/empty.png: skills/empty-65c06ef1b654de4f512a73d066f548dc.png
 skills/demonhunter_rapidfire.png: skills/demonhunter_rapidfire-1388c7457e498ea5e393c0895e9dd43a.png
 skills/monk_passive_theguardianspath.png: skills/monk_passive_theguardianspath-03e2d2538d4aaa65405e9fd26879b87f.png
 skills/monk_passive_guidinglight.png: skills/monk_passive_guidinglight-037386513df4792606d3cc1b0490839c.png
@@ -132,6 +134,7 @@ skills/barbarian_cleave.png: skills/barbarian_cleave-b46c3f545405942f65741095346
 skills/witchdoctor_wallofzombies.png: skills/witchdoctor_wallofzombies-96032a39210d946deea89dd3612ee330.png
 skills/wizard_stormarmor.png: skills/wizard_stormarmor-0f9bea4a39ec523c0b709d3b1fa2fbf2.png
 skills/barbarian_passive_boonofbulkathos.png: skills/barbarian_passive_boonofbulkathos-c1284527e3d63c3c5d59d4f4b453233c.png
+skills/Thumbs.db:encryptable: skills/Thumbs-ccb8034635849c44627859332fda6a01.db:encryptable
 skills/monk_passive_neardeathexperience.png: skills/monk_passive_neardeathexperience-9384e02d0b47cfb4572060037e9d5d5c.png
 skills/witchdoctor_horrify.png: skills/witchdoctor_horrify-39d09095604005088d8a4d00f07d971d.png
 skills/barbarian_passive_inspiringpresence.png: skills/barbarian_passive_inspiringpresence-1544ac497f3e7755c74be27ab8fddd58.png
@@ -170,6 +173,7 @@ skills/witchdoctor_spiritwalk.png: skills/witchdoctor_spiritwalk-c85c99a71dd7970
 skills/demonhunter_preparation.png: skills/demonhunter_preparation-82514e1f2452f558046ec8a98a7fdb26.png
 skills/barbarian_passive_animosity.png: skills/barbarian_passive_animosity-41f4be48385c334e4a4c9e5174b335ae.png
 skills/demonhunter_sentry.png: skills/demonhunter_sentry-45d217d95e522d45c544f0ad939298cc.png
+skills/Thumbs.db: skills/Thumbs-4c53037141f36ccd4c98ee4bdca2b8b6.db
 skills/demonhunter_passive_sharpshooter.png: skills/demonhunter_passive_sharpshooter-9f538bf00b62d8d17ee356e81127bf87.png
 skills/witchdoctor_sacrifice.png: skills/witchdoctor_sacrifice-381ea292ff365d53804b3e6fa41571b1.png
 skills/wizard_passive_arcanedynamo.png: skills/wizard_passive_arcanedynamo-fbaf61672c58a6e03b7a8bb54f087401.png
@@ -178,6 +182,12 @@ skills/wizard_archon.png: skills/wizard_archon-1279cfb414cb22d9cb6e04cd1842131e.
 skills/monk_lashingtailkick.png: skills/monk_lashingtailkick-4c933c04e4ab092dcf1cfaa3b8904019.png
 skills/wizard_electrocute.png: skills/wizard_electrocute-b4f212acde1bc9091097edbf13ef4fa5.png
 skills/barbarian_passive_bloodthirst.png: skills/barbarian_passive_bloodthirst-ae581db01d6f51dd278579d80404bd06.png
+runes/rune_golden.png: runes/rune_golden-aa840e459bd902837d4ee8c6ff707dcf.png
+runes/rune_crimson.png: runes/rune_crimson-dc21b7123d2ded04bc8b3a52d602eb92.png
+runes/rune_indigo.png: runes/rune_indigo-020b7b7b34bf15d783846300c47783cd.png
+runes/rune_obsidian.png: runes/rune_obsidian-0a6736ef4f4946d47ec01b36b9ef24b8.png
+runes/rune_alabaster.png: runes/rune_alabaster-70feed0e788b805bad87dd5b3ffa6a7b.png
+runes/rune_empty.png: runes/rune_empty-39c9295876f25fc2c7fb4b698ca87313.png
 classes_portraits.png: classes_portraits-71bc97a49b740745053da7b00606e00d.png
 bg_site.png: bg_site-8a046d794e6cc0403ccc3be2624fa1d5.png
 button_overlay.png: button_overlay-7b1cbbef7343885442308c2d16442d35.png
@@ -185,9 +195,12 @@ logo.png: logo-533f19b410e789d7f8786b6fa684923e.png
 bg_top.png: bg_top-7ad770778b66e7141f4b2a8596f70dc8.png
 classes_showcase.jpg: classes_showcase-f5d9a5afefaaa71c23b8d397dbe2ec51.jpg
 bg_showcase.jpg: bg_showcase-de080df89892394bbe4c559a3bc03326.jpg
+arrow.png: arrow-6e45de34e1f71a38674097533cdcc3c8.png
 logo_mini.png: logo_mini-ca4743788739953c814d6e95b2b4dc55.png
+jquery.qtip.min.js: jquery-e0c6ad0403404d718b791b3747c43238.qtip.min.js
+jquery.qtip.css: jquery-af1274f6ba515cc5e571c8abb2b717c6.qtip.css
 rails.validations.js: rails-62a1793cd08186b33a76e8ad2f945768.validations.js
 jquery.min.js: jquery-8a50feed8d29566738ad005e19fe1c2d.min.js
 jquery-ui.min.js: jquery-ui-7e33882a28fc84ad0e0e47e46cbf901c.min.js
-application.js: application-0c09c81f6ff7407046b6dde02ef93c10.js
-application.css: application-9d7490faeddb297fb7331db9db1b6f61.css
+application.js: application-72d4c6eff8d268bf0612a3be0fa7311c.js
+application.css: application-a69db4225cbb4fc5115110e42076bf3b.css

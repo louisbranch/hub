@@ -5,3 +5,4 @@ class CharClass < ActiveRecord::Base
   has_many :skill_types, :foreign_key => "char_class_id"
   has_many :builds, :foreign_key => "char_class_id"
 end
+

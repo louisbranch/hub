@@ -25,6 +25,10 @@ Hub::Application.routes.draw do
         get 'actives'
         get 'passives'
       end
+      member do
+        get 'tooltip'
+        get 'drilldown'
+      end
       resources :rune_effects
     end
   end

@@ -1,27 +1,15 @@
-<ul id="active_block">
-  <% @skills.each do |skill|%>
-    <% if !skill.passive? %>
-      <li class='<%= skill.skill_type.slug %>' data-url='<%= char_class_skill_path(@char,skill) %>'>
-        <%= image_tag(skill.img_url, :class => "skill_img") %>
-        <div>
-          <h4 class="skill_name"><%= skill.name %></h4>
-          <span class="skill_level">lvl <%= skill.level %> - <%= skill.skill_type.name %></span>
-        </div>
-        <div style="display:none">
-          <ul class="skill_details">
-            <% if skill.cost? %>
-              <li><strong>Cost:</strong> <%= skill.cost %></li>
-            <% end %>
-            <% if skill.generate? %>
-              <li><strong>Generate:</strong> <%= skill.generate %></li>
-            <% end %>
-            <% if skill.cooldown? %>
-              <li><strong>Cooldown:</strong> <%= skill.cooldown %></li>
-            <% end %>
-          </ul>
-        </div>
-      </li>
-    <% end %>
+<% @skill_types.each do |skill_type|%>
+  <% if skill_type.name != "Passive"  %>
+    <div class="<%= skill_type.slug%>">
+      <h4><%= skill_type.name unless skill_type.name == "Passive" %></h4>
+      <ul>
+        <% skill_type.skills.each do |skill| %>
+          <li id="<%= skill.slug %>" data-tooltip-url="<%= tooltip_char_class_skill_path(@char,skill) %>" data-drilldown-url="<%= drilldown_char_class_skill_path(@char,skill) %>" data-title="<%= skill.name %>" data-img="<%= skill.img_url %>" data-details="lvl <%= skill.level %> - <%= skill.skill_type.name %>" >
+            <%= image_tag(skill.img_url)%>
+          </li>
+        <% end %>
+      </ul>
+    </div>
   <% end %>
-</ul>
+<% end %>
 

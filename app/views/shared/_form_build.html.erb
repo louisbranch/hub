@@ -8,7 +8,7 @@
   <div id="build_info">
     <div id="class_selection">
     <% CharClass.all.each do |char| %>
-      <%= label_tag(:char_class_id, "", :for => char.slug, :id => "label_#{char.slug}", "data-name" => char.name, "data-url" => passives_char_class_skills_path(char)) %>
+      <%= label_tag(:char_class_id, "", :for => char.slug, :id => "label_#{char.slug}", "data-name" => char.name, "data-active" => actives_char_class_skills_path(char), "data-passive" => passives_char_class_skills_path(char)) %>
       <%= form.radio_button(:char_class_id, char.id, :id => char.slug, :checked => false) %>
     <% end %>
     </div>
@@ -18,17 +18,102 @@
     <%= form.text_area :description, :rows => "5" %>
     <%= link_to 'Next', char_class_skills_path(1), :remote => true,  :id => "build_next", :class => "but"  %>
   </div>
-  <div id="build_skills" style="display:none;">
-    <div id="skills_controller">
-      <ul id="skills_tabs">
-        <li id="tab_active" class="tab_on">Active Skills</li>
-        <li id="tab_passive">Passive Skills</li>
-      </ul>
-    <div id="skills_container"></div>
+  <div id="step_two" style="display:none;">
+    <h2>Active Skills</h2>
+    <div id="active_block">
     </div>
-    <%= form.fields_for :build_skills, :remote => true do |builder| %>
-      <%= render "shared/form_build_skills", :form => builder %>
-    <% end %>
+    <ul id="build_skills">
+      <li id="skill_active_1" data-selected="" data-id="skill_1">
+        <img src="/assets/skills/empty.png" class="skill_img">
+        <img src="/assets/skills/clear_skill.png" class="skill_img" style="display:none;" title="Clear Skill">
+        <img src="/assets/runes/rune_empty.png" class="rune_img" title="Add Runestone">
+        <div>
+          <h5>1st Skill</h5>
+          <p>Unlocked at lvl 1</p>
+        </div>
+        <div style="display:none;">
+          <h5></h5>
+          <p></p>
+        </div>
+      </li>
+      <li id="skill_active_2" data-selected="" data-id="skill_2">
+        <img src="/assets/skills/empty.png" class="skill_img">
+        <img src="/assets/skills/clear_skill.png" class="skill_img" style="display:none;" title="Clear Skill">
+        <img src="/assets/runes/rune_empty.png" class="rune_img" title="Add Runestone">
+        <div>
+          <h5>2nt Skill</h5>
+          <p>Unlocked at lvl 1</p>
+        </div>
+        <div style="display:none;">
+          <h5></h5>
+          <p></p>
+        </div>
+      </li>
+      <li id="skill_active_3" data-selected="" data-id="skill_3">
+        <img src="/assets/skills/empty.png" class="skill_img">
+        <img src="/assets/skills/clear_skill.png" class="skill_img" style="display:none;" title="Clear Skill">
+        <img src="/assets/runes/rune_empty.png" class="rune_img" title="Add Runestone">
+        <div>
+          <h5>3rd Skill</h5>
+          <p>Unlocked at lvl 6</p>
+        </div>
+        <div style="display:none;">
+          <h5></h5>
+          <p></p>
+        </div>
+      </li>
+      <li id="skill_active_4" data-selected="" data-id="skill_4">
+        <img src="/assets/skills/empty.png" class="skill_img">
+        <img src="/assets/skills/clear_skill.png" class="skill_img" style="display:none;" title="Clear Skill">
+        <img src="/assets/runes/rune_empty.png" class="rune_img" title="Add Runestone">
+        <div>
+          <h5>4th Skill</h5>
+          <p>Unlocked at lvl 12</p>
+        </div>
+        <div style="display:none;">
+          <h5></h5>
+          <p></p>
+        </div>
+      </li>
+      <li id="skill_active_5" data-selected="" data-id="skill_5">
+        <img src="/assets/skills/empty.png" class="skill_img">
+        <img src="/assets/skills/clear_skill.png" class="skill_img" style="display:none;" title="Clear Skill">
+        <img src="/assets/runes/rune_empty.png" class="rune_img" title="Add Runestone">
+        <div>
+          <h5>5th Skill</h5>
+          <p>Unlocked at lvl 18</p>
+        </div>
+        <div style="display:none;">
+          <h5></h5>
+          <p></p>
+        </div>
+      </li>
+      <li id="skill_active_6" data-selected="" data-id="skill_6">
+        <img src="/assets/skills/empty.png" class="skill_img">
+        <img src="/assets/skills/clear_skill.png" class="skill_img" style="display:none;" title="Clear Skill">
+        <img src="/assets/runes/rune_empty.png" class="rune_img" title="Add Runestone">
+        <div>
+          <h5>6th Skill</h5>
+          <p>Unlocked at lvl 24</p>
+        </div>
+        <div style="display:none;">
+          <h5></h5>
+          <p></p>
+        </div>
+      </li>
+    </ul>
+    <div id="drilldown_block">
+      <section data-id="skill_1" style="display: none;" id="drilldown_1"></section>
+      <section data-id="skill_2" style="display: none;" id="drilldown_2"></section>
+      <section data-id="skill_3" style="display: none;" id="drilldown_3"></section>
+      <section data-id="skill_4" style="display: none;" id="drilldown_4"></section>
+      <section data-id="skill_5" style="display: none;" id="drilldown_5"></section>
+      <section data-id="skill_6" style="display: none;" id="drilldown_6"></section>
+    </div>
+    <div id="passive_block" style="display:none;"></div>
   </div>
+  <%= form.fields_for :build_skills, :remote => true do |builder| %>
+    <%= render "shared/form_build_skills", :form => builder %>
+  <% end %>
 <% end %>
 

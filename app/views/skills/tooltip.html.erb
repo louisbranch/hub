@@ -17,18 +17,4 @@
     <p class="description"><%= @skill.description %></p>
   </div>
 </div>
-<div class="rune block" style="display:none;">
-  <h4>Runestones:</h4>
-  <ul>
-    <% @rune_effects.each do |rune_effect| %>
-    <li>
-      <%= image_tag(rune_effect.rune.img_url, :class => "rune_img") %>
-      <div>
-        <h5><%= rune_effect.name %></h5>
-        <p><%= rune_effect.description %></p>
-      </div>
-    </li>
-    <% end %>
-  </ul>
-<div>
 

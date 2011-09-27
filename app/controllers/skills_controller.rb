@@ -67,13 +67,27 @@ class SkillsController < ApplicationController
 
   def actives
     @char = CharClass.find(params[:char_class_id])
-    @skills = @char.skills
+    @skill_types = @char.skill_types
     render :layout => nil
   end
 
   def passives
     @char = CharClass.find(params[:char_class_id])
     @skills = @char.skills
+    render :layout => nil
+  end
+
+  def tooltip
+    @char = CharClass.find(params[:char_class_id])
+    @skill = Skill.find(params[:id])
+    @rune_effects = @skill.rune_effects
+    render :layout => nil
+  end
+
+  def drilldown
+    @char = CharClass.find(params[:char_class_id])
+    @skill = Skill.find(params[:id])
+    @rune_effects = @skill.rune_effects
     render :layout => nil
   end
 

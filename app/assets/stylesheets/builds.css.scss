@@ -56,54 +56,150 @@ form#new_build{
     width:45px;
   }
 
-  & div#build_skills{
-    margin-top: 20px;
-    width: 280px;
+  & div#step_two{
+    margin-top: 30px;
 
-    & ul#skills_tabs{
-    	margin-top: 35px;
-    	padding-bottom: 15px;
-    	border-bottom: 1px solid rgba(0,0,0,0.2);
-			box-shadow: 0 1px 0 rgba(255,255,255,0.2);
+    & h2 { margin-bottom: 20px;}
 
+    & ul#build_skills{
+    	width: 405px;
+			float:left;
     	& li{
-    	font-size: 16px;
-    	display: inline;
-    	margin-right: 10px;
-    	padding: 5px 8px;
-    	font-weight:bold;
-    	color: $link_main_color;
-    	&.tab_on,&:hover{
-    		background:rgba(255,255,255,0.2);
-    		cursor:pointer;
-    		border-radius: 5px;
-    		box-shadow: -1px -1px 0 rgba(0,0,0,0.1);
-  		}
-    	&#tab_header{ padding-left:0; font-size: 24px; font-weight:bold; &:hover{background:none; cursor:auto;}}
+    		float:left;
+    		display: block;
+				width: 385px;
+	    	border-bottom: 1px solid rgba(0,0,0,0.2);
+				box-shadow: 0 1px 0 rgba(255,255,255,0.2);
+				padding: 10px;
+				& img.skill_img{float:left; cursor: pointer;}
+				& img.rune_img{float:right; margin-top: 12px; cursor: pointer;}
+			 	& div{
+	    		float:left;
+					margin: 12px 20px;
+					& h5{
+					font-size: 18px;
+					font-weight: bold;
+					}
+					& p{
+						font-size: 13px;;
+					}
+			 	}
     	}
     }
 
-    & div#skills_container{
-		  & ul{
+    & div#active_block{
+	    width: 250px;
+			float: left;
+			margin-right: 70px;
+			& h3{
+				font-size: 24px;
+			}
+			& h4{
+				font-size: 18px;
+				margin-bottom: 10px;
+			}
+			& ul{ margin-bottom: 30px;}
+			& li{
+				display: inline-block;
+				cursor: pointer;
+				height: 50px;
+				margin-left: 5px;
+				padding: 2px;
+				&.skill_selected{background-color: #9DC200;}
+				& img {width: 50px;}
+			}
+	  }
 
-    	//height: 600px;
-    	//overflow-y: auto;
+	  & div#passive_block{
+	  	clear: both;
+			& li{
+				display: inline-block;
+				cursor: pointer;
+				height: 50px;
+				& img {width: 50px;}
+			}
+	  }
 
-				& li{
-					width: 250px;
-					float: left;
-					padding: 10px 5px;
-					cursor: pointer;
-					border-bottom: 1px solid rgba(0,0,0,0.2);
-					box-shadow: 0 1px 0 rgba(255,255,255,0.2);
+	  & div#drilldown_block{
+	  	float: left;
+	  	width: 250px;
+	  	padding-left: 10px;
+	  	margin-left: 30px;
 
-					&:hover{ background-color: rgba(0,0,0,0.1) }
-					& img{ float: left; width: 35px;}
-					& div{ float: left; margin-left: 5px;
-			 			& span{ font-size: 12px;}
-				 }
-			 }
-		  }
+				& section {
+				float: left;
+				padding-left: 50px;
+				height: 510px;
+				background: url(asset_path("arrow.png", image)) no-repeat 0 0;
+					&#drilldown_1{
+				  	background-position: 0 -460px;
+					}
+					&#drilldown_2{
+				  	background-position: 0 -374px;
+					}
+					&#drilldown_3{
+				  	background-position: 0 -290px;
+					}
+					&#drilldown_4{
+				  	background-position: 0 -205px;
+					}
+					&#drilldown_5{
+				  	background-position: 0 -120px;
+					}
+					&#drilldown_6{
+				  	background-position: 0 -35px;
+					}
+
+				& ul.runes_block{
+					& h4 {
+						margin-top: 20px;
+						font-size: 16px;
+						padding: 0 5px 10px 5px;
+						width: 250px;
+						border-bottom: 1px solid rgba(0,0,0,0.2);
+						box-shadow: 0 1px 0 rgba(255,255,255,0.2);
+					}
+
+					& span{
+							font-weight: bold;
+							margin-left: 5px;
+							line-height: 40px;
+							font-size: 15px;
+							font-weight: bold;
+						}
+						& img{
+							float: left;
+							width: 40px;
+						}
+
+					& li {
+						padding: 10px 5px;
+						float: left;
+						cursor: pointer;
+						width: 250px;
+						border-bottom: 1px solid rgba(0,0,0,0.2);
+						box-shadow: 0 1px 0 rgba(255,255,255,0.2);
+
+						&:hover{
+							background-color: rgba(0,0,0,0.1);
+						}
+
+						&.rune_active{
+							background-color: rgba(0,0,0,0.2);
+						}
+
+						& span{
+							font-weight: bold;
+							margin-left: 5px;
+							line-height: 30px;
+						}
+						& img{
+							float: left;
+							width: 30px;
+						}
+					}
+				}
+	  	}
 	  }
   }
 }
