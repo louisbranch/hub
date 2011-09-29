@@ -12,6 +12,7 @@ class Ability
       can :tooltip, :all
       can :actives, :all
       can :passives, :all
+      can :drilldown, :all
       can :create, Build
       can :update, Build do |build|
         build.try(:user) == user
