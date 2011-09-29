@@ -10,6 +10,8 @@ class Ability
       can :read, :all
       can :builds, :all
       can :tooltip, :all
+      can :actives, :all
+      can :passives, :all
       can :create, Build
       can :update, Build do |build|
         build.try(:user) == user
