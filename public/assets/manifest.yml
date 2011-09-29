@@ -100,6 +100,7 @@ skills/demonhunter_passive_customengineering.png: skills/demonhunter_passive_cus
 skills/wizard_passive_prodigy.png: skills/wizard_passive_prodigy-c5d80768c64ccadddbb56758e890b3f0.png
 skills/demonhunter_rainofvengeance.png: skills/demonhunter_rainofvengeance-20c0156cf1b7e2221d80a6bc2651acaa.png
 skills/witchdoctor_haunt.png: skills/witchdoctor_haunt-ff4a246c87a8473befb1d8c9c3f6072e.png
+skills/clear_passive.png: skills/clear_passive-80f34d31fb0afcdb63318348f1137d05.png
 skills/wizard_passive_powerhungry.png: skills/wizard_passive_powerhungry-6615f6467f540519c8fb18e6f8bc9fad.png
 skills/barbarian_bloodthirst.png: skills/barbarian_bloodthirst-1acebea3b2de3e32242ba90ce49ce6bd.png
 skills/monk_mantraofretribution.png: skills/monk_mantraofretribution-0ec8d64a6c20747f129aafad3feb9521.png
@@ -175,6 +176,7 @@ skills/barbarian_passive_animosity.png: skills/barbarian_passive_animosity-41f4b
 skills/demonhunter_sentry.png: skills/demonhunter_sentry-45d217d95e522d45c544f0ad939298cc.png
 skills/Thumbs.db: skills/Thumbs-4c53037141f36ccd4c98ee4bdca2b8b6.db
 skills/demonhunter_passive_sharpshooter.png: skills/demonhunter_passive_sharpshooter-9f538bf00b62d8d17ee356e81127bf87.png
+skills/empty_passive.png: skills/empty_passive-f02e7d5f560ebd34195f9ae771c439e4.png
 skills/witchdoctor_sacrifice.png: skills/witchdoctor_sacrifice-381ea292ff365d53804b3e6fa41571b1.png
 skills/wizard_passive_arcanedynamo.png: skills/wizard_passive_arcanedynamo-fbaf61672c58a6e03b7a8bb54f087401.png
 skills/barbarian_battlerage.png: skills/barbarian_battlerage-4f433a90cb0d9e4e05747fff984d0da2.png
@@ -202,5 +204,5 @@ jquery.qtip.css: jquery-af1274f6ba515cc5e571c8abb2b717c6.qtip.css
 rails.validations.js: rails-62a1793cd08186b33a76e8ad2f945768.validations.js
 jquery.min.js: jquery-8a50feed8d29566738ad005e19fe1c2d.min.js
 jquery-ui.min.js: jquery-ui-7e33882a28fc84ad0e0e47e46cbf901c.min.js
-application.js: application-72d4c6eff8d268bf0612a3be0fa7311c.js
-application.css: application-a69db4225cbb4fc5115110e42076bf3b.css
+application.js: application-17f911569f7b4062f8cd88ff6255242c.js
+application.css: application-f19ef150c58318e4b6c5a8451e901826.css

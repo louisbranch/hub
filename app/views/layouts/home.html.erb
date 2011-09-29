@@ -6,16 +6,21 @@
   <%= javascript_include_tag "application" %>
   <link href='http://fonts.googleapis.com/css?family=Arvo:400,700' rel='stylesheet' type='text/css'>
   <%= csrf_meta_tags %>
+  <%= render 'shared/ga' %>
+  <%= render 'shared/fb_meta_tags' %>
 </head>
                           <%# This and application layout need to be the same! %>
 <body id="home">
   <div id="wrapper">
     <header class="main">
+      <div id="fb-root"></div>
+      <%= render 'shared/social_plugins' %>
       <nav id="login">
         <%= render 'users/menu/registration_items' %>
         <%= render 'users/menu/login_items' %>
       </nav>
       <!--<input type="search" placeholder="search" id="search">-->
+      <div id="facebook"><fb:like href="<%= request.url %>" send="true" layout="button_count" width="90" show_faces="false" colorscheme="dark"></fb:like></div>
       <hgroup>
         <h1><%= link_to "Diablohub", root_path %></h1>
         <h2><%= link_to "Create, share and discover builds", root_path %></h2>

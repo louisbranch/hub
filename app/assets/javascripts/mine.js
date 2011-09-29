@@ -3,7 +3,8 @@ window.onload = function(){
     skillFilter();
     runesHover();
     buildClassSelector();
-    //buildSkillTab()
+    buildSubmit();
+    skillsHover();
 }
 
 function quotes(){
@@ -123,11 +124,23 @@ function buildClassSelector(){
       this.className = "active";
       active_url = this.getAttribute("data-active");
       passive_url = this.getAttribute("data-passive");
+      loadSkills(fixed_name,active_url,passive_url);
       }
     }
   }
 
-  var next_step = document.getElementById("build_next");
+  else if(document.getElementById("edit_class")){
+  	var edit_data = document.getElementById("edit_class");
+  	fixed_name = edit_data.getAttribute("data-name");
+    active_url = edit_data.getAttribute("data-active");
+    passive_url = edit_data.getAttribute("data-passive");
+    loadSkills(fixed_name,active_url,passive_url);
+  }
+}
+
+function loadSkills(fixed_name,active_url,passive_url){
+	var next_step = document.getElementById("build_next");
+  var checklist = document.getElementById("checklist");
   var build_title = document.getElementById("build_name");
   var error_explanation = document.getElementById("error_explanation");
   var build_info = document.getElementById("build_info");
@@ -142,6 +155,7 @@ function buildClassSelector(){
 
         build_info.style.display = "none";
         step_two.style.display = "";
+        checklist.style.display = "";
         build_heading.innerHTML = build_title.value;
         build_heading.className = "new_title";
 
@@ -156,8 +170,9 @@ function buildClassSelector(){
         $.ajax({
 					url: passive_url,
 					success: function(data){
-							$('#passive_block').html(data);
-							elementHover();
+							$('#passive_block').append(data);
+							passiveActions();
+							if(document.getElementById("edit_class")){editSkillReconstitution()};
 						}
 				});
       }
@@ -171,43 +186,6 @@ function buildClassSelector(){
       error_explanation.style.display = "";
     }
   }
-}
-
-/*
-function buildSkillTab(){
-	if(document.getElementById("skills_tabs")){
-		var tab_active = document.getElementById("tab_active");
-		var tab_passive = document.getElementById("tab_passive");
-
-		tab_active.onclick = function(){
-			this.className = "tab_on";
-			tab_passive.className = "";
-			document.getElementById("active_block").style.display = "";
-			document.getElementById("passive_block").style.display = "none";
-		}
-		tab_passive.onclick = function(){
-			this.className = "tab_on";
-			tab_active.className = "";
-			document.getElementById("active_block").style.display = "none";
-			document.getElementById("passive_block").style.display = "";
-		}
-	}
-}
-*/
-
-function skillsActions(){
-
-	var active_block = document.getElementById("active_block");
-	var skills = active_block.getElementsByTagName("li");
-
-	for(var i=0;i<skills.length;i++){
-		var tooltip_url =	skills[i].getAttribute("data-tooltip-url")
-		var drilldown_url =	skills[i].getAttribute("data-drilldown-url")
-		var skill_name =	skills[i].getAttribute("id")
-
-		elementHover(skills[i],tooltip_url);
-		skills[i].onclick = function(){insertSkill(this)};
-	}
 }
 
 function elementHover(e,url){
@@ -232,7 +210,22 @@ function elementHover(e,url){
 	});
 }
 
-function insertSkill(e){
+function skillsActions(){
+
+	var active_block = document.getElementById("active_block");
+	var skills = active_block.getElementsByTagName("li");
+
+	for(var i=0;i<skills.length;i++){
+		var tooltip_url =	skills[i].getAttribute("data-tooltip-url")
+		var drilldown_url =	skills[i].getAttribute("data-drilldown-url")
+		var skill_name =	skills[i].getAttribute("id")
+
+		elementHover(skills[i],tooltip_url);
+		skills[i].onclick = function(){insertSkill(this)};
+	}
+}
+
+function insertSkill(e,editing){
 	url = e.getAttribute("data-drilldown-url");
 	var build_skills = document.getElementById("build_skills");
 	var skill_slots = build_skills.getElementsByTagName("li");
@@ -243,13 +236,15 @@ function insertSkill(e){
 			var skill_title = e.getAttribute("data-title");
 			var skill_details = e.getAttribute("data-details");
 			var skill_img = e.getAttribute("data-img");
+			var skill_id = e.getAttribute("data-id");
 			skill_slots[i].setAttribute("data-selected", true);
+			skill_slots[i].setAttribute("data-id", skill_id);
 			skill_slots[i].getElementsByTagName("div")[0].style.display = "none";
 			skill_slots[i].getElementsByTagName("div")[1].style.display = "";
 			skill_slots[i].getElementsByTagName("h5")[1].innerHTML = skill_title;
 			skill_slots[i].getElementsByTagName("p")[1].innerHTML = skill_details;
 			skill_slots[i].getElementsByTagName("img")[0].setAttribute("src", skill_img);
-			var slot_id = skill_slots[i].getAttribute("data-id");
+			var slot_id = skill_slots[i].getAttribute("data-slot");
 
 			e.onclick = function(){
 				e.className = "";
@@ -257,19 +252,21 @@ function insertSkill(e){
 				e.onclick = function(){insertSkill(e)};
 			}
 
-			skillDrillDown(skill_slots[i],url,slot_id);
+			skillDrillDown(skill_slots[i],url,slot_id,editing);
 			skillSlotActions(skill_slots[i],slot_id,e,url);
+
+			return slot_id;
 
 			break
 		}
 	}
 }
 
-function skillDrillDown(e,url,id){
+function skillDrillDown(e,url,id,editing){
 	var drilldown_block = document.getElementById("drilldown_block");
 	var drilldown_sections = drilldown_block.getElementsByTagName("section");
 	for(var i=0;i<drilldown_sections.length;i++){
-		if(id == drilldown_sections[i].getAttribute("data-id") ){
+		if(id == drilldown_sections[i].getAttribute("data-slot") ){
 			var target = drilldown_sections[i];
 			target.style.display = "";
 			$.ajax({
@@ -277,6 +274,7 @@ function skillDrillDown(e,url,id){
 				success: function(data){
 						$(target).html(data);
 						runesActions();
+						if(editing){editRunesReconstitution(editing,target)}
 					}
 			});
 		}
@@ -293,7 +291,7 @@ function runesActions(){
 		if(tooltip_url){
 			elementHover(runes[i],tooltip_url);
 		}
-		runesSelect(runes[i])
+		runes[i].onclick = function(){runesSelect(this)};
 	}
 }
 
@@ -303,18 +301,18 @@ function runesSelect(e){
 	var section_block = e.parentNode;
 	var runes = section_block.getElementsByTagName("li");
 
-	e.onclick = function(){
-		for(var i=0;i<runes.length;i++){runes[i].className = "";}
-		this.className = "rune_active";
-	 	var rune_img = e.getAttribute("data-img");
-	 	var parent_id = section_block.parentNode.getAttribute("data-id");
+	for(var i=0;i<runes.length;i++){runes[i].className = "";}
+	e.className = "rune_active";
+ 	var rune_img = e.getAttribute("data-img");
+ 	var rune_id = e.getAttribute("data-rune-id");
+ 	var parent_id = section_block.parentNode.getAttribute("data-slot");
 
-	 	for(var i=0;i<skill_slots.length;i++){
-	 		if(skill_slots[i].getAttribute("data-id") == parent_id){
-	 			skill_slots[i].getElementsByTagName("img")[2].setAttribute("src", rune_img);
- 			}
-	 	}
-	}
+ 	for(var i=0;i<skill_slots.length;i++){
+ 		if(skill_slots[i].getAttribute("data-slot") == parent_id){
+ 			skill_slots[i].getElementsByTagName("img")[2].setAttribute("src", rune_img);
+ 			skill_slots[i].setAttribute("data-rune-id", rune_id);
+		}
+ 	}
 }
 
 function skillSlotActions(e,id,skill_src,url){
@@ -339,7 +337,7 @@ function skillSlotActions(e,id,skill_src,url){
 	for(var i=0;i<drilldown_sections.length;i++){
 		var target = drilldown_sections[i];
 		target.style.display = "none";
-		if(id == drilldown_sections[i].getAttribute("data-id") ){
+		if(id == drilldown_sections[i].getAttribute("data-slot") ){
 			target.style.display = "";
 			}
 		}
@@ -350,16 +348,18 @@ function clearSkillSlot(e,skill_src,url){
 	var drilldown_block = document.getElementById("drilldown_block");
 	var drilldown_sections = drilldown_block.getElementsByTagName("section");
 	var skill_img = e.getElementsByTagName("img")[0];
-	var slot_id = e.getAttribute("data-id");
+	var slot_id = e.getAttribute("data-slot");
 
 	for(var i=0;i<drilldown_sections.length;i++){
-		if(slot_id == drilldown_sections[i].getAttribute("data-id") ){
+		if(slot_id == drilldown_sections[i].getAttribute("data-slot") ){
 			drilldown_sections[i].style.display = "none";
 			drilldown_sections[i].innerHTML = "";
 		}
 	}
 
 	e.setAttribute("data-selected", "");
+	e.setAttribute("data-id", "");
+	e.setAttribute("data-rune-id", "");
 	e.getElementsByTagName("div")[0].style.display = "";
 	e.getElementsByTagName("div")[1].style.display = "none";
 	e.getElementsByTagName("img")[0].setAttribute("src", "/assets/skills/empty.png");
@@ -369,5 +369,183 @@ function clearSkillSlot(e,skill_src,url){
 	e.getElementsByTagName("img")[2].onclick = null;
 	skill_src.className="";
 	skill_src.onclick = function(){insertSkill(skill_src)};
+}
+
+//Passive blockquote
+
+function passiveActions(){
+
+	var passive_block = document.getElementById("passive_block");
+	var skills = passive_block.getElementsByTagName("li");
+
+	for(var i=0;i<skills.length;i++){
+		var tooltip_url =	skills[i].getAttribute("data-tooltip-url")
+
+		elementHover(skills[i],tooltip_url);
+		skills[i].onclick = function(){insertPassive(this)};
+	}
+}
+
+function insertPassive(e){
+	var build_passives = document.getElementById("build_passives");
+	var passive_slots = build_passives.getElementsByTagName("li");
+	for(var i=0;i<passive_slots.length;i++){
+	var slot_selected = passive_slots[i].getAttribute("data-selected");
+		if(!slot_selected){
+			e.className = "passive_selected"
+			var passive_title = e.getAttribute("data-title");
+			var passive_details = e.getAttribute("data-details");
+			var passive_img = e.getAttribute("data-img");
+			var skill_id = e.getAttribute("data-id");
+			passive_slots[i].setAttribute("data-selected", true);
+			passive_slots[i].setAttribute("data-id", skill_id);
+			passive_slots[i].getElementsByTagName("div")[0].style.display = "none";
+			passive_slots[i].getElementsByTagName("div")[1].style.display = "";
+			passive_slots[i].getElementsByTagName("h5")[1].innerHTML = passive_title;
+			passive_slots[i].getElementsByTagName("p")[1].innerHTML = passive_details;
+			passive_slots[i].getElementsByTagName("img")[0].setAttribute("src", passive_img);
+			var slot_id = passive_slots[i].getAttribute("data-slot");
+
+			e.onclick = function(){
+				e.className = "";
+				clearPassiveSlot(passive_slots[i],this);
+				e.onclick = function(){insertPassive(e)};
+			}
+
+			passiveSlotActions(passive_slots[i],slot_id,e);
+
+			break
+		}
+	}
+}
+
+function passiveSlotActions(e,id,skill_src){
+	var skill_img = e.getElementsByTagName("img")[0];
+	var clear_img = e.getElementsByTagName("img")[1];
+	var rune_img = e.getElementsByTagName("img")[2];
+
+	skill_img.onmouseover = function(){
+		skill_img.style.display = "none";
+		clear_img.style.display = "";
+	}
+	clear_img.onmouseout = function(){
+		clear_img.style.display = "none";
+		skill_img.style.display = "";
+	}
+
+	clear_img.onclick = function(){clearPassiveSlot(e,skill_src)}
+}
+
+function clearPassiveSlot(e,skill_src){
+	var skill_img = e.getElementsByTagName("img")[0];
+	var slot_id = e.getAttribute("data-slot");
+
+	e.setAttribute("data-selected", "");
+	e.setAttribute("data-id", "");
+	e.getElementsByTagName("div")[0].style.display = "";
+	e.getElementsByTagName("div")[1].style.display = "none";
+	e.getElementsByTagName("img")[0].setAttribute("src", "/assets/skills/empty_passive.png");
+	e.getElementsByTagName("img")[0].onmouseover = null;
+	e.getElementsByTagName("img")[1].onmouseover = null;
+	skill_src.className="";
+	skill_src.onclick = function(){insertPassive(skill_src)};
+}
+
+function buildSubmit(){
+	if(document.getElementById("build_submit")){
+		var submit = document.getElementById("build_submit");
+		var build_skills = document.getElementById("build_skills");
+		var skill_slots = build_skills.getElementsByTagName("li");
+		var build_passives = document.getElementById("build_passives");
+		var passive_slots = build_passives.getElementsByTagName("li");
+
+		var skills_ids = new Array();
+		var runes_ids = new Array();
+
+		submit.onclick = function(){
+			skills_ids = [];
+			runes_ids = [];
+
+			for(var i=0;i<skill_slots.length;i++){
+				var skill_id = skill_slots[i].getAttribute("data-id")
+				var rune_id = skill_slots[i].getAttribute("data-rune-id")
+				skills_ids.push(skill_id)
+				runes_ids.push(rune_id)
+			}
+
+			for(var i=0;i<passive_slots.length;i++){
+				var passive_id = passive_slots[i].getAttribute("data-id")
+				skills_ids.push(passive_id)
+			}
+
+			for(var i=0;i<9;i++){
+				document.getElementById("build_build_skills_attributes_"+i+"_skill_id").value = skills_ids[i];
+			}
+
+			for(var i=0;i<6;i++){
+				document.getElementById("build_build_skills_attributes_"+i+"_rune_id").value = runes_ids[i];
+			}
+		}
+	}
+}
+
+function editSkillReconstitution(){
+
+	var skills_ids = new Array();
+	var runes_ids = new Array();
+	var passives_ids = new Array();
+
+	var active_block = document.getElementById("active_block");
+	var active_skills = active_block.getElementsByTagName("li");
+	var passive_block = document.getElementById("passive_block");
+	var passive_skills = passive_block.getElementsByTagName("li");
+
+	for(var i=0;i<6;i++){
+		skills_ids.push(document.getElementById("build_build_skills_attributes_"+i+"_skill_id").value);
+		runes_ids.push(document.getElementById("build_build_skills_attributes_"+i+"_rune_id").value);
+	}
+	for(var i=6;i<9;i++){
+		passives_ids.push(document.getElementById("build_build_skills_attributes_"+i+"_skill_id").value);
+	}
+
+	for(var i=0;i<skills_ids.length;i++){
+		for(var j=0;j<active_skills.length;j++){
+			if(skills_ids[i] == active_skills[j].getAttribute("data-id")){
+				editing = runes_ids[i]
+				insertSkill(active_skills[j],editing)
+			}
+		}
+	}
+
+	for(var i=0;i<passives_ids.length;i++){
+		for(var j=0;j<passive_skills.length;j++){
+			if(passive_skills[j].getAttribute("data-id") == passives_ids[i]){
+				passive_skills[j].className = "passive_selected"
+				insertPassive(passive_skills[j])
+			}
+		}
+	}
+}
+
+function editRunesReconstitution(editing,target){
+	runes = target.getElementsByTagName("li")
+	for(var i=0;i<runes.length;i++){
+		if(editing == runes[i].getAttribute("data-rune-id")){
+			runesSelect(runes[i])
+		}
+	}
+}
+
+function skillsHover(){
+	if(document.getElementById("build_skills_list")){
+		var skills_list = document.getElementById("build_skills_list");
+		var skills = skills_list.getElementsByTagName("li");
+		for(var i=0;i<skills.length;i++){
+			if(skills[i].getAttribute("data-tooltip-url")){
+				var data_url = skills[i].getAttribute("data-tooltip-url")
+				elementHover(skills[i],data_url )
+			}
+		}
+	}
 }
 

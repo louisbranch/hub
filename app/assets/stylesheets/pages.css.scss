@@ -23,14 +23,24 @@ body#home{
     & header.main {
         height: 140px;
     
-      & hgroup h1 a{
-        padding: 30px;
-        width: 363px;
-        height: 77px;
-        background:url(asset_path("logo.png", image)) no-repeat center left;
-      
+      & hgroup {
+      	float: none;
+		    	& h1 a{
+		      padding: 30px;
+		      width: 363px;
+		      height: 77px;
+		      background:url(asset_path("logo.png", image)) no-repeat center left;
+		    
+		    }
       }
     }
+}
+
+div#facebook{
+	  clear: right;
+    float: right;
+    margin-top: 30px;
+    width: 150px;
 }
 
 div#showcase{
@@ -125,7 +135,6 @@ div#block_builds{
     float: left;
     width: 330px;
     background-color: $bg_box_lighter;
-    border-radius: 5px;
   
     & h3{
       background-color: $bg_box_darker;
@@ -154,11 +163,19 @@ div#block_builds{
       }
     }
     
-    &#top_builds{
+    &#popular_builds{
+    	& li {height: 135px; }
     }
     
-    &#trending_builds{
+    &#new_builds{
       margin: 0 5px;
+      & li {
+
+        & span.build_class{
+          float: right;
+          font-size: 13px;
+        }
+      }
     }
     
     &#class_builds {

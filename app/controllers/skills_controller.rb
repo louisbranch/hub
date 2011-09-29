@@ -84,6 +84,8 @@ class SkillsController < ApplicationController
     render :layout => nil
   end
 
+
+
   def drilldown
     @char = CharClass.find(params[:char_class_id])
     @skill = Skill.find(params[:id])

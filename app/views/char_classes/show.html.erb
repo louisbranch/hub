@@ -6,6 +6,7 @@
   <h1><%= @char.name %></h1>
   <p><strong>Resource:</strong> <%= @char.resource %></p>
   <p> <%= @char.description %></p>
+  <h3> <%= link_to "#{@char.name} Builds", builds_char_class_path  %> </h3>
 </div>
 <section id="class_skills">
   <h2>Skills</h2>
@@ -45,7 +46,7 @@
         <ul>
           <li><strong>Runes:</strong></li>
         <% skill.rune_effects.each do |rune_effect| %>
-          <li><%= image_tag(rune_effect.rune.img_url, "data-url" => char_class_skill_rune_effect_path(@char,skill,rune_effect)) %></li>
+          <li><%= image_tag(rune_effect.rune.img_url, "data-tooltip-url" => char_class_skill_rune_effect_path(@char,skill,rune_effect)) %></li>
         <% end %>
         </ul>
       </footer>

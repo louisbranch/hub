@@ -1,8 +1,7 @@
-<h1>Builds</h1>
+<h1><%= "#{@char.name} Builds" %></h1>
 <table id="build_skills_list" class="build_list">
   <tr>
     <th>Title:</th>
-    <th>Class:</th>
     <th>User:</th>
     <th>Active Skills:</th>
     <th>Passive Skills:</th>
@@ -10,7 +9,6 @@
   <% @builds.each do |build| %>
   <tr>
     <td><strong><%= link_to build.name, user_build_url(build.user, build) %></strong></td>
-    <td><%= build.char_class.name %></td>
     <td><%= link_to build.user.name, user_builds_url(build.user) %></td>
     <td>
       <ul>

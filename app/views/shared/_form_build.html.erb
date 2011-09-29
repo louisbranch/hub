@@ -1,17 +1,33 @@
 <%= form_for([@user,@build]) do |form| %>
+  <div id="checklist" style="display:none;">
+    <div>
+    <span>All set?</span>
+      <%= form.submit @form_action, :id => "build_submit" %>
+    </div>
+    <h3>Build checklist:</h3>
+    <ul>
+      <li>Choose up to 6 Active Skills</li>
+      <li>Sock runestones into them;</li>
+      <li>Choose up to 3 Passives Skills;</li>
+    </ul>
+  </div>
   <header id="build_header">
-    <h1 id="build_heading">New Build</h1>
+    <h1 id="build_heading"><%= "New Build" if params[:action] == "new" %> <%= @build.name if params[:action] == "edit" %></h1>
     <div id="error_explanation" style="display:none;"></div>
-    <%= label_tag(:char_class_id) do %>Class: <span id="class_display"></span><% end %>
-    <%= form.submit @form_action, :id => "build_submit", :style => "display:none" %>
+    <%= label_tag(:char_class_id) do %>Class: <span id="class_display"><%= @char.name if params[:action] == "edit" %></span><% end %>
   </header>
   <div id="build_info">
+   <% if params[:action] == "new" -%>
     <div id="class_selection">
-    <% CharClass.all.each do |char| %>
-      <%= label_tag(:char_class_id, "", :for => char.slug, :id => "label_#{char.slug}", "data-name" => char.name, "data-active" => actives_char_class_skills_path(char), "data-passive" => passives_char_class_skills_path(char)) %>
-      <%= form.radio_button(:char_class_id, char.id, :id => char.slug, :checked => false) %>
+      <% CharClass.all.each do |char| %>
+        <%= label_tag(:char_class_id, "", :for => char.slug, :id => "label_#{char.slug}", "data-name" => char.name, "data-active" => actives_char_class_skills_path(char), "data-passive" => passives_char_class_skills_path(char)) %>
+        <%= form.radio_button(:char_class_id, char.id, :id => char.slug, :checked => false) %>
+      <% end %>
+      </div>
+    <% else %>
+      <div id="edit_class" data-name="<%= @char.name %>" data-active="<%= actives_char_class_skills_path(@char) %>" data-passive="<%= passives_char_class_skills_path(@char) %>">
+      </div>
     <% end %>
-    </div>
     <%= label_tag(:name, "Title:") %>
     <%= form.text_field :name %>
     <%= label_tag(:description) do %>Description: <span class="field_optional">(optional)</span><% end %>
@@ -19,11 +35,11 @@
     <%= link_to 'Next', char_class_skills_path(1), :remote => true,  :id => "build_next", :class => "but"  %>
   </div>
   <div id="step_two" style="display:none;">
-    <h2>Active Skills</h2>
     <div id="active_block">
+      <h2>Active Skills</h2>
     </div>
     <ul id="build_skills">
-      <li id="skill_active_1" data-selected="" data-id="skill_1">
+      <li id="skill_active_1" data-selected="" data-slot="skill_1">
         <img src="/assets/skills/empty.png" class="skill_img">
         <img src="/assets/skills/clear_skill.png" class="skill_img" style="display:none;" title="Clear Skill">
         <img src="/assets/runes/rune_empty.png" class="rune_img" title="Add Runestone">
@@ -36,7 +52,7 @@
           <p></p>
         </div>
       </li>
-      <li id="skill_active_2" data-selected="" data-id="skill_2">
+      <li id="skill_active_2" data-selected="" data-slot="skill_2">
         <img src="/assets/skills/empty.png" class="skill_img">
         <img src="/assets/skills/clear_skill.png" class="skill_img" style="display:none;" title="Clear Skill">
         <img src="/assets/runes/rune_empty.png" class="rune_img" title="Add Runestone">
@@ -49,7 +65,7 @@
           <p></p>
         </div>
       </li>
-      <li id="skill_active_3" data-selected="" data-id="skill_3">
+      <li id="skill_active_3" data-selected="" data-slot="skill_3">
         <img src="/assets/skills/empty.png" class="skill_img">
         <img src="/assets/skills/clear_skill.png" class="skill_img" style="display:none;" title="Clear Skill">
         <img src="/assets/runes/rune_empty.png" class="rune_img" title="Add Runestone">
@@ -62,7 +78,7 @@
           <p></p>
         </div>
       </li>
-      <li id="skill_active_4" data-selected="" data-id="skill_4">
+      <li id="skill_active_4" data-selected="" data-slot="skill_4">
         <img src="/assets/skills/empty.png" class="skill_img">
         <img src="/assets/skills/clear_skill.png" class="skill_img" style="display:none;" title="Clear Skill">
         <img src="/assets/runes/rune_empty.png" class="rune_img" title="Add Runestone">
@@ -75,7 +91,7 @@
           <p></p>
         </div>
       </li>
-      <li id="skill_active_5" data-selected="" data-id="skill_5">
+      <li id="skill_active_5" data-selected="" data-slot="skill_5">
         <img src="/assets/skills/empty.png" class="skill_img">
         <img src="/assets/skills/clear_skill.png" class="skill_img" style="display:none;" title="Clear Skill">
         <img src="/assets/runes/rune_empty.png" class="rune_img" title="Add Runestone">
@@ -88,7 +104,7 @@
           <p></p>
         </div>
       </li>
-      <li id="skill_active_6" data-selected="" data-id="skill_6">
+      <li id="skill_active_6" data-selected="" data-slot="skill_6">
         <img src="/assets/skills/empty.png" class="skill_img">
         <img src="/assets/skills/clear_skill.png" class="skill_img" style="display:none;" title="Clear Skill">
         <img src="/assets/runes/rune_empty.png" class="rune_img" title="Add Runestone">
@@ -103,17 +119,60 @@
       </li>
     </ul>
     <div id="drilldown_block">
-      <section data-id="skill_1" style="display: none;" id="drilldown_1"></section>
-      <section data-id="skill_2" style="display: none;" id="drilldown_2"></section>
-      <section data-id="skill_3" style="display: none;" id="drilldown_3"></section>
-      <section data-id="skill_4" style="display: none;" id="drilldown_4"></section>
-      <section data-id="skill_5" style="display: none;" id="drilldown_5"></section>
-      <section data-id="skill_6" style="display: none;" id="drilldown_6"></section>
+      <section data-slot="skill_1" style="display: none;" id="drilldown_1"></section>
+      <section data-slot="skill_2" style="display: none;" id="drilldown_2"></section>
+      <section data-slot="skill_3" style="display: none;" id="drilldown_3"></section>
+      <section data-slot="skill_4" style="display: none;" id="drilldown_4"></section>
+      <section data-slot="skill_5" style="display: none;" id="drilldown_5"></section>
+      <section data-slot="skill_6" style="display: none;" id="drilldown_6"></section>
     </div>
-    <div id="passive_block" style="display:none;"></div>
+    <div id="passive_block">
+      <h2>Passive Skills</h2>
+    </div>
+    <ul id="build_passives">
+      <li id="skill_passive_1" data-selected="" data-slot="skill_1">
+        <img src="/assets/skills/empty_passive.png" class="skill_img">
+        <img src="/assets/skills/clear_passive.png" class="skill_img" style="display:none;" title="Clear Skill">
+        <div>
+          <h5>1st Passive</h5>
+          <p>Unlocked at lvl 10</p>
+        </div>
+        <div style="display:none;">
+          <h5></h5>
+          <p></p>
+        </div>
+      </li>
+      <li id="skill_passive_2" data-selected="" data-slot="skill_2">
+        <img src="/assets/skills/empty_passive.png" class="skill_img">
+        <img src="/assets/skills/clear_passive.png" class="skill_img" style="display:none;" title="Clear Skill">
+        <div>
+          <h5>2nd Passive</h5>
+          <p>Unlocked at lvl 20</p>
+        </div>
+        <div style="display:none;">
+          <h5></h5>
+          <p></p>
+        </div>
+      </li>
+      <li id="skill_passive_3" data-selected="" data-slot="skill_3">
+        <img src="/assets/skills/empty_passive.png" class="skill_img">
+        <img src="/assets/skills/clear_passive.png" class="skill_img" style="display:none;" title="Clear Skill">
+        <div>
+          <h5>3rd Passive</h5>
+          <p>Unlocked at lvl 30</p>
+        </div>
+        <div style="display:none;">
+          <h5></h5>
+          <p></p>
+        </div>
+      </li>
+    </ul>
+    <div id="disclaimer"><strong>Disclaimer:</strong> This information may be different from the game. We will do our best to keep it updated. If you find something amiss, please let us know.</div>
   </div>
-  <%= form.fields_for :build_skills, :remote => true do |builder| %>
-    <%= render "shared/form_build_skills", :form => builder %>
-  <% end %>
+  <div id="skills_final">
+    <%= form.fields_for :build_skills, :remote => true do |builder| %>
+      <%= render "shared/form_build_skills", :form => builder %>
+    <% end %>
+  </div>
 <% end %>
 

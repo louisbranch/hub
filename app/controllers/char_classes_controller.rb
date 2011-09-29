@@ -56,5 +56,9 @@ class CharClassesController < ApplicationController
       redirect_to char_classes_url
     end
   end
-
+  
+  def builds
+    @char = CharClass.find(params[:id])
+    @builds = @char.builds
+  end
 end

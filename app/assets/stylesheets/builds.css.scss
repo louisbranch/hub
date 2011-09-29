@@ -7,9 +7,33 @@ h1.new_title{
     margin: 0;
   }
 
-form#new_build{
-
+form#new_build, form.edit_build{
   input, label{display:block;}
+
+  div#checklist{
+  	float: right;
+  	width: 400px;
+
+  	& h3{
+  		font-size: 15px;
+  	}
+
+  	& ul{
+  		list-style-type: circle;
+
+  		& li{
+  		margin: 2px 0 2px 20px;
+  		font-size: 13px;
+  		}
+  	}
+  	& div {
+  	float: right;
+  		& span{
+  		display: block;
+  		font-weight: bold;
+  		}
+  	}
+  }
 
   span#class_display{
         font-weight: normal;
@@ -41,6 +65,8 @@ form#new_build{
     }
   }
 
+  & div#edit_class{margin: 20px 0;}
+
   & input#build_name, textarea#build_description{
     width: 400px;
   }
@@ -57,7 +83,8 @@ form#new_build{
   }
 
   & div#step_two{
-    margin-top: 30px;
+    margin: 30px 0;
+    float:left;
 
     & h2 { margin-bottom: 20px;}
 
@@ -112,19 +139,52 @@ form#new_build{
 
 	  & div#passive_block{
 	  	clear: both;
+	  	margin-top: 30px;
+	  	width: 250px;
+	  	float: left;
+	  	margin-right: 70px;
 			& li{
 				display: inline-block;
 				cursor: pointer;
 				height: 50px;
+				margin-left: 5px;
+				padding: 2px;
+				&.passive_selected{background-color: #9DC200; border-radius: 25px;}
 				& img {width: 50px;}
 			}
 	  }
+
+	  & ul#build_passives{
+    	width: 405px;
+			float:left;
+			margin-top: 30px;
+    	& li{
+    		float:left;
+    		display: block;
+				width: 385px;
+	    	border-bottom: 1px solid rgba(0,0,0,0.2);
+				box-shadow: 0 1px 0 rgba(255,255,255,0.2);
+				padding: 10px;
+				& img.skill_img{float:left; cursor: pointer;}
+			 	& div{
+	    		float:left;
+					margin: 12px 20px;
+					& h5{
+					font-size: 18px;
+					font-weight: bold;
+					}
+					& p{
+						font-size: 13px;;
+					}
+			 	}
+    	}
+    }
 
 	  & div#drilldown_block{
 	  	float: left;
 	  	width: 250px;
 	  	padding-left: 10px;
-	  	margin-left: 30px;
+	  	margin-left: 10px;
 
 				& section {
 				float: left;
@@ -201,12 +261,22 @@ form#new_build{
 				}
 	  	}
 	  }
+
+	  & div#disclaimer{
+
+	  	clear: both;
+	  	padding-top: 60px;
+	  	font-size: 13px;
+	  }
   }
 }
 
 
 div.skill_tooltip{
-	& img {float: left;}
+	& img {
+	float: left;
+		&.rune_img{padding: 20px 5px 0 0;}
+	}
 	& div{
 		float: left;
 		margin-left: 5px;
@@ -221,6 +291,109 @@ div.skill_tooltip{
 		& h3 { font-size: 18px }
 		& p, & li{
 			margin-bottom: 5px;
+		}
+	
+	&.rune_effect{
+		padding-top: 20px;
+	}
+		
+	}
+}
+
+
+ul.build_active_skills{
+	width: 405px;
+	float:left;
+	padding-bottom: 60px;
+	& h2{ clear: both; padding-top: 40px;}
+	& li{
+		float:left;
+		display: block;
+		width: 385px;
+  	border-bottom: 1px solid rgba(0,0,0,0.2);
+		box-shadow: 0 1px 0 rgba(255,255,255,0.2);
+		padding: 10px;
+	 cursor: pointer;
+		& img.skill_img{float:left;}
+		& img.rune_img{float:right; margin-top: 12px;}
+	 	& div{
+  		float:left;
+			margin: 12px 20px;
+			& h5{
+			font-size: 18px;
+			font-weight: bold;
+			}
+			& p{
+				font-size: 13px;;
+			}
+	 	}
+	}
+}
+
+ul.build_passive_skills{
+	width: 405px;
+	float:left;
+	padding-left: 60px;
+	& h2{ clear: both; padding-top: 40px;}
+	& li{
+		float:left;
+		display: block;
+		width: 385px;
+  	border-bottom: 1px solid rgba(0,0,0,0.2);
+		box-shadow: 0 1px 0 rgba(255,255,255,0.2);
+		padding: 10px;
+		 cursor: pointer;
+		& img.skill_img{float:left;}
+		& img.rune_img{float:right; margin-top: 12px;}
+	 	& div{
+  		float:left;
+			margin: 12px 20px;
+			& h5{
+			font-size: 18px;
+			font-weight: bold;
+			}
+			& p{
+				font-size: 13px;;
+			}
+	 	}
+	}
+}
+
+header.build{
+	ul.build_toolbar{
+	float: right;
+
+		& li{
+			display: inline;
+			& a{font-size: 13px;}
+		}
+	}
+	& p.class_name{ font-size: 18px;}
+	& p.description{ margin-top: 20px; width: 300px;}
+}
+
+table.build_list{
+	
+	margin: 30px 0;
+
+ 	& th{
+		font-size: 16px;
+		padding: 10px 20px;
+	}
+	
+	tr:nth-child(even) {background: rgba(0,0,0,0.1)}
+ 
+ 	& td{
+ 		padding: 10px 20px;
+		& ul{
+			& li{
+				display: inline;
+				& img{
+					width: 30px;
+					cursor: pointer;
+					padding: 0 2px;
+				}
+			}
 		}
 	}
 }

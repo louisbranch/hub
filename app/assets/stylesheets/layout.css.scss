@@ -19,11 +19,13 @@ input, textarea {
   padding: 8px 10px;
   margin: 5px 0 15px;
   font-size: $font_size_default;
+  display:block;
 }
 
 label{
   font-weight: bold;
   font-size: 18px;
+    display:block;
 }
 
 input[type="search"] {
@@ -85,9 +87,15 @@ a.but, input[type="submit"]{
   &:active{ top: 1px;}
 }
 
+h1 a.but{
+	font-size: 14px;
+	vertical-align: middle;
+}
+
 
 #wrapper{
   margin: 0 20px;
+  min-width: 1000px;
 }
 
 header.main{
@@ -180,6 +188,8 @@ footer.main {
   }
 }
 
+/* Flash Messages */
+
 div#flash_alert, div#error_explanation{
   background-color: #860006;
   color: #fff;
@@ -197,3 +207,26 @@ div#flash_alert, div#error_explanation{
     margin-left: 20px;
   }
 }
+
+div#flash_notice{
+	background-color: #E3EBC6;
+	border: 1px solid #C2D288;
+	border-left: 10px solid #C2D288;
+	color: #97AA4F;
+	font-weight: bold;
+	padding: 5px;
+	width: 200px;
+	margin: 10px 0;
+}
+
+div#flash_error{
+	background-color: #F4D0D2;
+	border: 1px solid #F3AEB1;
+	border-left: 10px solid #F3AEB1;
+	color: #B2686B;
+	font-weight: bold;
+	padding: 5px;
+	width: 400px;
+	margin: 10px 0;
+}
+

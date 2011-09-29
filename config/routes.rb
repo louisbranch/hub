@@ -1,7 +1,7 @@
 Hub::Application.routes.draw do
 
   #root :to => 'builds#index', :constraints => lambda {|r| r.env["warden"].authenticate? }
-  #get "/" => 'builds#index', :as => "user_root"
+  #get "/" => 'pages#builds', :as => "user_root"
 
   match "/classes" => redirect("/classes/barbarian")
 
@@ -20,6 +20,9 @@ Hub::Application.routes.draw do
   resources :skill_types
 
   resources :char_classes, :path => "/classes" do
+    member do
+      get 'builds'
+    end
     resources :skills  do
       collection do
         get 'actives'
@@ -29,7 +32,11 @@ Hub::Application.routes.draw do
         get 'tooltip'
         get 'drilldown'
       end
-      resources :rune_effects
+      resources :rune_effects do
+        member do
+           get 'tooltip'
+        end
+      end
     end
   end
 

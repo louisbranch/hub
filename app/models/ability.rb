@@ -8,6 +8,8 @@ class Ability
       can :manage, :all
     else
       can :read, :all
+      can :builds, :all
+      can :tooltip, :all
       can :create, Build
       can :update, Build do |build|
         build.try(:user) == user

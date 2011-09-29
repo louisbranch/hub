@@ -1,3 +1,5 @@
+<div id="fb-root"></div>
+<%= render 'shared/social_plugins' %>
 <header class="main">
   <nav id="login">
     <%= render 'users/menu/registration_items' %>
@@ -10,7 +12,7 @@
   <nav id="menu_top">
    <%= tabs_tag(:builder => ApplicationHelper:: MenuTabBuilder) do |tab| %>
       <%= tab.mybuilds   'My Builds', user_builds_path(current_user) if user_signed_in? %>
-      <%= tab.allbuilds 'All Builds', builds_path %>
+      <%= tab.allbuilds 'Builds', builds_path %>
       <%= tab.classes   'Classes', char_classes_path %>
     <% end %>
   </nav>

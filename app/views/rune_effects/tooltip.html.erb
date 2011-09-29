@@ -1,0 +1,25 @@
+<div class="skill_tooltip">
+  <%= image_tag(@skill.img_url, :class => "skill_img") %>
+  <div>
+    <h3 class="skill_name"><%= @skill.name %></h3>
+    <p>lvl <%= @skill.level %> - <%= @skill.skill_type.name %></p>
+    <ul class="skill_details">
+      <% if @skill.cost? %>
+        <li><strong>Cost:</strong> <%= @skill.cost %></li>
+      <% end %>
+      <% if @skill.generate? %>
+        <li><strong>Generate:</strong> <%= @skill.generate %></li>
+      <% end %>
+      <% if @skill.cooldown? %>
+        <li><strong>Cooldown:</strong> <%= @skill.cooldown %></li>
+      <% end %>
+    </ul>
+    <p class="description"><%= @skill.description %></p>
+  </div>
+   <%= image_tag(@rune.img_url, :class => "rune_img") %>
+   <div class="rune_effect">
+    <h4><%= @rune_effect.name %></h4>
+    <p class="description"><%= @rune_effect.description %></p>
+  </div>
+</div>
+

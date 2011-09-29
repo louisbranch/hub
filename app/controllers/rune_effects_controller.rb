@@ -69,5 +69,13 @@ class RuneEffectsController < ApplicationController
     end
   end
 
+  def tooltip
+    @char = CharClass.find(params[:char_class_id])
+    @skill = Skill.find(params[:skill_id])
+    @rune_effect = RuneEffect.find(params[:id])
+    @rune = @rune_effect.rune
+    render :layout => nil
+  end
+
 end
 

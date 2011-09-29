@@ -17,27 +17,20 @@
   </div>
 </div>
 <div id="block_builds">
-  <div id="top_builds">
-    <h3>Top Builds</h3>
+  <div id="popular_builds">
+    <h3>Popular Builds</h3>
     <ul>
-      <% @chars.each do |char| %>
-      <li>
-        <%= link_to(char_class_url(char), :class=>"button small-button green-button") do %>
-        <%= char.name %>
-        <span class="build_count"><%= char.skills.count %></span>
-        <% end %>
-      </li>
-      <% end %>
+      <li>Comming Soon...</li>
     </ul>
   </div>
-  <div id="trending_builds">
-    <h3>Trending Builds</h3>
+  <div id="new_builds">
+    <h3>New Builds</h3>
     <ul>
-      <% @chars.each do |char| %>
+      <% @newbuilds.each do |newbuild| %>
       <li>
-        <%= link_to(char_class_url(char), :class=>"button small-button green-button") do %>
-        <%= char.name %>
-        <span class="build_count"><%= char.skills.count %></span>
+        <%= link_to(user_build_path(newbuild.user, newbuild)) do %>
+        <%= newbuild.name.truncate(20) %>
+        <span class="build_class"><%= newbuild.char_class.name %></span>
         <% end %>
       </li>
       <% end %>
@@ -48,9 +41,9 @@
     <ul>
       <% @chars.each do |char| %>
       <li>
-        <%= link_to(char_class_url(char), :class=>"button small-button green-button") do %>
+        <%= link_to(builds_char_class_path(char)) do %>
         <%= char.name %>
-        <span class="build_count"><%= char.skills.count %></span>
+        <span class="build_count"><%= char.builds.count %></span>
         <% end %>
       </li>
       <% end %>

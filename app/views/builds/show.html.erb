@@ -1,16 +1,54 @@
 <% flash.each do |name, msg| %>
   <%= content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String) %>
 <% end %>
-<h1> <%= @build.name %></h1>
-<h2> <%= @build.description %></h2>
-<%= link_to "Edit", edit_user_build_url %>
-<%= link_to "Fork", new_fork_build_url(:id => @build.id) %>
-<h2>Skills:</h2>
-<table>
-  <% @skills.each do |skills| %>
-  <tr>
-    <td><%= skills.skill.name %></td>
-    <td><%= skills.rune.name unless skills.rune.blank? %></td>
-  </tr>
-  <% end %>
-</table>
+<header class="build">
+  <ul class="build_toolbar">
+    <li><fb:like href="<%= request.url %>" send="true" layout="button_count" width="90" show_faces="false" colorscheme="dark"></fb:like></li>
+  </ul>
+  <% if @user != current_user %>
+    <div id="breadcrumb">
+      <%= link_to @user.name, user_builds_path(@user) %> ::
+    </div>
+  <% end -%>
+  <h1><%= @build.name %> <span><%= link_to "Edit", edit_user_build_path, :class => "but" if @user == current_user %><span></h1>
+  <p class="class_name"><strong>Class:</strong> <%= @build.char_class.name %></p>
+  <p class="description"><%= @build.description if @build.description %></p>
+</header>
+<div id="build_skills_list">
+  <ul class="build_active_skills">
+    <h2>Active Skills:</h2>
+    <% @build_skills.each do |build_skill| %>
+      <% if build_skill.skill && !build_skill.skill.passive? -%>
+      <% if build_skill.rune -%>
+        <li data-tooltip-url="<%= tooltip_char_class_skill_rune_effect_path(@build.char_class,build_skill.skill,build_skill.effect) %>">  
+      <% else -%>
+        <li data-tooltip-url="<%= tooltip_char_class_skill_path(@build.char_class,build_skill.skill) %>">
+      <% end -%>
+        <%= image_tag(build_skill.skill.img_url, :class => "skill_img" )%>
+          <% if build_skill.rune -%>
+            <%= image_tag(build_skill.rune.img_url, :class => "rune_img" )%>
+          <% else -%>
+           <img src="/assets/runes/rune_empty.png" class="rune_img">
+          <% end -%>
+        <div>
+          <h5><%= build_skill.skill.name %></h5>
+          <p><%= "lvl #{build_skill.skill.level} - #{build_skill.skill.skill_type.name}" %></p>
+        </div>
+     <% end -%>
+   <% end -%>
+  </ul>
+  <ul class="build_passive_skills">
+    <h2>Passive Skills:</h2>
+    <% @build_skills.each do |build_skill| %>
+      <% if build_skill.skill && build_skill.skill.passive? -%>
+      <li data-tooltip-url="<%= tooltip_char_class_skill_path(@build.char_class,build_skill.skill) %>">
+        <%= image_tag(build_skill.skill.img_url, :class => "skill_img" )%>
+        <div>
+          <h5><%= build_skill.skill.name %></h5>
+          <p><%= "lvl #{build_skill.skill.level}" %></p>
+        </div>
+     <% end -%>
+    <% end -%>
+  </ul>
+</div>
+

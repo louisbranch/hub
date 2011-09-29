@@ -7,6 +7,8 @@ class Skill < ActiveRecord::Base
   has_many :runes, :through => :rune_effects
   has_many :builds, :through => :buil_skills
   
+  default_scope order(:level)
+  
   def passive?
     skill_type.name == "Passive"
   end
