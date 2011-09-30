@@ -9,31 +9,45 @@ h1.new_title{
 
 form#new_build, form.edit_build{
   input, label{display:block;}
+  
+  header#build_header{
+  	
+  	width: 730px;
+  
+		& h1{
+			float: left;
+			width: 300px;
+		}
+		
+		& label{ clear:left;}
+	
+		div#checklist{
+			float: right;
+			width: 400px;
 
-  div#checklist{
-  	float: right;
-  	width: 400px;
+			& h3{
+				font-size: 15px;
+			}
 
-  	& h3{
-  		font-size: 15px;
-  	}
+			& ul{
+				list-style-type: circle;
 
-  	& ul{
-  		list-style-type: circle;
-
-  		& li{
-  		margin: 2px 0 2px 20px;
-  		font-size: 13px;
-  		}
-  	}
-  	& div {
-  	float: right;
-  		& span{
-  		display: block;
-  		font-weight: bold;
-  		}
-  	}
+				& li{
+				margin: 2px 0 2px 20px;
+				font-size: 13px;
+				}
+			}
+			& div {
+			float: right;
+				& span{
+				display: block;
+				font-weight: bold;
+				}
+			}
+		}
   }
+  
+  div#build_info, div#error_explanation{clear: both;}
 
   span#class_display{
         font-weight: normal;

@@ -1,18 +1,18 @@
 <%= form_for([@user,@build]) do |form| %>
-  <div id="checklist" style="display:none;">
-    <div>
-    <span>All set?</span>
-      <%= form.submit @form_action, :id => "build_submit" %>
-    </div>
-    <h3>Build checklist:</h3>
-    <ul>
-      <li>Choose up to 6 Active Skills</li>
-      <li>Sock runestones into them;</li>
-      <li>Choose up to 3 Passives Skills;</li>
-    </ul>
-  </div>
   <header id="build_header">
     <h1 id="build_heading"><%= "New Build" if params[:action] == "new" %> <%= @build.name if params[:action] == "edit" %></h1>
+    <div id="checklist" style="display:none;">
+      <div>
+      <span>All set?</span>
+        <%= form.submit @form_action, :id => "build_submit" %>
+      </div>
+      <h3>Build checklist:</h3>
+      <ul>
+        <li>Choose up to 6 Active Skills</li>
+        <li>Sock runestones into them;</li>
+        <li>Choose up to 3 Passives Skills;</li>
+      </ul>
+    </div>
     <div id="error_explanation" style="display:none;"></div>
     <%= label_tag(:char_class_id) do %>Class: <span id="class_display"><%= @char.name if params[:action] == "edit" %></span><% end %>
   </header>
