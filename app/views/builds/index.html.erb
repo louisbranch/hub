@@ -12,50 +12,55 @@
   <%= link_to "New Build", new_user_build_path(@user), :class => "but" %>
 <% end %>
 
-<table id="build_skills_list" class="build_list">
-  <tr>
-    <th>Title:</th>
-    <th>Class:</th>
-    <th>Active Skills:</th>
-    <th>Passive Skills:</th>
-    <th></th>
-    <th></th>
-  </tr>
-  <% @user.builds.each do |build| %>
-  <tr>
-    <td><strong><%= link_to build.name, user_build_url(@user, build) %></strong></td>
-    <td><%= build.char_class.name %></td>
-    <td>
-      <ul>
+<% if !@user.builds.empty? %>
+  <table id="build_skills_list" class="build_list">
+    <tr>
+      <th>Title:</th>
+      <th>Class:</th>
+      <th>Active Skills:</th>
+      <th>Passive Skills:</th>
+      <th></th>
+      <th></th>
+    </tr>
+    <% @user.builds.each do |build| %>
+    <tr>
+      <td><strong><%= link_to build.name, user_build_url(@user, build) %></strong></td>
+      <td><%= build.char_class.name %></td>
+      <td>
+        <ul>
+          <% build.build_skills.each do |build_skill| %>
+            <% if build_skill.skill && !build_skill.skill.passive? -%>
+             <% if build_skill.rune -%>
+              <li data-tooltip-url="<%= tooltip_char_class_skill_rune_effect_path(build.char_class,build_skill.skill,build_skill.effect) %>">  
+            <% else -%>
+              <li data-tooltip-url="<%= tooltip_char_class_skill_path(build.char_class,build_skill.skill) %>">
+            <% end -%>
+                <%= image_tag(build_skill.skill.img_url, :class => "skill_img" )%>
+              </li>
+            <% end -%>
+          <% end -%>
+        </ul>
+      </td>
+      <td>
+        <ul>
         <% build.build_skills.each do |build_skill| %>
-          <% if build_skill.skill && !build_skill.skill.passive? -%>
-           <% if build_skill.rune -%>
-            <li data-tooltip-url="<%= tooltip_char_class_skill_rune_effect_path(build.char_class,build_skill.skill,build_skill.effect) %>">  
-          <% else -%>
-            <li data-tooltip-url="<%= tooltip_char_class_skill_path(build.char_class,build_skill.skill) %>">
+            <% if build_skill.skill && build_skill.skill.passive? -%>
+              <li data-tooltip-url="<%= tooltip_char_class_skill_path(build.char_class,build_skill.skill) %>">
+                <%= image_tag(build_skill.skill.img_url, :class => "skill_img" )%>
+              </li>
+            <% end -%>
           <% end -%>
-              <%= image_tag(build_skill.skill.img_url, :class => "skill_img" )%>
-            </li>
-          <% end -%>
-        <% end -%>
-      </ul>
-    </td>
-    <td>
-      <ul>
-      <% build.build_skills.each do |build_skill| %>
-          <% if build_skill.skill && build_skill.skill.passive? -%>
-            <li data-tooltip-url="<%= tooltip_char_class_skill_path(build.char_class,build_skill.skill) %>">
-              <%= image_tag(build_skill.skill.img_url, :class => "skill_img" )%>
-            </li>
-          <% end -%>
-        <% end -%>
-      </ul>
-    </td>
-    <% if @user == current_user %>
-    <td><%= link_to "Edit", edit_user_build_url(@user, build) %></td>
-    <td><%= link_to "Delete", user_build_url(@user, build), :method => :delete %></td>
-    <% end -%>
-  </tr>
-  <% end %>
-</table>
+        </ul>
+      </td>
+      <% if @user == current_user %>
+      <td><%= link_to "Edit", edit_user_build_url(@user, build) %></td>
+      <td><%= link_to "Delete", user_build_url(@user, build), :method => :delete %></td>
+      <% end -%>
+    </tr>
+    <% end %>
+  </table>
+<% end -%>
+<% if @user != current_user && @user.builds.empty? %>
+  <p>This seems more empty than Tristram! </p> 
+<% end -%>
 
