@@ -2,7 +2,7 @@ class PagesController < ApplicationController
   set_tab :allbuilds
   
   def index
-    @title = "Create, share and discovery Diablo 3 builds"
+    @title = "Create, share and discover Diablo 3 builds"
     @chars = CharClass.all
     @newbuilds = Build.order("created_at DESC").limit(5)
     render :layout => "home"
@@ -11,7 +11,7 @@ class PagesController < ApplicationController
   def builds
   
     @title = "Explore all Diablo 3 builds"
-    @builds = Build.limit(50)
+    @builds = Build.order("updated_at DESC").limit(50)
   end
   
 end
