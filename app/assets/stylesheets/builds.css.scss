@@ -401,9 +401,10 @@ table.build_list{
  		padding: 10px 20px;
 		& ul{
 			& li{
-				display: inline;
+				display: inline-block;				
 				& img{
 					width: 30px;
+					height: 30px;
 					cursor: pointer;
 					padding: 0 2px;
 				}
