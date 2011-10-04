@@ -9,7 +9,6 @@ class PagesController < ApplicationController
   end
   
   def builds
-  
     @title = "Explore all Diablo 3 builds"
     @builds = Build.order("updated_at DESC").limit(50)
   end

@@ -15,6 +15,7 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :name, :email, :password, :password_confirmation, :remember_me
   
-  has_many :builds, :foreign_key => "user_id", :dependent => :destroy
+  has_many :builds, :dependent => :destroy
+  has_many :comments, :dependent => :destroy
   accepts_nested_attributes_for :builds
 end

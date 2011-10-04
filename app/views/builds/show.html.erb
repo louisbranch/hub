@@ -52,3 +52,28 @@
   </ul>
 </div>
 
+<ul id="build_comments_list">
+  <h2><%= pluralize(@comments.length, 'Comment') -%> </h2>
+  <% if !@comments.empty? -%>
+    <% @comments.each do |comment| -%>
+      <li>
+        <header><strong><%= link_to comment.user.name, user_path(comment.user) %></strong> said:</header>
+        <div><%= simple_format(comment.content) %></div>
+        <footer>
+          <div><%= distance_of_time_in_words(comment.created_at, Time.now, include_seconds = false, options = {}) %> ago </div>
+          <%= link_to 'Edit', edit_user_build_comment_path(@user,@build,comment) if can? :edit, comment %>
+          <%= link_to "Delete", user_build_comment_path(@user,@build,comment), :method => :delete if can? :destroy, comment %>
+        </footer>
+      </li>
+    <% end -%>
+  <% end -%>
+</ul>
+
+<% if user_signed_in? -%>
+  <%= link_to 'New Comment', new_user_build_comment_path(@user,@build), :id => "new_comment", :class => "but", :remote => true %>
+<% else -%>
+  <%= link_to 'New Comment', new_user_build_comment_path(@user,@build), :id => "new_comment", :class => "but"%>
+<% end -%>
+<div id="comment_form" style="display:none;">
+  <h3>New Comment </h3>
+</div>

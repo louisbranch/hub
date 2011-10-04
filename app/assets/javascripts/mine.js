@@ -5,6 +5,7 @@ window.onload = function(){
     buildClassSelector();
     buildSubmit();
     skillsHover();
+
 }
 
 function quotes(){
@@ -549,3 +550,19 @@ function skillsHover(){
 	}
 }
 
+function newComment(){
+	if(document.getElementById("new_comment")){
+		var new_comment = document.getElementById("new_comment");
+		var build_comments_list = document.getElementById("build_comments_list");
+		var url = new_comment.getAttribute("href");
+		new_comment.onclick = function(){
+			$.ajax({
+				url: url,
+				success: function(data){
+					new_comment.style.display = "none";
+					$(build_comments_list).append(data);
+				}	
+			});
+		}	
+	}
+}

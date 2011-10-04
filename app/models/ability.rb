@@ -13,6 +13,15 @@ class Ability
       can :actives, :all
       can :passives, :all
       can :drilldown, :all
+      
+      can :create, Comment
+      can :update, Comment do |comment|
+        comment.try(:user) == user
+      end
+      can :destroy, Comment do |comment|
+        comment.try(:user) == user
+      end
+      
       can :create, Build
       can :update, Build do |build|
         build.try(:user) == user

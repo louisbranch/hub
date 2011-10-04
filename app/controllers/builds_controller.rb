@@ -1,6 +1,8 @@
 class BuildsController < ApplicationController
   before_filter :authenticate_user!, :except => [:index, :show]
-  load_and_authorize_resource
+  load_and_authorize_resource :user
+  load_and_authorize_resource :build, :through => :user
+  
   respond_to :html, :xml, :json
   set_tab :allbuilds
   set_tab :mybuilds, :if => :current_user?
@@ -35,6 +37,7 @@ class BuildsController < ApplicationController
     @user = User.find(params[:user_id])
     @build = Build.find(params[:id])
     @build_skills = @build.build_skills
+    @comments = @build.comments
   end
 
   def edit

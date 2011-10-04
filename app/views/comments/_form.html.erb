@@ -1,0 +1,5 @@
+<%= form_for ([@user,@build,@comment]), :validate => true do |form| %>
+  <%= form.text_area :content %>
+  <%= form.submit @form_action %>
+<% end %>
+

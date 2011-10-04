@@ -24,9 +24,9 @@ gem "cancan"
 gem 'client_side_validations'
 gem 'devise'
 gem 'execjs'
+gem 'friendly_id', "~> 4.0.0.beta8"
 gem 'tabs_on_rails'
 gem 'therubyracer'
-gem 'friendly_id', "~> 4.0.0.beta8"
 
 # Use unicorn as the web server
 # gem 'unicorn'

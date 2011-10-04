@@ -383,7 +383,7 @@ header.build{
 		}
 	}
 	& p.class_name{ font-size: 18px;}
-	& p.description{ margin-top: 20px; width: 600px;}
+	& p.description{ margin-top: 20px; width: 810px;}
 }
 
 table.build_list{
@@ -413,3 +413,34 @@ table.build_list{
 	}
 }
 
+ul#build_comments_list{
+	width: 810px;
+	clear: both;
+	& li{
+		border-bottom: 1px solid rgba(0,0,0,0.2);
+		box-shadow: 0 1px 0 rgba(255,255,255,0.2);
+		padding: 10px;
+		margin-bottom: 20px;
+		& div{
+			margin: 10px 0;
+		}
+		& footer{
+			font-size: 12px;
+			margin-bottom: 20px;
+		}
+	}
+}
+
+div#comment_form{
+	& h3{
+		font-size: 18px;
+		margin-bottom: 10px;
+	}
+	& textarea{
+		width: 810px;
+		height: 100px;
+	}
+	& input{
+		display: block;
+	}
+}
