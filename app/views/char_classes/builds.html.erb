@@ -12,7 +12,7 @@
         <%= link_to build.name, user_build_path(build.user, build) %>
       </div>
       <div class="description">
-        <%= build.description.truncate(100) %>
+        <%= build.description.truncate(90) %>
       </div>
       <div class="build_info">
         Updated <%= distance_of_time_in_words(build.updated_at, Time.now) %> ago by <%= link_to build.user.name, user_path(build.user) %>

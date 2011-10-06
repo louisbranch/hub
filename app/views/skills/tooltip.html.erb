@@ -14,7 +14,7 @@
         <li><strong>Cooldown:</strong> <%= @skill.cooldown %></li>
       <% end %>
     </ul>
-    <p class="description"><%= @skill.description %></p>
+    <p class="description"><%= highlight_digits(@skill.description)  %></p>
   </div>
 </div>
 

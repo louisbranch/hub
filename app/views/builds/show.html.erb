@@ -12,7 +12,9 @@
   <% end -%>
   <h1><%= @build.name %> <span><%= link_to "Edit", edit_user_build_path, :class => "but" if @user == current_user %><span></h1>
   <p class="class_name"><strong>Class:</strong> <%= @build.char_class.name %></p>
-  <p class="description"><%= @build.description if @build.description %></p>
+  <div class="description">
+    <%= simple_format(@build.description) if @build.description %>
+  </div>
 </header>
 <div id="build_skills_list">
   <ul class="build_active_skills">

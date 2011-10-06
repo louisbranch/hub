@@ -383,7 +383,13 @@ header.build{
 		}
 	}
 	& p.class_name{ font-size: 18px;}
-	& p.description{ margin-top: 20px; width: 810px;}
+	& div.description{
+		margin-top: 20px;
+		width: 810px;
+		& p + p {
+			margin-top: 5px;
+		}
+	}
 }
 
 ul#build_filter{

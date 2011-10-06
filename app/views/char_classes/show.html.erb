@@ -39,7 +39,7 @@
             <li><strong>Cooldown:</strong> <%= skill.cooldown %></li>
           <% end %>
         </ul>
-        <span><%= skill.description %></span>
+        <span><%= highlight_digits(skill.description) %></span>
       </div>
       <% if !skill.rune_effects.empty? %>
       <footer>

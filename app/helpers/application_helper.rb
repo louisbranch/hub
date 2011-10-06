@@ -30,6 +30,14 @@ module ApplicationHelper
   def array_runes
     rune_array = Rune.all.map { |rune| [rune.name, rune.id] }
   end
+  
+  def highlight_digits(text)
+  # Based on ActionView::Helpers::TextHelper#highlight
+    highlighter = '<mark>\1</mark>'
+    matcher = /(\d+%?)(?!(?:[^<]*?)(?:["'])[^<>]*>)/
+    text.gsub(matcher, highlighter).html_safe
+  end
+    
 
   class MenuTabBuilder < TabsOnRails::Tabs::Builder
     def tab_for(tab, name, options)

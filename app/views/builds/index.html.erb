@@ -27,7 +27,7 @@
         <%= link_to build.name, user_build_path(build.user, build) %>
       </div>
       <div class="description">
-        <%= build.description.truncate(100) %>
+        <%= build.description.truncate(60) %>
       </div>
       <div class="build_info">
         Updated <%= distance_of_time_in_words(build.updated_at, Time.now) %> ago
@@ -68,8 +68,7 @@
       </ul>
       </td>
       <% if @user == current_user %>
-      <td><%= link_to "Edit", edit_user_build_url(@user, build) %></td>
-      <td><%= link_to "Delete", user_build_url(@user, build), :method => :delete %></td>
+      <td><%= link_to "Edit", edit_user_build_url(@user, build) %> <%= link_to "Delete", user_build_url(@user, build), :confirm => "Are you sure?", :method => :delete%></td>
       <% end -%>
     </tr>
     <% end %>
