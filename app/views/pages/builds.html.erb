@@ -1,17 +1,36 @@
 <h1>Builds</h1>
+<ul id="build_filter">
+  <li><strong>Filters:</strong></li> 
+  <li><%= select_tag("filter_class", options_for_select(array_chars), :prompt => "All Classes")%></li>
+</ul>
 <table id="build_skills_list" class="build_list">
   <tr>
-    <th>Title:</th>
-    <th>Class:</th>
-    <th>User:</th>
-    <th>Active Skills:</th>
-    <th>Passive Skills:</th>
+    <th id="th_build">Build:</th>
+    <th id="th_class">Class:</th>
+    <th id="th_active_skills">Active Skills:</th>
+    <th id="th_passive_skills">Passive Skills:</th>
   </tr>
   <% @builds.each do |build| %>
-  <tr>
-    <td><strong><%= link_to build.name, user_build_url(build.user, build) %></strong></td>
-    <td><%= build.char_class.name %></td>
-    <td><%= link_to build.user.name, user_builds_url(build.user) %></td>
+  <tr data-class-id="<%= build.char_class.id %>" class="visible">
+    <td>
+      <div class="title">
+        <%= link_to build.name, user_build_path(build.user, build) %>
+      </div>
+      <div class="description">
+        <%= build.description.truncate(100) %>
+      </div>
+      <div class="build_info">
+        Updated <%= distance_of_time_in_words(build.updated_at, Time.now) %> ago by <%= link_to build.user.name, user_path(build.user) %>
+      </div>
+    </td>
+    <td>
+      <div class="class_name">
+        <%= link_to build.char_class.name, builds_char_class_path(build.char_class) %>
+      </div>
+      <div class="build_details">
+        <%# link_to "PvP", builds_char_class_path(build.char_class) %>
+      </div>
+    </td>
     <td>
       <ul>
         <% build.build_skills.each do |build_skill| %>

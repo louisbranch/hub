@@ -17,15 +17,16 @@ class CommentsController < ApplicationController
   def create
     @user = User.find(params[:user_id])
     @build = Build.find(params[:build_id])
+    @comments = @build.comments
     @commenter = current_user
     params[:comment][:user_id] = current_user.id
     @comment = @build.comments.build(params[:comment])
     if @comment.save
       if @user.comment_alert?
-        UserMailer.comment_notification(@user,@build,@commenter).deliver
+        #UserMailer.comment_notification(@user,@build,@commenter).deliver
       end
       flash[:notice] = "Comment posted!"
-      respond_with(@build, :location => user_build_path(@user,@build))
+      
     else
       flash[:error] = "Bummer! Something went wrong!"
       redirect_to user_build_path(@user,@build)

@@ -53,7 +53,7 @@
 </div>
 
 <ul id="build_comments_list">
-  <h2><%= pluralize(@comments.length, 'Comment') -%> </h2>
+  <h2 id="comments_count"><%= pluralize(@comments.length, 'Comment') -%> </h2>
   <% if !@comments.empty? -%>
     <% @comments.each do |comment| -%>
       <li>
@@ -68,12 +68,11 @@
     <% end -%>
   <% end -%>
 </ul>
-
-<% if user_signed_in? -%>
-  <%= link_to 'New Comment', new_user_build_comment_path(@user,@build), :id => "new_comment", :class => "but", :remote => true %>
-<% else -%>
-  <%= link_to 'New Comment', new_user_build_comment_path(@user,@build), :id => "new_comment", :class => "but"%>
-<% end -%>
+  <% if user_signed_in? -%>
+    <%= link_to 'New Comment', new_user_build_comment_path(@user,@build), :id => "new_comment", :class => "but", :remote => true %>
+  <% else -%>
+    <%= link_to 'New Comment', new_user_build_comment_path(@user,@build), :id => "new_comment", :class => "but" %>
+  <% end -%>
 <div id="comment_form" style="display:none;">
   <h3>New Comment </h3>
 </div>

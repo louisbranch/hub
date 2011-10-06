@@ -386,19 +386,51 @@ header.build{
 	& p.description{ margin-top: 20px; width: 810px;}
 }
 
+ul#build_filter{
+	li{
+		display: inline;
+		margin-right: 10px;
+	}
+}
+
 table.build_list{
 	
 	margin: 30px 0;
+	width: 800px;
 
  	& th{
 		font-size: 16px;
-		padding: 10px 20px;
+		padding: 10px 10px;
+		&#th_build{}
+		&#th_class{width: 120px;}
+		&#th_active_skills{width: 120px;}
+		&#th_passive_skills{width: 120px;}
 	}
 	
-	tr:nth-child(even) {background: rgba(0,0,0,0.1)}
+	tr{border-bottom: 1px solid rgba(0,0,0,0.2)}
  
  	& td{
- 		padding: 10px 20px;
+ 		padding: 10px 10px;
+ 		& div {
+ 			&.title{
+ 			font-size: 16px;
+ 			font-weight: bold;
+			margin-bottom: 5px;
+ 			}
+ 			&.description{
+ 				font-size: 14px;
+ 			}
+ 			&.build_info{
+ 				margin-top: 5px;
+ 				font-size: 12px;
+ 			}
+ 			&.class_name{
+ 				font-weight: bold;
+ 			}
+ 			&.build_details{
+ 				font-size: 14px;
+ 			}
+ 		}
 		& ul{
 			& li{
 				display: inline-block;				

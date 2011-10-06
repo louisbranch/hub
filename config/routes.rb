@@ -1,8 +1,17 @@
 Hub::Application.routes.draw do
+  
+  #root :to => 'pages#builds', :constraints => lambda {|r| r.env["warden"].authenticate? }
+  root :to => 'pages#index'
+
+  #get "/" => 'pages#builds', :as => "user_root"
 
   match "/classes" => redirect("/classes/barbarian")
 
   match "/users/:id(.:format)" => redirect("/users/%{id}/builds")
+  
+  namespace :user do
+    root :to => "pages#builds"
+  end
 
   devise_for :users, :path_prefix => 'd'
 
@@ -40,8 +49,6 @@ Hub::Application.routes.draw do
   end
 
   match "/builds" => "pages#builds"
-
-  root :to => "pages#index"
 
 end
 

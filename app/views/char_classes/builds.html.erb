@@ -1,15 +1,23 @@
 <h1><%= "#{@char.name} Builds" %></h1>
 <table id="build_skills_list" class="build_list">
   <tr>
-    <th>Title:</th>
-    <th>User:</th>
-    <th>Active Skills:</th>
-    <th>Passive Skills:</th>
+    <th id="th_build">Build:</th>
+    <th id="th_active_skills">Active Skills:</th>
+    <th id="th_passive_skills">Passive Skills:</th>
   </tr>
   <% @builds.each do |build| %>
-  <tr>
-    <td><strong><%= link_to build.name, user_build_url(build.user, build) %></strong></td>
-    <td><%= link_to build.user.name, user_builds_url(build.user) %></td>
+  <tr data-class-id="<%= build.char_class.id %>" class="visible">
+    <td>
+      <div class="title">
+        <%= link_to build.name, user_build_path(build.user, build) %>
+      </div>
+      <div class="description">
+        <%= build.description.truncate(100) %>
+      </div>
+      <div class="build_info">
+        Updated <%= distance_of_time_in_words(build.updated_at, Time.now) %> ago by <%= link_to build.user.name, user_path(build.user) %>
+      </div>
+    </td>
     <td>
       <ul>
         <% build.build_skills.each do |build_skill| %>

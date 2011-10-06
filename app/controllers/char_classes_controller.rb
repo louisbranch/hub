@@ -28,6 +28,7 @@ class CharClassesController < ApplicationController
     @chars = CharClass.all
     @char = CharClass.find(params[:id])
     @skills = @char.skills
+    @title = "#{@char.name} - Explore all skills from Diablo 3"
   end
   
   def edit
@@ -60,5 +61,6 @@ class CharClassesController < ApplicationController
   def builds
     @char = CharClass.find(params[:id])
     @builds = @char.builds
+    @title = "#{@char.name} - Explore all builds from Diablo 3"
   end
 end

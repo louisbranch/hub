@@ -8,6 +8,12 @@ module ApplicationHelper
       "#{base_title} :: #{@title}"
     end
   end
+  
+  def description
+    if !@description.nil?
+      @description
+    end
+  end
 
   def array_chars
     char_array = CharClass.all.map { |char| [char.name, char.id] }

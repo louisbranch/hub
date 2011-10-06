@@ -8,11 +8,13 @@ class BuildsController < ApplicationController
   set_tab :mybuilds, :if => :current_user?
 
   def index
+    @title = "Explore the Diablo 3 builds of #{@user.name}"
     @user = User.find(params[:user_id])
     respond_with(@builds = @user.builds)
   end
 
   def new
+    @title = "New build"
     @user = User.find(current_user.id)
     @build = @user.builds.build
     9.times do
@@ -38,9 +40,12 @@ class BuildsController < ApplicationController
     @build = Build.find(params[:id])
     @build_skills = @build.build_skills
     @comments = @build.comments
+    @title = "#{@build.name} #{@build.char_class.name} built by #{@user.name}"
+    @description = @build.description.truncate(150)
   end
 
   def edit
+    @title = "Edit Build"
     @user = User.find(params[:user_id])
     @build = @user.builds.find(params[:id])
     @char = @build.char_class

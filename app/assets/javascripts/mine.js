@@ -5,7 +5,7 @@ window.onload = function(){
     buildClassSelector();
     buildSubmit();
     skillsHover();
-
+		buildFilter();
 }
 
 function quotes(){
@@ -550,19 +550,30 @@ function skillsHover(){
 	}
 }
 
-function newComment(){
-	if(document.getElementById("new_comment")){
-		var new_comment = document.getElementById("new_comment");
-		var build_comments_list = document.getElementById("build_comments_list");
-		var url = new_comment.getAttribute("href");
-		new_comment.onclick = function(){
-			$.ajax({
-				url: url,
-				success: function(data){
-					new_comment.style.display = "none";
-					$(build_comments_list).append(data);
-				}	
-			});
-		}	
+function buildFilter(){
+	if(document.getElementById("filter_class")){
+		var filter = document.getElementById("filter_class");
+		var skills_list = document.getElementById("build_skills_list");
+		var trs = skills_list.getElementsByTagName("tr");
+		filter.onchange = function(){
+			var char_id = filter.options[filter.selectedIndex].value
+			if (char_id){
+				for(var i=0;i<trs.length;i++){
+					if(trs[i].getAttribute("data-class-id")){
+						if(trs[i].getAttribute("data-class-id") == char_id){
+							trs[i].style.display = "";
+						}
+						else{
+							trs[i].style.display = "none";
+						}
+					}
+				}
+			}
+			else{
+				for(var i=0;i<trs.length;i++){
+					trs[i].style.display = "";
+				}
+			}
+		}
 	}
 }

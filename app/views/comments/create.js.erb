@@ -1,0 +1,6 @@
+/* Replace the count of comments */
+$("#comments_count").html("<%= pluralize(@comments.length, 'Comment') %>");
+
+/* Reset the comment form */
+$("#comment_form").hide();
+$("#new_comment").show();
