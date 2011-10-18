@@ -2,9 +2,30 @@
   <%= content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String) %>
 <% end %>
 <header class="build">
-  <ul class="build_toolbar">
-    <li><fb:like href="<%= request.url %>" send="true" layout="button_count" width="90" show_faces="false" colorscheme="dark"></fb:like></li>
-  </ul>
+  <div id="build_like_box">
+    <span id="build_rate_title">Approval Rate:</span>
+    <div id="build_rate"><%= @build.thumbs_rate %>%</div>
+    <div id="build_thumbs">
+      <span id="thumbs_up"><%= @build.thumbs_up %> likes</span>
+      <span id="thumbs_down"><%= @build.thumbs_down %> dislikes</span>
+    </div>
+    <% if user_signed_in? -%>
+      <% if current_user.has_voted?(@build) -%>
+        <div id="build_like_vote">Voted:</div>
+        <% else -%>
+        <div id="build_like_vote">Vote:</div>
+      <% end -%>
+    <div id="like_form">
+      <%= render :partial => "likes/form" %>
+    </div>
+    <% else -%>
+      <div id="build_like_vote">Vote:</div>
+      <%= link_to(login_user_build_path(@user,@build, :location => "")) do %>
+        <span id="label_like"></span>
+        <span id="label_dislike"></span>
+      <% end %>
+    <% end -%>
+  </div>
   <% if @user != current_user %>
     <div id="breadcrumb">
       <%= link_to @user.name, user_builds_path(@user) %> ::
@@ -55,25 +76,13 @@
 </div>
 
 <ul id="build_comments_list">
-  <h2 id="comments_count"><%= pluralize(@comments.length, 'Comment') -%> </h2>
-  <% if !@comments.empty? -%>
-    <% @comments.each do |comment| -%>
-      <li>
-        <header><strong><%= link_to comment.user.name, user_path(comment.user) %></strong> said:</header>
-        <div><%= simple_format(comment.content) %></div>
-        <footer>
-          <div><%= distance_of_time_in_words(comment.created_at, Time.now, include_seconds = false, options = {}) %> ago </div>
-          <%= link_to 'Edit', edit_user_build_comment_path(@user,@build,comment) if can? :edit, comment %>
-          <%= link_to "Delete", user_build_comment_path(@user,@build,comment), :method => :delete if can? :destroy, comment %>
-        </footer>
-      </li>
-    <% end -%>
-  <% end -%>
+  <%= render :partial => 'comments/list' %>
 </ul>
+
   <% if user_signed_in? -%>
-    <%= link_to 'New Comment', new_user_build_comment_path(@user,@build), :id => "new_comment", :class => "but", :remote => true %>
+    <%= link_to 'New Comment', new_user_build_comment_path(@user,@build), :id => "new_comment_buttom", :class => "but", :remote => true %>
   <% else -%>
-    <%= link_to 'New Comment', new_user_build_comment_path(@user,@build), :id => "new_comment", :class => "but" %>
+    <%= link_to 'New Comment', login_user_build_path(@user,@build, :location => "new_comment"), :id => "new_comment_buttom", :class => "but" %>
   <% end -%>
 <div id="comment_form" style="display:none;">
   <h3>New Comment </h3>

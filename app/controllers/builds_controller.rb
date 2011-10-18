@@ -55,7 +55,6 @@ class BuildsController < ApplicationController
   def update
     @user = User.find(params[:user_id])
     @build = Build.find(params[:id])
-
     if @build.update_attributes(params[:build])
       flash[:notice] = "Build updated"
       respond_with(@build, :location => user_build_path(@user,@build))
@@ -80,6 +79,13 @@ class BuildsController < ApplicationController
   def current_user?
     @user = User.find(params[:user_id])
     @user == current_user
+  end
+  
+ def login
+    @user = User.find(params[:user_id])
+    @build = Build.find(params[:id])
+    location = params[:location]
+    redirect_to user_build_path(@user,@build, :anchor => location)
   end
 end
 

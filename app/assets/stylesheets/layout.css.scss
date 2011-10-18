@@ -49,6 +49,10 @@ body{
   font-size: 15px;
   background: url(asset_path("bg_top.png", image)) repeat-x 0 -47px;
   font-family: 'Arvo', serif;
+  & div#wrapper{
+    width: 1000px;
+    margin: 0 auto;
+  }
 }
 
 h1{

@@ -1,5 +1,5 @@
 Hub::Application.routes.draw do
-  
+
   #root :to => 'pages#builds', :constraints => lambda {|r| r.env["warden"].authenticate? }
   root :to => 'pages#index'
 
@@ -17,7 +17,15 @@ Hub::Application.routes.draw do
 
   resources :users do
     resources :builds do
+        member do
+          get 'login'
+        end
       resources :comments
+      resources :likes do
+        member do
+          match 'vote'
+        end
+      end
     end
   end
 

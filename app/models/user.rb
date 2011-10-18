@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
   friendly_id :name, :use => :slugged
   
   validates :name,  :presence => true,
-                    :uniqueness => true,
+                    :uniqueness => {:case_sensitive => false},
                     :length => 3..20
   
   
@@ -17,5 +17,11 @@ class User < ActiveRecord::Base
   
   has_many :builds, :dependent => :destroy
   has_many :comments, :dependent => :destroy
+  has_many :likes, :dependent => :destroy
   accepts_nested_attributes_for :builds
+  
+  def has_voted?(build)
+    like = Like.where("user_id = ? AND build_id = ?", self, build).first
+  end
+  
 end

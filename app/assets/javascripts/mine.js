@@ -6,6 +6,7 @@ window.onload = function(){
     buildSubmit();
     skillsHover();
 		buildFilter();
+		like();
 }
 
 function quotes(){
@@ -573,6 +574,19 @@ function buildFilter(){
 				for(var i=0;i<trs.length;i++){
 					trs[i].style.display = "";
 				}
+			}
+		}
+	}
+}
+
+function like(){
+	if(document.getElementById("like_form")){
+		var div_form = document.getElementById("like_form");
+		var form = document.getElementsByTagName("form")[0];
+		var radios = form.getElementsByTagName("input");
+		for(var i=0;i<radios.length;i++){
+			radios[i].onclick = function(){
+				$(form).submit();
 			}
 		}
 	}

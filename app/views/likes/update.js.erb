@@ -1,0 +1,11 @@
+$("#build_rate").html("<%= @build.thumbs_rate %>%");
+$("#thumbs_up").html("<%= @build.thumbs_up %> likes");
+$("#thumbs_down").html("<%= @build.thumbs_down %> dislikes");
+<% if current_user.has_voted?(@build) && current_user.has_voted?(@build).vote == 0 -%>
+  $("#label_dislike").addClass("vote_active");
+  $("#label_like").removeClass("vote_active");
+<% end -%>
+<% if current_user.has_voted?(@build) && current_user.has_voted?(@build).vote == 1 -%>
+  $("#label_dislike").removeClass("vote_active");
+  $("#label_like").addClass("vote_active");
+<% end -%>

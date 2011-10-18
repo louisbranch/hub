@@ -26,7 +26,6 @@ class CommentsController < ApplicationController
         #UserMailer.comment_notification(@user,@build,@commenter).deliver
       end
       flash[:notice] = "Comment posted!"
-      
     else
       flash[:error] = "Bummer! Something went wrong!"
       redirect_to user_build_path(@user,@build)
@@ -63,5 +62,4 @@ class CommentsController < ApplicationController
       redirect_to user_build_path(@user,@build)
     end
   end
-  
 end

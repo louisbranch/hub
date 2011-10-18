@@ -374,14 +374,80 @@ ul.build_passive_skills{
 }
 
 header.build{
-	ul.build_toolbar{
-	float: right;
 
-		& li{
-			display: inline;
-			& a{font-size: 13px;}
+	& div#build_like_box{
+		float: right;
+		text-align: center;
+		& span#build_rate_title{
+			font-weight: bold;
+		}
+		& div#build_rate{
+			font-weight: bold;
+			font-size: 24px;
+			margin: 5px 0;
+		}
+		& div#build_thumbs{
+			font-size: 13px;
+			border-bottom: 1px solid rgba(0,0,0,0.2);
+			box-shadow: 0 1px 0 rgba(255,255,255,0.2);
+			padding-bottom: 10px;
+			margin-bottom: 10px;
+			& span{
+				margin: 0 2px;
+			}
+		}
+		& div#build_like_vote{
+			float: left;
+			font-weight: bold;
+			margin-right: 5px;
+		}
+		& div#like_form{
+			& input{
+				display:none;
+			}
+			& label{
+				display: block;
+				float: left;
+				padding: 18px 8px 0 8px;
+				margin: 0 4px 0 4px;
+				background: url(asset_path("thumbs.png", image)) no-repeat 0 0;
+				cursor: pointer;
+				&#label_like{
+					&:hover, &.vote_active{
+						background-position: 0 -20px;
+					}
+				}
+				&#label_dislike{
+					background-position: -17px 0;
+					&:hover, &.vote_active{
+						background-position: -17px -20px;
+					}
+				}
+			}
+		}
+		& a{
+			float: left;
+			display: block;
+			& span{
+				display: inline-block;
+				padding: 18px 8px 0 8px;
+				margin: 0 4px 0 4px;
+				background: url(asset_path("thumbs.png", image)) no-repeat 0 0;
+				&#label_like{
+					&:hover, &.vote_active{
+						background-position: 0 -20px;
+					}
+				}
+				&#label_dislike, &.vote_active{
+					background-position: -17px 0;
+					&:hover{
+						background-position: -17px -20px;
+					}
+				}
+			}
 		}
 	}
+
 	& p.class_name{ font-size: 18px;}
 	& div.description{
 		margin-top: 20px;
@@ -402,15 +468,14 @@ ul#build_filter{
 table.build_list{
 	
 	margin: 30px 0;
-	width: 800px;
 
  	& th{
 		font-size: 16px;
 		padding: 10px 10px;
 		&#th_build{}
-		&#th_class{width: 120px;}
-		&#th_active_skills{width: 120px;}
-		&#th_passive_skills{width: 120px;}
+		&#th_class{width: 110px;}
+		&#th_active_skills{width: 110px;}
+		&#th_passive_skills{width: 110px;}
 	}
 	
 	tr{border-bottom: 1px solid rgba(0,0,0,0.2)}
@@ -432,9 +497,32 @@ table.build_list{
  			}
  			&.class_name{
  				font-weight: bold;
+ 				text-align: center;
  			}
  			&.build_details{
  				font-size: 14px;
+ 			}
+ 			&.thumbs{
+ 				text-align: center;
+ 				& span{
+	 				display: inline-block;
+ 					& span{
+ 						padding: 15px 7px 0 6px;
+ 						margin: 0 2px 0 4px;
+ 						background: url(asset_path("thumbs_mini.png", image)) no-repeat 0 0;
+ 					}
+ 					&.thumbs_up span{
+	 					background-position: 0 -15px;
+ 					}
+ 					&.thumbs_down span{
+ 						background-position: -13px -15px;
+ 					}
+ 				}
+ 			}
+ 			&.rating{
+ 				clear: both;
+ 				font-size: 12px;
+ 				text-align: center;
  			}
  		}
 		& ul{
