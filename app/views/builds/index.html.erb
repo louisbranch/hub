@@ -16,9 +16,11 @@
   <table id="build_skills_list" class="build_list">
   <tr>
     <th id="th_build">Build:</th>
+    <th id="th_build">Popularity:</th>
     <th id="th_class">Class:</th>
     <th id="th_active_skills">Active Skills:</th>
-    <th id="th_passive_skills">Passive Skills:</th>
+    <th id="th_passive_skills">Passives:</th>
+    <th></th>
   </tr>
     <% @user.builds.each do |build| %>
     <tr data-class-id="<%= build.char_class.id %>" class="visible">
@@ -31,6 +33,15 @@
       </div>
       <div class="build_info">
         Updated <%= distance_of_time_in_words(build.updated_at, Time.now) %> ago
+      </div>
+    </td>
+    <td>
+      <div class="thumbs">
+       <span class="thumbs_up"><%= build.thumbs_up %><span></span></span>
+       <span class="thumbs_down"><%= build.thumbs_down %><span></span></span>
+      </div>
+      <div class="rating">
+        (<%= build.thumbs_rate %>% rate)
       </div>
     </td>
     <td>
@@ -68,7 +79,10 @@
       </ul>
       </td>
       <% if @user == current_user %>
-      <td><%= link_to "Edit", edit_user_build_url(@user, build) %> <%= link_to "Delete", user_build_url(@user, build), :confirm => "Are you sure?", :method => :delete%></td>
+      <td>
+        <li><%= link_to "Edit", edit_user_build_url(@user, build) %></li>
+        <li><%= link_to "Delete", user_build_url(@user, build), :confirm => "Are you sure?", :method => :delete%></li>
+      </td>
       <% end -%>
     </tr>
     <% end %>

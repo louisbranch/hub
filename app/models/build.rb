@@ -32,8 +32,7 @@ class Build < ActiveRecord::Base
     end
     
     def popularity
-      avg_rate = Like.average('vote').round(2,BigDecimal::ROUND_HALF_DOWN).to_f
-      (((self.thumbs_up - self.thumbs_down) * avg_rate)*100).to_i
-    end
-    
+      #simple score ranking
+      thumbs_up - thumbs_down
+    end   
 end

@@ -2,8 +2,10 @@
 <table id="build_skills_list" class="build_list">
   <tr>
     <th id="th_build">Build:</th>
+    <th id="th_build">Popularity:</th>
+    <th id="th_class">Class:</th>
     <th id="th_active_skills">Active Skills:</th>
-    <th id="th_passive_skills">Passive Skills:</th>
+    <th id="th_passive_skills">Passives:</th>
   </tr>
   <% @builds.each do |build| %>
   <tr data-class-id="<%= build.char_class.id %>" class="visible">
@@ -12,10 +14,27 @@
         <%= link_to build.name, user_build_path(build.user, build) %>
       </div>
       <div class="description">
-        <%= build.description.truncate(90) %>
+        <%= build.description.truncate(120) %>
       </div>
       <div class="build_info">
         Updated <%= distance_of_time_in_words(build.updated_at, Time.now) %> ago by <%= link_to build.user.name, user_path(build.user) %>
+      </div>
+    </td>
+    <td>
+      <div class="thumbs">
+       <span class="thumbs_up"><%= build.thumbs_up %><span></span></span>
+       <span class="thumbs_down"><%= build.thumbs_down %><span></span></span>
+      </div>
+      <div class="rating">
+        (<%= build.thumbs_rate %>% rate)
+      </div>
+    </td>
+    <td>
+      <div class="class_name">
+        <%= build.char_class.name %>
+      </div>
+      <div class="build_details">
+        <%# link_to "PvP", builds_char_class_path(build.char_class) %>
       </div>
     </td>
     <td>

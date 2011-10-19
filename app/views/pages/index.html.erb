@@ -20,7 +20,14 @@
   <div id="popular_builds">
     <h3>Popular Builds</h3>
     <ul>
-      <li>Coming Soon...</li>
+      <% @popbuilds.each do |popbuild| %>
+      <li>
+        <%= link_to(user_build_path(popbuild.user, popbuild)) do %>
+        <%= popbuild.name.truncate(20) %>
+        <span class="build_class"><%= popbuild.char_class.name %></span>
+        <% end %>
+      </li>
+      <% end %>
     </ul>
   </div>
   <div id="new_builds">

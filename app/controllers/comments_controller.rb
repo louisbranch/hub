@@ -23,7 +23,7 @@ class CommentsController < ApplicationController
     @comment = @build.comments.build(params[:comment])
     if @comment.save
       if @user.comment_alert?
-        #UserMailer.comment_notification(@user,@build,@commenter).deliver
+        UserMailer.comment_notification(@user,@build,@commenter).deliver
       end
       flash[:notice] = "Comment posted!"
     else

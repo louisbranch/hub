@@ -156,7 +156,12 @@ div#block_builds{
     }
     
     &#popular_builds{
-    	& li {height: 135px; }
+    	& li {
+    		& span.build_class{
+          float: right;
+          font-size: 13px;
+      	}
+    	}
     }
     
     &#new_builds{

@@ -60,7 +60,7 @@ class CharClassesController < ApplicationController
   
   def builds
     @char = CharClass.find(params[:id])
-    @builds = @char.builds
+    @builds = @char.builds.sort_by(&:popularity).reverse
     @title = "#{@char.name} - Explore all builds from Diablo 3"
   end
 end

@@ -19,7 +19,6 @@ class LikesController < ApplicationController
     @like = @user.likes.build(params[:like])
     @like.build = @build
     if @like.save
-      
     else
       flash[:error] = "Bummer! Something went wrong!"
       redirect_to user_build_path(@build.user,@build)

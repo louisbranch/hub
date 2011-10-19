@@ -5,6 +5,7 @@ class PagesController < ApplicationController
     @title = "Create, share and discover Diablo 3 builds"
     @chars = CharClass.all
     @newbuilds = Build.order("created_at DESC").limit(5)
+    @popbuilds = Build.all.sort_by(&:popularity).reverse.first(5)
     render :layout => "home"
   end
   
