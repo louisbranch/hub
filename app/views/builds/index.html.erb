@@ -80,8 +80,10 @@
       </td>
       <% if @user == current_user %>
       <td>
-        <li><%= link_to "Edit", edit_user_build_url(@user, build) %></li>
-        <li><%= link_to "Delete", user_build_url(@user, build), :confirm => "Are you sure?", :method => :delete%></li>
+        <ul>
+          <li><%= link_to "Edit", edit_user_build_url(@user, build) %></li>
+          <li><%= link_to "Delete", user_build_url(@user, build), :confirm => "Are you sure?", :method => :delete%></li>
+        </ul>
       </td>
       <% end -%>
     </tr>

@@ -14,6 +14,11 @@ class Ability
       can :passives, :all
       can :drilldown, :all
       
+      can :create, Like
+      can :update, Like do |like|
+        like.try(:user) == user
+      end
+      
       can :create, Comment
       can :update, Comment do |comment|
         comment.try(:user) == user
