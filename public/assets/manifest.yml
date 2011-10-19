@@ -190,9 +190,11 @@ runes/rune_indigo.png: runes/rune_indigo-020b7b7b34bf15d783846300c47783cd.png
 runes/rune_obsidian.png: runes/rune_obsidian-0a6736ef4f4946d47ec01b36b9ef24b8.png
 runes/rune_alabaster.png: runes/rune_alabaster-70feed0e788b805bad87dd5b3ffa6a7b.png
 runes/rune_empty.png: runes/rune_empty-39c9295876f25fc2c7fb4b698ca87313.png
+thumbs_mini.png: thumbs_mini-370e0495baa6166de094f9dc9318dc8d.png
 classes_portraits.png: classes_portraits-71bc97a49b740745053da7b00606e00d.png
 bg_site.png: bg_site-8a046d794e6cc0403ccc3be2624fa1d5.png
 button_overlay.png: button_overlay-7b1cbbef7343885442308c2d16442d35.png
+thumbs.png: thumbs-3f82cf4374f8c938e920b2b9104a981b.png
 logo.png: logo-5f646e311f18dff8138b0cd87afec998.png
 bg_top.png: bg_top-7ad770778b66e7141f4b2a8596f70dc8.png
 classes_showcase.jpg: classes_showcase-f5d9a5afefaaa71c23b8d397dbe2ec51.jpg
@@ -204,5 +206,5 @@ jquery.qtip.css: jquery-af1274f6ba515cc5e571c8abb2b717c6.qtip.css
 rails.validations.js: rails-62a1793cd08186b33a76e8ad2f945768.validations.js
 jquery.min.js: jquery-8a50feed8d29566738ad005e19fe1c2d.min.js
 jquery-ui.min.js: jquery-ui-7e33882a28fc84ad0e0e47e46cbf901c.min.js
-application.js: application-a164a86de073d69fe3f3104a737041ab.js
-application.css: application-9cf880a91dfd6c94bca7823a972f185a.css
+application.js: application-fbd1ce435717b6a58e70432742be17a2.js
+application.css: application-09b160d98abf1419539aa04534bc9145.css
