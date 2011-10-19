@@ -37,7 +37,11 @@ module ApplicationHelper
     matcher = /(\d+%?)(?!(?:[^<]*?)(?:["'])[^<>]*>)/
     text.gsub(matcher, highlighter).html_safe
   end
-    
+  
+  def markdown(text)
+  options = [:hard_wrap, :filter_html, :autolink, :no_intraemphasis]
+    Redcarpet.new(text, *options).to_html.html_safe
+  end
 
   class MenuTabBuilder < TabsOnRails::Tabs::Builder
     def tab_for(tab, name, options)
