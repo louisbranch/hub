@@ -14,11 +14,11 @@ class Build < ActiveRecord::Base
     validates_associated :build_skills
     
     def thumbs_up
-      self.likes.where("vote == ?", 1).count
+      self.likes.where("vote = ?", 1).count
     end
     
     def thumbs_down
-      self.likes.where("vote == ?", 0).count
+      self.likes.where("vote = ?", 0).count
     end
     
     def thumbs_rate
