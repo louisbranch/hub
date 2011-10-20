@@ -603,6 +603,11 @@ function like(){
 		var div_form = document.getElementById("like_form");
 		var form = document.getElementsByTagName("form")[0];
 		var radios = form.getElementsByTagName("input");
+		var labels = form.getElementsByTagName("label");
+		for(var i=0;i<labels.length;i++){
+			var text = labels[i].getAttribute("data-tooltip");
+			simpleToolTip(labels[i],text)
+		}
 		for(var i=0;i<radios.length;i++){
 			radios[i].onclick = function(){
 				$(form).submit();

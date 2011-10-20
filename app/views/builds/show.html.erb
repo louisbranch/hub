@@ -20,7 +20,7 @@
     </div>
     <% else -%>
       <div id="build_like_vote">Vote:</div>
-      <%= link_to(login_user_build_path(@user,@build, :location => "")) do %>
+      <%= link_to(login_user_build_path(@user,@build)) do %>
         <span id="label_like"></span>
         <span id="label_dislike"></span>
       <% end %>
