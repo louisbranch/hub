@@ -81,17 +81,40 @@ form#new_build, form.edit_build{
 
   & div#edit_class{margin: 20px 0;}
 
-  & input#build_name, textarea#build_description{
+  & input#build_name{
     width: 400px;
   }
+  
+  & textarea#build_description{
+  	width: 1000px;
+  }
 
-  & label span.field_optional {
+  & span.field_optional {
     font-weight: normal;
     font-style: italic;
     font-size: 13px;
   }
+  
+  & field_set#edit_build_types{
+	  margin-bottom: 10px;
+	  display: block;
+	  & legend{
+	  	font-size: 18px;
+	  	font-weight: bold;
+	  	margin-bottom: 5px;
+	  }
+		& input {
+			display:inline;			
+		}
+		& label{
+			display: inline;
+			font-size: 15px;
+			margin-right: 20px;
+			cursor: pointer;
+		}
+  }
 
-  a#build_next{
+  & a#build_next{
     display:block;
     width:45px;
   }
@@ -448,10 +471,15 @@ header.build{
 		}
 	}
 
-	& p.class_name{ font-size: 18px;}
+	& p.class_name, & p.build_types{
+		font-size: 18px;
+		margin: 10px 0;
+		& span{
+			margin: 0 2px;
+		}
+	}
 	& div.description{
 		margin-top: 20px;
-		width: 810px;
 		& p + p {
 			margin-top: 5px;
 		}
@@ -473,7 +501,7 @@ table.build_list{
 		font-size: 16px;
 		padding: 10px 10px;
 		&#th_build{}
-		&#th_class{width: 110px;}
+		&#th_class{width: 120px;}
 		&#th_active_skills{width: 110px;}
 		&#th_passive_skills{width: 110px;}
 	}
@@ -499,8 +527,9 @@ table.build_list{
  				font-weight: bold;
  				text-align: center;
  			}
- 			&.build_details{
- 				font-size: 14px;
+ 			&.build_types{
+ 				font-size: 12px;
+ 				text-align: center;
  			}
  			&.thumbs{
  				text-align: center;

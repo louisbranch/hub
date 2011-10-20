@@ -32,6 +32,14 @@
     <%= form.text_field :name %>
     <%= label_tag(:description) do %>Description: <span class="field_optional">(optional)</span><% end %>
     <%= form.text_area :description, :rows => "5" %>
+    <span></span>
+    <field_set id="edit_build_types">
+      <legend>Build Types: <span class="field_optional">(optional)</span></legend>
+      <% @build_types.each do |build_type| -%>
+          <%= check_box_tag "build_type_#{build_type.id}", build_type.id, @build.build_types.include?(build_type), :name => 'build[build_type_ids][]' -%>
+          <%= label_tag "build_type_#{build_type.id}", build_type.acronym, "data-tooltip" => build_type.name -%>
+      <% end -%>
+    </field_set>
     <%= link_to 'Next', char_class_skills_path(1), :remote => true,  :id => "build_next", :class => "but"  %>
   </div>
   <div id="step_two" style="display:none;">

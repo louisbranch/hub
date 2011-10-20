@@ -1,38 +1,22 @@
-<% flash.each do |name, msg| %>
-  <%= content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String) %>
-<% end %>
-
-<% if @user == current_user %>
-  <h1>My Builds</h1>
-<% else %>
-  <h1><%= "#{@user.name}'s Builds" %></h1>
-<% end %>
-
-<% if @user == current_user %>
-  <%= link_to "New Build", new_user_build_path(@user), :class => "but" %>
-<% end %>
-
-<% if !@user.builds.empty? %>
-  <table id="build_skills_list" class="build_list">
+<table id="build_skills_list" class="build_list">
   <tr>
     <th id="th_build">Build:</th>
     <th id="th_build">Popularity:</th>
     <th id="th_class">Class:</th>
     <th id="th_active_skills">Active Skills:</th>
     <th id="th_passive_skills">Passives:</th>
-    <th></th>
   </tr>
-    <% @user.builds.each do |build| %>
-    <tr data-class-id="<%= build.char_class.id %>" class="visible">
+  <% @builds.each do |build| %>
+  <tr data-class-id="<%= build.char_class.id %>" class="visible">
     <td>
       <div class="title">
         <%= link_to build.name, user_build_path(build.user, build) %>
       </div>
       <div class="description">
-        <%= build.description.truncate(60) %>
+        <%= build.description.truncate(120) %>
       </div>
       <div class="build_info">
-        Updated <%= distance_of_time_in_words(build.updated_at, Time.now) %> ago
+        Updated <%= distance_of_time_in_words(build.updated_at, Time.now) %> ago by <%= link_to build.user.name, user_path(build.user) %>
       </div>
     </td>
     <td>
@@ -81,20 +65,7 @@
           <% end -%>
         <% end -%>
       </ul>
-      </td>
-      <% if @user == current_user %>
-      <td>
-        <ul>
-          <li><%= link_to "Edit", edit_user_build_url(@user, build) %></li>
-          <li><%= link_to "Delete", user_build_url(@user, build), :confirm => "Are you sure?", :method => :delete%></li>
-        </ul>
-      </td>
-      <% end -%>
-    </tr>
-    <% end %>
-  </table>
-<% end -%>
-<% if @user != current_user && @user.builds.empty? %>
-  <p>This seems more empty than Tristram! </p> 
-<% end -%>
-
+    </td>
+  </tr>
+  <% end %>
+</table>

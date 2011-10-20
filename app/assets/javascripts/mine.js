@@ -7,6 +7,7 @@ window.onload = function(){
     skillsHover();
 		buildFilter();
 		like();
+		buildTypeToolTip();
 }
 
 function quotes(){
@@ -188,6 +189,24 @@ function loadSkills(fixed_name,active_url,passive_url){
       error_explanation.style.display = "";
     }
   }
+}
+
+function simpleToolTip(e,text){
+	$(e).qtip({
+		 content: {
+				text: text
+		 },
+		  style: {
+  			classes: 'ui-tooltip-dark ui-tooltip-shadow'
+			},
+			position: {
+				viewport: $(window),
+				my: 'top center',  // Position my top left...
+				at: 'bottom center', // at the bottom right of...
+				target: e, // my target
+				effect: false
+		 }
+	});
 }
 
 function elementHover(e,url){
@@ -588,6 +607,17 @@ function like(){
 			radios[i].onclick = function(){
 				$(form).submit();
 			}
+		}
+	}
+}
+
+function buildTypeToolTip(){
+	if(document.getElementById("edit_build_types")){
+		var checkbox_group = document.getElementById("edit_build_types");
+		var labels = checkbox_group.getElementsByTagName("label");
+		for(var i=0;i<labels.length;i++){
+			var text = labels[i].getAttribute("data-tooltip");
+			simpleToolTip(labels[i],text)
 		}
 	}
 }

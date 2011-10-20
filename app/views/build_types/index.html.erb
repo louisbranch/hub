@@ -1,0 +1,9 @@
+<h1>Build Types</h1>
+<table>
+  <% @types.each do |type| %>
+  <tr>
+    <td><%= link_to type.acronym, build_type_url(type) %></td>
+    <td><%= type.name %></td>
+  </tr>
+  <% end %>
+</table>

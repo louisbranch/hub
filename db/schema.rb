@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111006231940) do
+ActiveRecord::Schema.define(:version => 20111019191323) do
 
   create_table "build_skills", :force => true do |t|
     t.integer   "build_id"
@@ -19,6 +19,22 @@ ActiveRecord::Schema.define(:version => 20111006231940) do
     t.integer   "rune_id"
     t.timestamp "created_at"
     t.timestamp "updated_at"
+  end
+
+  create_table "build_type_associations", :force => true do |t|
+    t.integer  "build_id"
+    t.integer  "build_type_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "build_types", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.string   "acronym"
+    t.string   "slug"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "builds", :force => true do |t|
@@ -52,11 +68,11 @@ ActiveRecord::Schema.define(:version => 20111006231940) do
   end
 
   create_table "likes", :force => true do |t|
-    t.integer  "vote"
-    t.integer  "user_id"
-    t.integer  "build_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.integer   "vote"
+    t.integer   "user_id"
+    t.integer   "build_id"
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
   end
 
   create_table "rune_effects", :force => true do |t|

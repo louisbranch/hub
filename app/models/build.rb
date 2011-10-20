@@ -5,13 +5,17 @@ class Build < ActiveRecord::Base
     has_many :skills, :through => :build_skills
     has_many :comments, :dependent => :destroy
     has_many :likes, :dependent => :destroy
+    has_many :build_type_associations, :dependent => :destroy
+    has_many :build_types, :through => :build_type_associations
     accepts_nested_attributes_for :build_skills
     accepts_nested_attributes_for :comments
+    accepts_nested_attributes_for :build_type_associations
 
     validates :name,  :presence => true
     validates :user_id,  :presence => true
     validates :char_class_id,  :presence => true
     validates_associated :build_skills
+    validates_associated :build_type_associations
     
     def thumbs_up
       self.likes.where("vote = ?", 1).count

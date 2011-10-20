@@ -1,0 +1,2 @@
+module BuildTypesHelper
+end

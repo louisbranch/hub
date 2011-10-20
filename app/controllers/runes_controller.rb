@@ -18,7 +18,7 @@ class RunesController < ApplicationController
       respond_with(@rune, :location => rune_path(@rune))
     else
       flash[:error] = "Bummer!"
-      redirect_to rune_path
+      redirect_to runes_path
     end
   end
   
@@ -46,10 +46,10 @@ class RunesController < ApplicationController
     @rune = Rune.find(params[:id])
     if @rune.destroy
       flash[:notice] = "Yay!"
-      redirect_to runes_url
+      redirect_to runes_path
     else
       flash[:error] = "Bummer!"
-      redirect_to runes_url
+      redirect_to runes_path
     end
   end
 

@@ -34,6 +34,12 @@ Hub::Application.routes.draw do
   resources :runes
 
   resources :skill_types
+  
+  resources :build_types do
+    member do
+      get 'builds'
+    end
+  end
 
   resources :char_classes, :path => "/classes" do
     member do

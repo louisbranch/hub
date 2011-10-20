@@ -1,0 +1,10 @@
+<%= form_for @type do |form| %>
+  <%= label_tag(:name, "Name:") %>
+  <%= form.text_field :name %>
+  <%= label_tag(:acronym, "Acronym:") %>
+  <%= form.text_field :acronym %>
+  <%= label_tag(:description, "Description:") %>
+  <%= form.text_area :description %>
+  <%= form.submit @form_action %>
+<% end %>
+
