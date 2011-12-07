@@ -1,0 +1,63 @@
+ul#build_filter
+  li
+    display: inline
+    margin-right: 10px
+	
+table.build_list
+  margin: 30px 0
+  th
+    font-size: 16px
+    padding: 10px 10px
+    &#th_class
+      width: 120px
+    &#th_active_skills
+      width: 110px
+    &#th_passive_skills
+      width: 110px
+  tr
+    border-bottom: 1px solid rgba(0,0,0,0.2)
+ 
+    td
+      padding: 10px 10px
+      div 
+        &.title
+          font-size: 16px
+          font-weight: bold
+          margin-bottom: 5px
+        &.description
+          font-size: 14px
+        &.build_info
+          margin-top: 5px
+          font-size: 12px
+        &.class_name
+          font-weight: bold
+          text-align: center
+        &.build_types
+          font-size: 12px
+          text-align: center
+        &.thumbs
+          text-align: center
+          span
+            display: inline-block
+            span
+              padding: 15px 7px 0 6px
+              margin: 0 2px 0 4px
+              background: url(asset_path("thumbs_mini.png", image)) no-repeat 0 0
+            &.thumbs_up span
+              background-position: 0 -15px
+            &.thumbs_down span
+              background-position: -13px -15px
+        &.rating
+          clear: both
+          font-size: 12px
+          text-align: center
+ 			
+ 		
+      ul
+        li
+          display: inline-block				
+          img
+            width: 30px
+            height: 30px
+            cursor: pointer
+            padding: 0 2px

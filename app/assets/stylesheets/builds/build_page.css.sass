@@ -1,0 +1,166 @@
+header.build
+  div#build_like_box
+    float: right
+    text-align: center
+    span#build_rate_title
+      font-weight: bold
+    div#build_rate
+      font-weight: bold
+      font-size: 24px
+      margin: 5px 0
+    div#build_thumbs
+      font-size: 13px
+      border-bottom: 1px solid rgba(0,0,0,0.2)
+      box-shadow: 0 1px 0 rgba(255,255,255,0.2)
+      padding-bottom: 10px
+      margin-bottom: 10px
+      span
+        margin: 0 2px
+    div#build_like_vote
+      float: left
+      font-weight: bold
+      margin-right: 5px
+    div#like_form
+      input
+        display: none
+      label
+        display: block
+        float: left
+        padding: 18px 8px 0 8px
+        margin: 0 4px 0 4px
+        background: url(asset_path("thumbs.png", image)) no-repeat 0 0
+        cursor: pointer
+        &#label_like
+          &:hover, &.vote_active
+          background-position: 0 -20px
+        &#label_dislike
+          background-position: -17px 0
+          &:hover, &.vote_active
+            background-position: -17px -20px          
+    a
+      float: left
+      display: block
+      span
+        display: inline-block
+        padding: 18px 8px 0 8px
+        margin: 0 4px 0 4px
+        background: url(asset_path("thumbs.png", image)) no-repeat 0 0
+        &#label_like
+          &:hover, &.vote_active
+            background-position: 0 -20px
+        &#label_dislike, &.vote_active
+          background-position: -17px 0
+          &:hover
+            background-position: -17px -20px
+            
+  p.class_name, p.build_types
+    font-size: 18px
+    margin: 10px 0
+    span
+      margin: 0 2px
+  div.description
+    margin-top: 20px
+    p + p 
+      margin-top: 5px
+
+div.skill_tooltip
+  img 
+    float: left
+    &.rune_img
+      padding: 20px 5px 0 0
+  div
+    float: left
+    margin-left: 5px
+    width: 300px
+    p
+      font-size: 12px
+      &.description
+        font-size: 15px
+    h3
+      font-size: 18px 
+    p, li
+      margin-bottom: 5px
+    &.rune_effect
+      padding-top: 20px
+
+ul.build_active_skills
+  width: 405px
+  float: left
+  padding-bottom: 60px
+  h2
+    clear: both
+    padding-top: 40px
+  li
+    float: left
+    display: block
+    width: 385px
+    border-bottom: 1px solid rgba(0,0,0,0.2)
+    box-shadow: 0 1px 0 rgba(255,255,255,0.2)
+    padding: 10px
+    cursor: pointer
+    img.skill_img
+      float: left
+    img.rune_img
+      float: right
+      margin-top: 12px
+    div
+      float: left
+      margin: 12px 20px
+      h5
+        font-size: 18px
+        font-weight: bold
+      p
+        font-size: 13px
+
+ul.build_passive_skills
+  width: 405px
+  float: left
+  padding-left: 60px
+  h2
+    clear: both
+    padding-top: 40px
+  li
+    float: left
+    display: block
+    width: 385px
+    border-bottom: 1px solid rgba(0,0,0,0.2)
+    box-shadow: 0 1px 0 rgba(255,255,255,0.2)
+    padding: 10px
+    cursor: pointer
+    img.skill_img
+      float: left
+    img.rune_img
+      float: right
+    margin-top: 12px
+    div
+      float: left
+      margin: 12px 20px
+      h5
+        font-size: 18px
+        font-weight: bold
+      p
+        font-size: 13px
+
+ul#build_comments_list
+  width: 810px
+  clear: both
+  li
+    border-bottom: 1px solid rgba(0,0,0,0.2)
+    box-shadow: 0 1px 0 rgba(255,255,255,0.2)
+    padding: 10px
+    margin-bottom: 20px
+    div
+      margin: 10px 0
+    footer
+      font-size: 12px
+      margin-bottom: 20px
+
+div#comment_form
+  h3
+    font-size: 18px
+    margin-bottom: 10px
+  textarea
+    width: 810px
+    height: 100px
+  input
+    display: block

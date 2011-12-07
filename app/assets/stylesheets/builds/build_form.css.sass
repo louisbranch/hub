@@ -1,0 +1,260 @@
+h1.new_title
+  margin: 0
+  
+form#new_build, form.edit_build
+  input, label
+    display: block
+  
+  header#build_header
+    width: 730px
+    h1
+      float: left
+      width: 300px
+    label
+      clear: left
+    div#checklist
+      float: right
+      width: 400px
+      h3
+        font-size: 15px
+      ul
+        list-style-type: circle
+        li
+          margin: 2px 0 2px 20px
+          font-size: 13px
+      div 
+        float: right
+        span
+          display: block
+          font-weight: bold
+
+  div#build_info, div#error_explanation
+    clear: both
+
+  span#class_display
+    font-weight: normal
+
+  #class_selection
+    margin: 20px 0
+    input
+      display: none
+    label
+      cursor: pointer
+      display: inline-block
+      margin: 0 5px
+      height: 100px
+      width:  68px
+      overflow: hidden
+      background: url(asset_path("classes_portraits.png", image)) no-repeat -68px 0
+      &:hover
+        border-color: #3F3B31
+      &#label_barbarian:hover,&.active
+        background-position: 0 0
+      &#label_demon-hunter
+        background-position: -68px -100px
+        &:hover,&.active
+          background-position: 0 -100px
+      &#label_monk
+        background-position: -68px -200px 
+        &:hover,&.active
+          background-position: 0 -200px
+      &#label_witch-doctor
+        background-position: -68px -300px
+        &:hover,&.active
+          background-position: 0 -300px
+      &#label_wizard
+        background-position: -68px -400px
+        &:hover,&.active
+          background-position: 0 -400px
+
+  div#edit_class
+    margin: 20px 0
+
+  input#build_name
+    width: 400px
+
+  textarea#build_description
+    width: 1000px
+
+  span.field_optional 
+    font-weight: normal
+    font-style: italic
+    font-size: 13px
+
+  field_set#edit_build_types
+    margin-bottom: 10px
+    display: block
+    legend
+      font-size: 18px
+      font-weight: bold
+      margin-bottom: 5px
+    input 
+      display: inline			
+    label
+      display: inline
+      font-size: 15px
+      margin-right: 20px
+      cursor: pointer
+
+  a#build_next
+    display: block
+    width: 45px
+  
+  div#step_two
+    margin: 30px 0
+    float: left
+    h2
+      margin-bottom: 20px
+
+    ul#build_skills
+      width: 405px
+      float: left
+      li
+        float: left
+        display: block
+        width: 385px
+        border-bottom: 1px solid rgba(0,0,0,0.2)
+        box-shadow: 0 1px 0 rgba(255,255,255,0.2)
+        padding: 10px
+        img.skill_img
+          float: left
+          cursor: pointer
+        img.rune_img
+          float: right
+          margin-top: 12px
+          cursor: pointer
+        div
+          float: left
+          margin: 12px 20px
+          h5
+            font-size: 18px
+            font-weight: bold
+          p
+            font-size: 13px
+
+    ul#build_passives
+      width: 405px
+      float: left
+      margin-top: 30px
+      li
+        float: left
+        display: block
+        width: 385px
+        border-bottom: 1px solid rgba(0,0,0,0.2)
+        box-shadow: 0 1px 0 rgba(255,255,255,0.2)
+        padding: 10px
+        img.skill_img
+          float: left
+          cursor: pointer
+        div
+          float: left
+          margin: 12px 20px
+          h5
+            font-size: 18px
+            font-weight: bold
+          p
+            font-size: 13px
+
+    div#active_block
+      width: 250px
+      float: left
+      margin-right: 70px
+      h3
+        font-size: 24px
+      h4
+        font-size: 18px
+        margin-bottom: 10px
+      ul
+        margin-bottom: 30px
+        li
+          display: inline-block
+          cursor: pointer
+          height: 50px
+          margin-left: 5px
+          padding: 2px
+          &.skill_selected
+            background-color: #9DC200
+          img
+            width: 50px
+              
+    div#passive_block
+      clear: both
+      margin-top: 30px
+      width: 250px
+      float: left
+      margin-right: 70px
+      li
+        display: inline-block
+        cursor: pointer
+        height: 50px
+        margin-left: 5px
+        padding: 2px
+        &.passive_selected
+          background-color: #9DC200
+          border-radius: 25px
+        img
+          width: 50px
+
+    div#drilldown_block
+      float: left
+      width: 250px
+      padding-left: 10px
+      margin-left: 10px
+      section 
+        float: left
+        padding-left: 50px
+        height: 510px
+        background: url(asset_path("arrow.png", image)) no-repeat 0 0
+        &#drilldown_1
+          background-position: 0 -460px
+        &#drilldown_2
+          background-position: 0 -374px
+        &#drilldown_3
+          background-position: 0 -290px
+        &#drilldown_4
+          background-position: 0 -205px
+        &#drilldown_5
+          background-position: 0 -120px
+        &#drilldown_6
+          background-position: 0 -35px
+      ul.runes_block
+        h4 
+          margin-top: 20px
+          font-size: 16px
+          padding: 0 5px 10px 5px
+          width: 250px
+          border-bottom: 1px solid rgba(0,0,0,0.2)
+          box-shadow: 0 1px 0 rgba(255,255,255,0.2)
+        span
+          font-weight: bold
+          margin-left: 5px
+          line-height: 40px
+          font-size: 15px
+          font-weight: bold
+          img
+            float: left
+            width: 40px
+
+        li 
+          padding: 10px 5px
+          float: left
+          cursor: pointer
+          width: 250px
+          border-bottom: 1px solid rgba(0,0,0,0.2)
+          box-shadow: 0 1px 0 rgba(255,255,255,0.2)
+          &:hover
+            background-color: rgba(0,0,0,0.1)
+          &.rune_active
+            background-color: rgba(0,0,0,0.2)
+          span
+            font-weight: bold
+            margin-left: 5px
+            line-height: 30px
+          img
+            float: left
+            width: 30px
+            
+    div#disclaimer
+      clear: both
+      padding-top: 60px
+      font-size: 13px

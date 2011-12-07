@@ -1,9 +1,6 @@
 Hub::Application.routes.draw do
 
-  #root :to => 'pages#builds', :constraints => lambda {|r| r.env["warden"].authenticate? }
   root :to => 'pages#index'
-
-  #get "/" => 'pages#builds', :as => "user_root"
 
   match "/classes" => redirect("/classes/barbarian")
 
