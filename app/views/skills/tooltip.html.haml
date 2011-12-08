@@ -1,0 +1,20 @@
+%div.skill_tooltip
+  = image_tag(@skill.img_url, :class => "skill_img")
+  %div
+    %h3.skill_name= @skill.name
+    %p= "lvl #{@skill.level} - #{@skill.skill_type.name}"
+    %ul.skill_details
+      - if @skill.cost?
+        %li
+          %strong Cost:
+          = @skill.cost
+      - if @skill.generate?
+        %li
+          %strong Generate:
+          = @skill.generate
+      - if @skill.cooldown?
+        %li
+          %strong Cooldown:
+          = @skill.cooldown
+    %p.description= highlight_digits(@skill.description)
+

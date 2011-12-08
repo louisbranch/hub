@@ -1,0 +1,46 @@
+%table#build_skills_list.build_list
+  %tr
+    %th#th_build Build:
+    %th#th_build Popularity:
+    %th#th_class Class:
+    %th#th_active_skills Active Skills:
+    %th#th_passive_skills Passives:
+  - @builds.each do |build|
+    %tr{'data-class-id' => build.char_class.id, :class => 'visible'}
+      %td
+        %div.title= link_to build.name, user_build_path(build.user, build)
+        %div.description= build.description.truncate(120)
+        %div.build_info
+          = "Updated #{distance_of_time_in_words(build.updated_at, Time.now)} ago by" 
+          = link_to build.user.name, user_path(build.user)
+      %td
+        %div.thumbs
+          %span.thumbs_up
+            = build.thumbs_up
+            %span
+          %span.thumbs_down
+            = build.thumbs_down
+            %span
+        %div.rating= "(#{build.thumbs_rate}% rate)"
+      %td
+        %div.class_name= link_to build.char_class.name, builds_char_class_path(build.char_class)
+        %div.build_types
+          - if build.build_types
+            - build.build_types.each do |build_type|
+              %span= link_to build_type.acronym, builds_build_type_path(build_type)    
+      %td
+        %ul
+          - build.build_skills.each do |build_skill|
+            - if build_skill.skill && !build_skill.skill.passive?
+              - if build_skill.rune
+                %li{'data-tooltip-url' => tooltip_char_class_skill_rune_effect_path(build.char_class,build_skill.skill,build_skill.effect)}
+                  = image_tag(build_skill.skill.img_url, :class => "skill_img" )
+              - else
+                %li{'data-tooltip-url' => tooltip_char_class_skill_path(build.char_class,build_skill.skill)}
+                  = image_tag(build_skill.skill.img_url, :class => "skill_img" )
+      %td
+        %ul
+          - build.build_skills.each do |build_skill|
+            - if build_skill.skill && build_skill.skill.passive?
+              %li{'data-tooltip-url' => tooltip_char_class_skill_path(build.char_class,build_skill.skill)}
+                = image_tag(build_skill.skill.img_url, :class => "skill_img" )

@@ -1,0 +1,5 @@
+%ul
+  - @skills.each do |skill|
+    - if skill.passive?
+      %li{:id => skill.slug, 'data-tooltip-url' => tooltip_char_class_skill_path(@char,skill), 'data-title' => skill.name, 'data-img' => skill.img_url, 'data-details' => "lvl #{skill.level}", 'data-id' => skill.id}
+        = image_tag(skill.img_url)

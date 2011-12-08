@@ -1,0 +1,71 @@
+= form_for([@user,@build]) do |f|
+
+  %header#build_header
+    %h1#build_heading
+      = "New Build" if params[:action] == "new"
+      = @build.name if params[:action] == "edit"
+    %div#checklist{:style => 'display:none;'}
+      %div
+        %span All set?
+        = f.submit @form_action, :id => "build_submit"
+      %h3 Build checklist:
+      %ul
+        %li Choose up to 6 Active Skills
+        %li Sock runestones into them;
+        %li Choose up to 3 Passives Skills;
+    %div#error_explanation{:style => 'display:none;'}
+    = label_tag(:char_class_id) do
+      Class:
+      %span#class_display= @char.name if params[:action] == "edit"
+      
+  %div#build_info
+    - if params[:action] == "new"
+      %div#class_selection
+        - CharClass.all.each do |char|
+          = label_tag(:char_class_id, "", :for => char.slug, :id => "label_#{char.slug}", "data-name" => char.name, "data-active" => actives_char_class_skills_path(char), "data-passive" => passives_char_class_skills_path(char))
+          = f.radio_button(:char_class_id, char.id, :id => char.slug, :checked => false)
+    - else
+      %div{:id => 'edit_class', 'data-name' => @char.name, 'data-active' => actives_char_class_skills_path(@char), 'data-passive' => passives_char_class_skills_path(@char)}
+    = label_tag :name, "Title:"
+    = f.text_field :name 
+    = label_tag(:description) do
+      Description:
+      %span.field_optional (optional)
+    = f.text_area :description, :rows => "5" 
+    %span
+    %field_set#edit_build_types
+      %legend
+        Build Types:
+        %span.field_optional (optional)
+      - @build_types.each do |build_type|
+        = check_box_tag "build_type_#{build_type.id}", build_type.id, @build.build_types.include?(build_type), :name => 'build[build_type_ids][]'
+        = label_tag "build_type_#{build_type.id}", build_type.acronym, "data-tooltip" => build_type.name
+    = link_to 'Next', '#', :remote => true,  :id => "build_next", :class => "but"  
+  
+  %div#step_two{:style => 'display:none;'}
+    %div#active_block
+      %h2 Active Skills
+    = render 'shared/build_skills_list'
+    %div#drilldown_block
+      - 6.times do |i|
+        %section{'data-slot' => "skill_#{i + 1}", :style => 'display: none;', :id => "drilldown_#{i + 1}"}
+    %div#passive_block
+      %h2 Passive Skills
+    %ul#build_passives
+      - 3.times do |i|
+        %li{:id => "skill_passive_#{6 + 1}", 'data-slot' => "skill_#{i + 1}"}
+          %img{:src => '/assets/skills/empty_passive.png', :class => 'skill_img'}
+          %img{:src => '/assets/skills/clear_passive.png', :class => 'skill_img', :style => 'display: none;', :title => 'Clear Skill'}
+          %div
+            %h5= "#{(i+1).ordinalize} Passive"
+            %p= "Unlocked at lvl #{(i + 1) * 10}"
+          %div{:style => 'display:none;'}
+            %h5
+            %p
+    %div#disclaimer
+      %strong Disclaimer:
+      This information may be different from the game. We will do our best to keep it updated. If you find something amiss, please let us know.
+  %div#skills_final
+    = f.fields_for :build_skills, :remote => true do |builder| 
+      = render "shared/form_build_skills", :f => builder
+

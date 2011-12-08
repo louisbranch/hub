@@ -1,0 +1,26 @@
+!!!
+%html{:lang => 'en'}
+  %head
+    %title= title
+    %meta{:name => 'description', :content => description}
+    = stylesheet_link_tag    "http://fonts.googleapis.com/css?family=Arvo:400,700"
+    = stylesheet_link_tag    "application"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+    = render 'shared/ga'
+    = render 'shared/fb_meta_tags'
+  %body#home
+    %div#wrapper
+      %header.main
+        %div#fb-root
+        = render 'shared/social_plugins'
+        %nav#login
+          = render 'users/menu/registration_items'
+          = render 'users/menu/login_items'
+        %div#facebook
+          %fb:like{:href => request.url, :send => 'true', :layout => 'button_count', :width => '90', :show_faces => 'false', :colorscheme => 'dark'}
+        %hgroup
+          %h1= link_to 'Diablohub', root_path
+          %h2= link_to 'Create, share and discover builds', root_path
+      = yield
+      = render 'shared/footer'

@@ -1,7 +1,0 @@
-<%= form_for @skill_type do |form| %>
-  <%= label_tag(:main, "Name:") %>
-  <%= form.text_field :name %>
-  <%= label_tag(:char_class_id, "Class:") %>
-  <%= form.select(:char_class_id, options_for_select(array_chars))%>
-  <%= form.submit @form_action %>
-<% end %>

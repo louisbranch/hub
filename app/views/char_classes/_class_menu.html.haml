@@ -1,0 +1,6 @@
+%nav#menu_classes
+  %div{:class => 'portrait_main', :id => @char.slug}
+  %ul
+    - @chars.each do |char|
+      %li= link_to_unless_current "", char_class_url(char), :id => char.slug, :title => char.name
+

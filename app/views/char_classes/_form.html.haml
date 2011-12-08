@@ -1,0 +1,9 @@
+= form_for @char do |f|
+  = f.label :name, "Name:"
+  = f.text_field :name
+  = f.label :description, "Description:"
+  = f.text_area :description
+  = f.label :resource, "Resource:"
+  = f.text_field :resource
+  = f.submit
+

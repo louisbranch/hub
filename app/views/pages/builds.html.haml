@@ -1,0 +1,6 @@
+%h1 Builds
+%ul#build_filter
+  %li
+    %strong Filters:
+  %li= select_tag("filter_class", options_for_select(array_chars), :prompt => "All Classes")
+= render 'shared/builds_list'

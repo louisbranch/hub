@@ -1,0 +1,15 @@
+%div#fb-root
+= render 'shared/social_plugins'
+%header.main
+  %nav#login
+    = render 'users/menu/registration_items'
+    = render 'users/menu/login_items'
+  %hgroup
+    %h1= link_to 'Diablohub', root_path
+    %h2= link_to 'Create, share and discover builds', root_path
+  %nav#menu_top
+    = tabs_tag(:builder => ApplicationHelper:: MenuTabBuilder) do |tab|
+      = tab.mybuilds  'My Builds', user_builds_path(current_user) if user_signed_in?
+      = tab.allbuilds 'Builds', builds_path
+      = tab.classes   'Classes', char_classes_path
+

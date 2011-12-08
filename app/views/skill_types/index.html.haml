@@ -1,0 +1,6 @@
+%h1 Skill Types
+%table
+  - @skill_types.each do |skill_type|
+    %tr
+      %td= skill_type.char_class.name
+      %td= link_to skill_type.name, skill_type_url(skill_type)

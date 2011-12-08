@@ -1,0 +1,29 @@
+%ul#active_block
+  - @skills.each do |skill|
+    - unless skill.passive?
+      %li{:class => skill.skill_type.slug, 'data-url' => char_class_skill_path(@char,skill)}
+        = image_tag(skill.img_url, :class => "skill_img")
+        %div
+          %h4.skill_name= skill.name
+          %span.skill_level= "lvl #{skill.level} - #{skill.skill_type.name}"
+        %div{:style => 'display:none;'}
+          %ul.skill_details
+            - if skill.cost?
+              %li
+                %strong Cost:
+                = skill.cost
+            - if skill.generate?
+                %strongGenerate:
+                = skill.generate
+            - if skill.cooldown?
+              %li
+                %strong Cooldown:
+                = skill.cooldown
+%ul#passive_block
+  - @skills.each do |skill|
+    - if skill.passive?
+      %li{:class => skill.skill_type.slug, 'data-url' => char_class_skill_path(@char,skill)}
+        = image_tag(skill.img_url, :class => "skill_img")
+        %div
+          %h4.skill_name= skill.name
+          %span.skill_level= "lvl #{skill.level} - #{skill.skill_type.name}"

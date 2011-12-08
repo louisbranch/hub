@@ -1,0 +1,45 @@
+= render 'class_menu'
+%div#class_info
+  %h1= @char.name
+  %p
+    %strong Resource:
+    = @char.resource
+  %p= @char.description
+  %h3= link_to "#{@char.name} Builds", builds_char_class_path
+  
+%section#class_skills
+  %h2 Skills
+  %ul#skill_filters
+    %li= link_to "All (#{@char.skills.count})", skill_types_path, "data-filter" => "all", :class => "filter_active"
+    - @char.skill_types.each do |skill_type|
+      %li= link_to "#{skill_type.name} (#{skill_type.skills.count})", skill_type_path(skill_type), "data-filter" => skill_type.slug
+  - @char.skills.each do |skill|
+    %article{:class => skill.skill_type.slug}
+      %header
+        = image_tag(skill.img_url, :class => "skill_img")
+        %span.skill_level= "lvl #{skill.level}"
+        %h3.skill_name= skill.name
+        %h4.skill_type= skill.skill_type.name
+      %div
+        %span
+        %ul.skill_details
+          - if skill.cost?
+            %li
+              %strong Cost:
+              = skill.cost
+          - if skill.generate?
+            %li
+              %strong>Generate:
+              = skill.generate
+          - if skill.cooldown?
+            %li
+              %strong Cooldown:
+              = skill.cooldown
+        %span= highlight_digits(skill.description)
+      - unless skill.rune_effects.empty?
+        %footer
+          %ul
+            %li
+              %strong Runes:
+              - skill.rune_effects.each do |rune_effect|
+                %li= image_tag(rune_effect.rune.img_url, "data-tooltip-url" => char_class_skill_rune_effect_path(@char,skill,rune_effect))

@@ -1,0 +1,7 @@
+%h1 Rune Effects
+%table
+  - @skill.rune_effects.each do |rune_effect|
+    %tr
+      %td= link_to rune_effect.name, char_class_skill_rune_effect_url(@char,@skill,rune_effect)
+      %td= rune_effect.description.truncate(100) unless rune_effect.description.nil?
+

@@ -1,8 +1,0 @@
-$("#new_comment_button").hide();
-$("#comment_form").show();
-$("#comment_form").append("<%= escape_javascript(render :partial => "form") %>");
-$("#comment_content").focus();
-$('html, body').animate({ scrollTop: $("#comment_content").offset().top }, 500);
-
-
-

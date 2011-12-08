@@ -1,0 +1,76 @@
+%header.build
+  %div#build_like_box
+    %span#build_rate_title Approval Rate:
+    %div#build_rate= "#{@build.thumbs_rate}%"
+    %div#build_thumbs
+      %span#thumbs_up= "#{@build.thumbs_up} likes"
+      %span#thumbs_down= "#{@build.thumbs_down} dislikes"
+    - if user_signed_in? 
+      - if current_user.has_voted?(@build) 
+        %div#build_like_vote Voted:
+      - else 
+        %div#build_like_vote Vote:
+      %div#like_form 
+        = render :partial => "likes/form"
+    - else 
+      %div#build_like_vote Vote:
+      = link_to(login_user_build_path(@user,@build)) do
+        %span#label_like
+        %span#label_dislike
+  - unless @user == current_user
+    %div#breadcrumb
+      = link_to @user.name, user_builds_path(@user)
+      \::
+  %h1
+    = @build.name
+    %span= link_to "Edit", edit_user_build_path, :class => "but" if @user == current_user
+  %p.class_name
+    %strong Class:
+    = link_to @build.char_class.name, builds_char_class_path(@build.char_class)
+  %p.build_types
+    %strong>Build Types:
+    - if @build.build_types 
+      - @build.build_types.each do |build_type|
+        %span= link_to build_type.acronym, builds_build_type_path(build_type)
+  %div.description
+    = simple_format(@build.description) if @build.description
+    
+%div#build_skills_list
+  %ul.build_active_skills
+    %h2 Active Skills:
+    - @build_skills.each do |build_skill|
+      - if build_skill.skill && !build_skill.skill.passive? 
+        - if build_skill.rune 
+          %li{'data-tooltip-url' => tooltip_char_class_skill_rune_effect_path(@build.char_class,build_skill.skill,build_skill.effect)}
+            = image_tag(build_skill.skill.img_url, :class => 'skill_img' )
+            = image_tag(build_skill.rune.img_url, :class => "rune_img" )
+            %div
+              %h5= build_skill.skill.name
+              %p= "lvl #{build_skill.skill.level} - #{build_skill.skill.skill_type.name}"
+        - else 
+          %li{'data-tooltip-url' => tooltip_char_class_skill_path(@build.char_class,build_skill.skill)}
+            = image_tag(build_skill.skill.img_url, :class => 'skill_img' )
+            %img{:src => '/assets/runes/rune_empty.png', :class => 'rune_img'}
+            %div
+              %h5= build_skill.skill.name
+              %p= "lvl #{build_skill.skill.level} - #{build_skill.skill.skill_type.name}"
+  %ul.build_passive_skills
+    %h2 Passive Skills:
+    - @build_skills.each do |build_skill|
+      - if build_skill.skill && build_skill.skill.passive? 
+        %li{'data-tooltip-url' => tooltip_char_class_skill_path(@build.char_class,build_skill.skill)}
+          = image_tag(build_skill.skill.img_url, :class => "skill_img" )
+          %div
+            %h5= build_skill.skill.name
+            %p= "lvl #{build_skill.skill.level}"
+        
+%ul#build_comments_list
+  = render 'comments/list'
+  - if user_signed_in? 
+    = link_to 'New Comment', new_user_build_comment_path(@user,@build), :id => "new_comment_button", :class => "but", :remote => true
+  - else 
+    = link_to 'New Comment', login_user_build_path(@user,@build, :location => "new_comment_button"), :id => "new_comment_button", :class => "but"
+  
+%div#comment_form{:style => 'display:none;'}
+  %h3 New Comment
+

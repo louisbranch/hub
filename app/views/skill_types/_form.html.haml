@@ -1,0 +1,6 @@
+= form_for @skill_type do |f|
+  = f.label :name, 'Name:'
+  = f.text_field :name
+  = f.label :char_class_id, 'Class:'
+  = f.select(:char_class_id, options_for_select(array_chars))
+  = f.submit

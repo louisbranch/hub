@@ -1,0 +1,19 @@
+= form_for([@char,@skill]) do |f|
+  = f.label :name, "Name:"
+  = f.text_field :name
+  = f.label :level, "Level:"
+  = f.text_field :level
+  = f.label :skill_type_id, "Type:"
+  = f.select(:skill_type_id, options_for_select(@char.skill_types.map{|skill_type| [skill_type.name, skill_type.id]}, @skill.skill_type.id))%>
+  = f.label :description, "Description:"
+  = f.text_area :description
+  = f.label :img_url, "Image URL:"
+  = f.text_field :img_url
+  = f.label :cost, "Cost:"
+  = f.text_field :cost
+  = f.label :generate, "Generate:"
+  = f.text_field :generate
+  = f.label :cooldown, "Cooldown:"
+  = f.text_field :cooldown
+  = f.submit
+

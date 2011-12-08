@@ -1,0 +1,9 @@
+= form_for([@char,@skill,@rune_effect]) do |form|
+  = f.label :name, "Name:"
+  = f.text_field :name
+  = f.label :rune_id, "Rune:"
+  = f.select(:rune_id, options_for_select(array_runes,@rune_effect.rune_id))
+  = f.label :description, "Description:"
+  = f.text_area :description
+  = f.submit
+

@@ -1,0 +1,11 @@
+%ul.runes_block
+  = image_tag(@skill.img_url)
+  %span= @skill.name
+  %h4 Runestones:
+  %li{:class => 'rune_active', 'data-img' => '/assets/runes/rune_empty.png'}
+    %img{:src => '/assets/runes/rune_empty.png'}
+    %span No runestone
+  - @rune_effects.each do |rune_effect|
+    %li{'data-tooltip-url' => char_class_skill_rune_effect_path(@char,@skill,rune_effect), 'data-img' => rune_effect.rune.img_url, 'data-rune-id' => rune_effect.rune.id}
+      = image_tag(rune_effect.rune.img_url, :class => "rune_img")
+      %span= rune_effect.name

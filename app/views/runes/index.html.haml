@@ -1,0 +1,5 @@
+%h1 Runes
+%table
+  - @runes.each do |rune|
+    %tr
+      %td= link_to rune.name, rune_url(rune)

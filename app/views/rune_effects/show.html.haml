@@ -1,0 +1,6 @@
+%div.rune_tooltip
+  = image_tag(@rune_effect.rune.img_url)
+  %div
+    %h3= @rune_effect.name
+    %p= highlight_digits(@rune_effect.description)
+

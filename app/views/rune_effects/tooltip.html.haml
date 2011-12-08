@@ -1,0 +1,24 @@
+%div.skill_tooltip
+  = image_tag(@skill.img_url, :class => "skill_img")
+  %div
+    %h3.skill_name= @skill.name
+    %p= "lvl #{@skill.level} - #{@skill.skill_type.name}"
+    %ul.skill_details
+      - if @skill.cost?
+        %li
+          %strong Cost:
+          = @skill.cost
+      - if @skill.generate?
+        %li
+          %strong Generate:
+          = @skill.generate
+      - if @skill.cooldown?
+        %li
+          %strong Cooldown:
+          = @skill.cooldown
+    %p.description= highlight_digits(@skill.description)
+  = image_tag(@rune.img_url, :class => "rune_img")
+  %div.rune_effect
+    %h4= @rune_effect.name
+    %p.description= highlight_digits(@rune_effect.description)
+
