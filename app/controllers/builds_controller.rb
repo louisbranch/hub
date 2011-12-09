@@ -21,13 +21,11 @@ class BuildsController < ApplicationController
     9.times do
       build_skills = @build.build_skills.build
     end
-    @form_action = "Create Build"
   end
 
   def create
     @user = User.find(params[:user_id])
     @build = @user.builds.build(params[:build])
-    @build.attributes = {'build_type_ids' => []}.merge(params[:build] || {})
     if @build.save
       flash[:notice] = "Build created!"
       respond_with(@build, :location => user_build_path(@user,@build))
@@ -52,7 +50,6 @@ class BuildsController < ApplicationController
     @build = @user.builds.find(params[:id])
     @char = @build.char_class
     @build_types = BuildType.all
-    @form_action = "Update Build"
   end
 
   def update

@@ -53,7 +53,7 @@
       %h2 Passive Skills
     %ul#build_passives
       - 3.times do |i|
-        %li{:id => "skill_passive_#{6 + 1}", 'data-slot' => "skill_#{i + 1}"}
+        %li{:id => "skill_passive_#{i + 1}", 'data-slot' => "skill_#{i + 1}"}
           %img{:src => '/assets/skills/empty_passive.png', :class => 'skill_img'}
           %img{:src => '/assets/skills/clear_passive.png', :class => 'skill_img', :style => 'display: none;', :title => 'Clear Skill'}
           %div
