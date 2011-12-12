@@ -40,16 +40,16 @@
             - build.build_skills.each do |build_skill|
               - if build_skill.skill && !build_skill.skill.passive?
                 - if build_skill.rune
-                  %li{'data-tooltip-url' => tooltip_char_class_skill_rune_effect_path(build.char_class,build_skill.skill,build_skill.effect)} 
+                  %li{'data-tooltip' => 'true', 'data-tooltip-url' => tooltip_char_class_skill_rune_effect_path(build.char_class,build_skill.skill,build_skill.effect)} 
                     = image_tag(build_skill.skill.img_url, :class => "skill_img" )
                 - else
-                  %li{'data-tooltip-url' => tooltip_char_class_skill_path(build.char_class,build_skill.skill)}
+                  %li{'data-tooltip' => 'true', 'data-tooltip-url' => tooltip_char_class_skill_path(build.char_class,build_skill.skill)}
                     = image_tag(build_skill.skill.img_url, :class => "skill_img" )
         %td
           %ul
             -build.build_skills.each do |build_skill|
               -if build_skill.skill && build_skill.skill.passive?
-                %li{'data-tooltip-url' => tooltip_char_class_skill_path(build.char_class,build_skill.skill)}
+                %li{'data-tooltip' => 'true', 'data-tooltip-url' => tooltip_char_class_skill_path(build.char_class,build_skill.skill)}
                   = image_tag(build_skill.skill.img_url, :class => "skill_img" )
         
         -if @user == current_user

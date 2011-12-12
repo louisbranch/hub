@@ -1,104 +1,6 @@
 window.onload = function(){
-    quotes();
-    skillFilter();
-    runesHover();
     buildClassSelector();
     buildSubmit();
-    skillsHover();
-		buildFilter();
-		like();
-		buildTypeToolTip();
-}
-
-function quotes(){
-  if(document.getElementById("img_classes")){
-    var img_classes = document.getElementById("img_classes");
-    var img_links = img_classes.getElementsByTagName("a");
-    img_links[0].className = "";
-    var random_number = Math.floor(Math.random()*5)
-    var random_class = img_links[random_number];
-    setQuote(random_class);
-    for(var i=0;i<img_links.length;i++){
-      img_links[i].onmouseover = function(){
-        for(var i=0;i<img_links.length;i++){img_links[i].className = "";}
-        setQuote(this)
-      }
-    }
-  }
-}
-
-function setQuote(a){
-  var div_quote = document.getElementById("quotes");
-  var quote_title = div_quote.getElementsByTagName("h3")[0];
-  var quote_block = div_quote.getElementsByTagName("blockquote")[0];
-  a.className ="img_active";
-  quote_title.innerHTML = a.getAttribute("data-title");
-  quote_block.innerHTML = a.getAttribute("data-quote");
-}
-
-function skillFilter(){
-  if(document.getElementById("skill_filters")){
-  var filter_block = document.getElementById("skill_filters");
-  var filter_links = filter_block.getElementsByTagName("a");
-      for(var i=0;i<filter_links.length;i++){
-        filter_links[i].onclick = function(){
-          for(var i=0;i<filter_links.length;i++){filter_links[i].className = "";}
-          filterSkillByType(this)
-        return false
-      }
-    }
-  }
-}
-
-function filterSkillByType(a){
-  a.className = "filter_active";
-  var filter_type = a.getAttribute("data-filter")
-  var skill_block = document.getElementById("class_skills");
-  var skills = skill_block.getElementsByTagName("article");
-  for(var i=0;i<skills.length;i++){
-    var all_skills = "all"
-    var skill_class = skills[i].getAttribute("class");
-    if(filter_type == skill_class){
-       skills[i].style.display = "";
-    }
-    else if (filter_type == all_skills){
-       skills[i].style.display = "";
-    }
-    else{
-       skills[i].style.display = "none";
-    }
-  }
-}
-
-function runesHover(){
-	if(document.getElementById("class_skills")){
-		var class_skills = document.getElementById("class_skills");
-		var img_list = class_skills.getElementsByTagName("img");
-		for(var i=0;i<img_list.length;i++){
-			if(img_list[i].getAttribute("data-tooltip-url")){
-				var data_url = img_list[i].getAttribute("data-tooltip-url")
-				$(img_list[i]).qtip({
-					 content: {
-							text: 'Loading...', // Loading text...
-							ajax: {
-								 url: data_url, // URL to the JSON script
-								 type: 'GET', // POST or GET
-							}
-					 },
-						style: {
-		    			classes: 'ui-tooltip-dark ui-tooltip-shadow'
-	 					},
-	 					position: {
-		 					viewport: $(window),
-							my: 'bottom center',  // Position my top left...
-							at: 'top center', // at the bottom right of...
-							target: $(img_list[i]), // my target
-							effect: false
-					 }
-				});
-			}
-		}
-	}
 }
 
 function buildClassSelector(){
@@ -189,24 +91,6 @@ function loadSkills(fixed_name,active_url,passive_url){
       error_explanation.style.display = "";
     }
   }
-}
-
-function simpleToolTip(e,text){
-	$(e).qtip({
-		 content: {
-				text: text
-		 },
-		  style: {
-  			classes: 'ui-tooltip-dark ui-tooltip-shadow'
-			},
-			position: {
-				viewport: $(window),
-				my: 'top center',  // Position my top left...
-				at: 'bottom center', // at the bottom right of...
-				target: e, // my target
-				effect: false
-		 }
-	});
 }
 
 function elementHover(e,url){
@@ -553,76 +437,6 @@ function editRunesReconstitution(editing,target){
 	for(var i=0;i<runes.length;i++){
 		if(editing == runes[i].getAttribute("data-rune-id")){
 			runesSelect(runes[i])
-		}
-	}
-}
-
-function skillsHover(){
-	if(document.getElementById("build_skills_list")){
-		var skills_list = document.getElementById("build_skills_list");
-		var skills = skills_list.getElementsByTagName("li");
-		for(var i=0;i<skills.length;i++){
-			if(skills[i].getAttribute("data-tooltip-url")){
-				var data_url = skills[i].getAttribute("data-tooltip-url")
-				elementHover(skills[i],data_url )
-			}
-		}
-	}
-}
-
-function buildFilter(){
-	if(document.getElementById("filter_class")){
-		var filter = document.getElementById("filter_class");
-		var skills_list = document.getElementById("build_skills_list");
-		var trs = skills_list.getElementsByTagName("tr");
-		filter.onchange = function(){
-			var char_id = filter.options[filter.selectedIndex].value
-			if (char_id){
-				for(var i=0;i<trs.length;i++){
-					if(trs[i].getAttribute("data-class-id")){
-						if(trs[i].getAttribute("data-class-id") == char_id){
-							trs[i].style.display = "";
-						}
-						else{
-							trs[i].style.display = "none";
-						}
-					}
-				}
-			}
-			else{
-				for(var i=0;i<trs.length;i++){
-					trs[i].style.display = "";
-				}
-			}
-		}
-	}
-}
-
-function like(){
-	if(document.getElementById("like_form")){
-		var div_form = document.getElementById("like_form");
-		var form = document.getElementsByTagName("form")[0];
-		var radios = form.getElementsByTagName("input");
-		var labels = form.getElementsByTagName("label");
-		for(var i=0;i<labels.length;i++){
-			var text = labels[i].getAttribute("data-tooltip");
-			simpleToolTip(labels[i],text)
-		}
-		for(var i=0;i<radios.length;i++){
-			radios[i].onclick = function(){
-				$(form).submit();
-			}
-		}
-	}
-}
-
-function buildTypeToolTip(){
-	if(document.getElementById("edit_build_types")){
-		var checkbox_group = document.getElementById("edit_build_types");
-		var labels = checkbox_group.getElementsByTagName("label");
-		for(var i=0;i<labels.length;i++){
-			var text = labels[i].getAttribute("data-tooltip");
-			simpleToolTip(labels[i],text)
 		}
 	}
 }

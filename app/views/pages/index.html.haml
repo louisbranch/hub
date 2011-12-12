@@ -1,13 +1,13 @@
 %div#showcase
   %div#img_classes
-    = link_to "", builds_char_class_url("barbarian"), :id => "img_barbarian", :class => "img_active", "data-title" => "Barbarian", "data-quote" => '"I swear to you, we put a dozen arrows into him and he just stood back up."'
-    = link_to "", builds_char_class_url("demon-hunter"), :id => "img_demon_hunter", "data-title" => "Demon Hunter", "data-quote" => '"The first three were dead before they hit the ground. The others weren\'t so lucky."' 
-    = link_to "", builds_char_class_url("monk"), :id => "img_monk", "data-title" => "Monk", "data-quote" => '"No weapon can overcome the weakness of an undisciplined mind."' 
-    = link_to "", builds_char_class_url("witch-doctor"), :id => "img_witch_doctor", "data-title" => "Witch Doctor", "data-quote" => '"The spirits take their toll. Best to be ready to pay."' 
-    = link_to "", builds_char_class_url("wizard"), :id => "img_wizard", "data-title" => "Wizard", "data-quote" => '"How will I survive? I don\'t intend to get hit in the first place."' 
-  %div#quotes
-    %h3 Barbarian
-    %blockquote "I swear to you, we put a dozen arrows into him and he just stood back up."
+    = link_to "", builds_char_class_url("barbarian"), :id => "img_barbarian", :class => "img_class img_active", "data-title" => "Barbarian", "data-quote" => '"I swear to you, we put a dozen arrows into him and he just stood back up."'
+    = link_to "", builds_char_class_url("demon-hunter"), :id => "img_demon_hunter", :class => "img_class", "data-title" => "Demon Hunter", "data-quote" => '"The first three were dead before they hit the ground. The others weren\'t so lucky."' 
+    = link_to "", builds_char_class_url("monk"), :id => "img_monk", "data-title" => "Monk", :class => "img_class", "data-quote" => '"No weapon can overcome the weakness of an undisciplined mind."' 
+    = link_to "", builds_char_class_url("witch-doctor"), :id => "img_witch_doctor", :class => "img_class", "data-title" => "Witch Doctor", "data-quote" => '"The spirits take their toll. Best to be ready to pay."' 
+    = link_to "", builds_char_class_url("wizard"), :id => "img_wizard", :class => "img_class", "data-title" => "Wizard", "data-quote" => '"How will I survive? I don\'t intend to get hit in the first place."' 
+  %div#quotes_block
+    %h3#quotes_title Barbarian
+    %blockquote#quotes "I swear to you, we put a dozen arrows into him and he just stood back up."
   %div#invitation
     = link_to 'Create your build', new_user_build_path(current_user), :class => "but" if user_signed_in? 
     = link_to 'Create your build', new_user_session_path, :class => "but" unless user_signed_in? 

@@ -6,7 +6,7 @@
     %th#th_active_skills Active Skills:
     %th#th_passive_skills Passives:
   - @builds.each do |build|
-    %tr{'data-class-id' => build.char_class.id, :class => 'visible'}
+    %tr{'data-class-id' => build.char_class.id, :class => 'builds'}
       %td
         %div.title= link_to build.name, user_build_path(build.user, build)
         %div.description= build.description.truncate(120)

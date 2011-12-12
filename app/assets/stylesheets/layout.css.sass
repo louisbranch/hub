@@ -151,21 +151,7 @@ footer.main
   
 /* Flash Messages */
 
-div#flash_alert, div#error_explanation
-  background-color: #860006
-  color: #fff
-  font-weight: bold
-  padding: 5px 40px
-  display: inline-block
-  margin-bottom: 20px
-
-.field_with_errors  
-  display: inline
-  label.message
-    color: #860006
-    margin-left: 20px
-  
-div#flash_notice
+ul#flash_notice
   background-color: #E3EBC6
   border: 1px solid #C2D288
   border-left: 10px solid #C2D288
@@ -175,7 +161,7 @@ div#flash_notice
   width: 200px
   margin: 10px 0
 
-div#flash_error
+ul#flash_error, ul#flash_alert, div#error_explanation
   background-color: #F4D0D2
   border: 1px solid #F3AEB1
   border-left: 10px solid #F3AEB1

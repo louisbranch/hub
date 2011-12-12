@@ -1,13 +1,13 @@
 =form_for ([current_user,@build,like_finder]), :remote => true  do |f|
   - if current_user.has_voted?(@build) && current_user.has_voted?(@build).vote == 1
-    =label_tag(:vote, "", :for => "vote_like", :id => "label_like", :class => "vote_active", "data-tooltip" => "Like this build")
+    =label_tag(:vote, "", :for => "vote_like", :id => "label_like", :class => "vote_active", "data-tooltip" => "true", "data-tooltip-text" => "Like this build")
   - else
-    =label_tag(:vote, "", :for => "vote_like", :id => "label_like", "data-tooltip" => "Like this build")
+    =label_tag(:vote, "", :for => "vote_like", :id => "label_like", "data-tooltip" => "true", "data-tooltip-text" => "Like this build")
   =f.radio_button :vote, "1", :id => "vote_like"
   - if current_user.has_voted?(@build) && current_user.has_voted?(@build).vote == 0
-    =label_tag(:vote, "", :for => "vote_dislike", :id => "label_dislike", :class => "vote_active", "data-tooltip" => "Dislike this build")
+    =label_tag(:vote, "", :for => "vote_dislike", :id => "label_dislike", :class => "vote_active", "data-tooltip" => "true", "data-tooltip-text" => "Dislike this build")
   - else
-    =label_tag(:vote, "", :for => "vote_dislike", :id => "label_dislike", "data-tooltip" => "Dislike this build" )
+    =label_tag(:vote, "", :for => "vote_dislike", :id => "label_dislike", "data-tooltip" => "true", "data-tooltip-text" => "Dislike this build" )
   =f.radio_button :vote, "0", :id => "vote_dislike"
 
 
