@@ -29,7 +29,6 @@ urlTooltip = (e, url) ->
 
 $ toolTip = ->
   if $('[data-tooltip=true]').length
-    alert 'hi'
     elements = $('[data-tooltip=true]')
     for i in elements
       if $(i).data('tooltip-text')
